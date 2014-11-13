@@ -1,0 +1,17 @@
+{
+    "contents" : "data<-read.table(\"C:\\\\Users\\\\Carlos\\\\Downloads\\\\practice_data.csv\", sep=\",\", head=T)\n\nsummary(data)\n######################################\n# 1) \ndata[data == -999] = c('NA')\n\n\n######################################\n# 2) \n\nnewData=as.numeric(subset(data[,1],data[,1] != \"NA\")) \nnewData=as.numeric(data[,1][data[,1] != 'NA'])\nlength(newData)\n\n######################################\n# 3)\n\nnNAc1<-length(data[,1][data[,1] == 'NA'])\nnNAc2<-length(data[,2][data[,2] == 'NA'])\nnNAc3<-length(data[,3][data[,3] == 'NA'])\n\n######################################\n# 4)\n\ndata4<-subset(data,data[,3]>=1)\nmeanCol1<-mean(data4[,1] != 'NA')\nmeanCol2<-mean(data4[,2] != 'NA')\n\n######################################\n# 5)\ndata5<-subset(data,data[,3]==0)\nmeanCol1<-mean(data5[,1] != 'NA')\nmeanCol2<-mean(data5[,2] != 'NA')\n######################################\n#6) \n\nFindObs<-subset(data,as.numeric(V1) > 13 & as.numeric(V2) < 10 & as.numeric(V3) < 3)\n\n######################################\n# 7)\n\nfor ( i in 1:10) {\n  \n  print(1:i)\n}\n\n\n######################################\n# 8)\n\nx=0 \ny=numeric(1000)\n\nfor ( i in 1:10) {\n  \n  for ( j in 1:100) {\n    \n    y[i*j] = i*j\n    \n  }\n}\n######################################\n# 9) OK\nvec=c(5.5,11,3.45)\nfor ( i in 1:length(vec)) {\n  \n  print(paste(\"Element\",i, \"is\",vec[i] ))\n  \n}\n\n# 10\n\n# when you are susing index\n\n# 11)\n\nmatrixM<-matrix(,ncol=5,nrow=5)\n\nfor ( i in 1:5){\n  \n  for( j in 1:5){\n    \n    if (i>=j) {\n      matrixM[i,j]= i*j} else { matrixM[i,j]=\"NA\"} \n  }\n}\n\n# 12)\nx=1:10\ny=x\n\nx2<-sample(1:10, 10, replace=T)\ny2<-sample(1:10, 10, replace=T)\n\nplot(x2,y2, add=T)\nabline(x,y , type=\"l\")\n\n######################################\n# 13)\n\nf13<-function(m,n){\n  \n  if (m==n) {print(paste(m,\"x\",n))}\n  if (m<=n) {print(c(m:n))} else {print(c(n:m))}\n}\n\nf13(5,10)\n\n\n######################################\n# 14) OK\n\nrI<-function(range) {\n  \n  a=sample(range, 1)\n  \n  if ((a %% 2) == 0 ) { print (paste(a,\"is a even\")) } else {print (paste(a,\"is a odd\"))}\n}\n\nrI(1:10)",
+    "created" : 1414616594800.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "2273155022",
+    "id" : "4BC6142B",
+    "lastKnownWriteTime" : 1414564746,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled7"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

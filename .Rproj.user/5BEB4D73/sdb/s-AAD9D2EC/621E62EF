@@ -1,0 +1,17 @@
+{
+    "contents" : "\n\nrequire(shiny)\ninstall.packages(\"RColorBrewer\")\nrequire(RColorBrewer)\nrequire(devtools)\nbrewer.pal(7,\"Greens\") \ninstall_github('rCharts', 'ramnathv')\n\n\nrunApp(\"C:\\\\Users\\\\Carlos\\\\Downloads\\\\NYCBikeShare-gh-pages\\\\NYCBikeShare-gh-pages\")\ngetwd()\nsource(\"C:\\\\rLiDAR-tree\\\\00_install.rLiDAR-tree\\\\00_functions\\\\functions\\\\readLAS.R\")\nfile=\"H:\\\\00_LiDAR\\\\00_LiDAR_projetos\\\\00_Klabin\\\\03_RSdata\\\\00_LiDAR\\\\MA02BCE_cerradinho\\\\LIDAR\\\\MA02BCE_cerradinho_NP\\\\MA02BCE_cerradinho_NP_7.las\"\n\nrequire(rLiDAR)\nfile=\"C:\\\\Users\\\\Carlos\\\\Documents\\\\00_Artigos_dissertacao\\\\DISSERTACAO\\\\00_LiDAR_Fibria\\\\Dados_LAS\\\\F987_LIDAR\\\\LIDAR_10pts\\\\processing\\\\polyclipdata\\\\Parcelas_1.las\"\nLASfile=file\nrequire(bitops)\nLAS<-readLAS(file, short=T)\n\nplot(LAS)\nhead(LAS)\nsummary(LAS)\nlevels(factor(LAS[,9]))\nhead(LAS)\nsummary(LAS)\nhealp\nminht<-1.37\nabove<-2\n\n\nfolder<-\"C:\\\\00_ForestCAS\\\\07_ExampleData\\\\00_las\"\nfolder=\"../lasfolder\"\nLASlist <- list.files(folder, pattern=\"*.las\", full.names=TRUE)\nLiDARmetrics<-data.frame()\nfor ( i in LASlist[-1] ) {\n  LiDARmetrics<-rbind(LiDARmetrics,LASmetrics(i,1.37,2))\n}\n\n?LASmetrics\nhead(LAS)\nsummary(LAS)\nrequire(rLiDAR)\n\n\nlibrary(tools)\n?rLiDAR\nls()\nrm(\"readLAS\")\nrm(\"LASmetrics\")\n\nls()\n\nnewdata=c(9,10,15,22,19,22,30)\n\nsave(newdata,file=\"newdata.las\")\n\nrm()\n\nls()\n\nsummary(LAS)\n\nLAS<-read.table(\"C:\\\\Users\\\\Carlos\\\\Dropbox\\\\00_LiDAR_sharing2013\\\\00_LiDAR_working\\\\02_paper3_individual_tree_3DAMS\\\\00_lasfiles\\\\plot3.txt\", sep=\",\", head=T)\n\nLAS<-subset(LAS,LAS[,3]>=1.37)\nhist(LAS$z, breaks=\"FD\", freq = FALSE, col=rgb(0.75,0.75,0.75),\n     ylab = \"Probability density\",\n     xlab = \"x\", xlim=c(0,max(LAS$z)+5),\n     main = paste('Normal Distribution'))\ndensityLAS=density(LAS$z)\nlines(densityLAS,lwd=2)\n\nplot(densityLAS$x,densityLAS$y)\ndensityLAS$y\n\n\n\nk<-NULL\nZ<-NULL\nD<-NULL\n\nfor ( i in 1:length(densityLAS$x)){\nk[i+1]<-densityLAS$x[i+1] - densityLAS$x[i]\nZ[i+1]<-densityLAS$y[i+1] - densityLAS$y[i]\nD[i+1]<-sqrt((Z[i+1]/k[i+1])^2)\n\n}\n\nmaxList=cbind(densityLAS$x,densityLAS$y,D)\n\nmaxList=subset(maxList,maxList[,1]>=0)\n\nmaxPoint<-subset(maxList, maxList[,3]== max(maxList[,3], na.rm=TRUE))\ncolnames(maxPoint)<-c(\"x\",\"y\",\"z\")\n\ndensy<-cbind(densityLAS$x,densityLAS$y,\"black\",.5)\n\njh<-rbind(densy,c(maxPoint[-3],\"red\",1))\n\nplot(jh[,1:2], col=jh[,3],cex =as.numeric(jh[,4]))\n\np=pi*11.3^2\n",
+    "created" : 1412963334825.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "1207785744",
+    "id" : "621E62EF",
+    "lastKnownWriteTime" : 1412890441,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled6"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

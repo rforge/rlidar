@@ -1,0 +1,16 @@
+{
+    "contents" : "^.*\\.Rproj$\n^\\.Rproj\\.user$\n",
+    "created" : 1415866447720.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2708567950",
+    "id" : "9ABF98A1",
+    "lastKnownWriteTime" : 1415865742,
+    "path" : "~/rLiDAR/rLiDAR/.Rbuildignore",
+    "project_path" : ".Rbuildignore",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "text"
+}

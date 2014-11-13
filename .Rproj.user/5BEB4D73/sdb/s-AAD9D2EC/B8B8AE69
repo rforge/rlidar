@@ -1,0 +1,16 @@
+{
+    "contents" : "#'Individual tree detection on the LiDAR-derived Canopy Height Model (CHM) \n#'\n#'@description Getting the individual tree location and hieght from the the LiDAR-derived Canopy Height Model (CHM) \n#'\n#'@usage sTreesCHM(chm, fws,htd)\n#'\n#'@param chm A LiDAR-derived Canopy Height Model (CHM)\n#'@param fws Single dimension of fixed square window size, e.g. 3, 5, 7 and so on. Default is 5. \n#'@param htd Detection individual tree above specified heightbreak, e.g. 1.37, 2.0, 3.5 m and so on. Default is 1.37 m. m \n#'@return returns Individual tree dection list (x,y,and height)\n#'@author Carlos Alberto Silva\n#'@examples\n#'\n#'\n#'\\dontrun{\n#'\n#'#' Importing the LiDAR-derived CHM file\n#'data(chm) # or set a CHM. e.g. chm<-readGDAL(\"CHM_stand.asc\") \n#'\n#'#' Set the fws:\n#'fws<-5 # dimention 3x3\n#'\n#'#' Set the specified heightbreak\n#'htd<-8.0\n#'\n#'#' Getting the individual tree detection list\n#'treeList<-sTreesCHM(chm, fws,htd)\n#'summary(treeList)\n#'\n#'#' Plotting the individual tree location\n#'plot(chm) # plotting CHM\n#'plot(SpatialPoints(treeList[,1:2]), add=T, col=\"red\") # plotthing tree location\n#'}\n#' \n#' @export\nsTreesCHM<-function(chm, fws=5,htd=1.37) {\n  \n  w<-matrix(c(rep(1,fws*fws)),nrow=fws,ncol=fws)\n  \n  if (class(chm)[1]!='RasterLayer') {chm<-raster(chm)}\n  \n  chm[chm < htd]<-NA\n  \n  f <- function(chm) max(chm) # , na.rm=TRUE\n  rlocalmax <- focal(chm, fun=f, w=w, pad=TRUE, padValue=NA)\n  \n  setNull<- chm==rlocalmax\n  XYmax <- SpatialPoints(xyFromCell(setNull, Which(setNull==1, cells=TRUE)))\n  \n  projection(XYmax)<-projection(chm)\n  htExtract<-over(XYmax,as(chm, \"SpatialGridDataFrame\"))\n  treeList<-cbind(XYmax,htExtract)\n  \n  colnames(treeList)<-c(\"x\",\"y\",\"height\")\n    \n  return(treeList)\n}\n",
+    "created" : 1415685873952.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "854223138",
+    "id" : "B8B8AE69",
+    "lastKnownWriteTime" : 1415687313,
+    "path" : "~/rLiDAR/rLiDAR/R/sTreesCHM.R",
+    "project_path" : "R/sTreesCHM.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
