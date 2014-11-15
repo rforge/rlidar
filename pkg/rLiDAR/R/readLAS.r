@@ -100,7 +100,7 @@ readLAS <- function(LASfile, short=TRUE) {
   B <- readBin(t(allbytes[, 21:22]), "integer", size = 2, n = numberPointRecords, signed = FALSE, endian = "little")
    
     
-    if (short=TRUE) {cbind(mm, Intensity, ReturnNumber)} else {
+    if (short==TRUE) {cbind(mm, Intensity, ReturnNumber)} else {
     cbind(mm, Intensity, ReturnNumber,NumberOfReturns,ScanDirectionFlag,EdgeofFlightLine,Classification,ScanAngleRank,gpstime,UserData,PointSourceID, R, G, B) }
     
     
