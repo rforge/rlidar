@@ -31,25 +31,25 @@
 #'
 #'#' shape cone crown 
 #'open3d() 
-#'PlotStand3D(crownshape = "cone", CL = 10, CW =7, 
+#'LiDARtrees3D(crownshape = "cone", CL = 10, CW =7, 
 #'            HCB = 5, X =0, Y = 0, dbh = 0.4, crowncolor = "forestgreen", 
 #'                        stemcolor = "chocolate4", resolution="high", shape=T) 
 #'                        
 #'#' elliptois crown shape 
 #'open3d()
-#'PlotStand3D(crownshape = "ellipsoid", CL = 10, CW =7, 
+#'LiDARtrees3D(crownshape = "ellipsoid", CL = 10, CW =7, 
 #'            HCB = 5, X =0, Y = 0, dbh = 0.4, crowncolor = "forestgreen", 
 #'                        stemcolor = "chocolate4", resolution="high", shape=T) 
 #'                        
 #'#' halfellipsoid crown shape 
 #'open3d()
-#'PlotStand3D(crownshape = "halfellipsoid", CL = 10, CW =7, 
+#'LiDARtrees3D(crownshape = "halfellipsoid", CL = 10, CW =7, 
 #'            HCB = 5, X =0, Y = 0, dbh = 0.4, crowncolor = "forestgreen", 
 #'                        stemcolor = "chocolate4", resolution="high", shape=T) 
 #'                        
 #'#' paraboloid crown shape 
 #'open3d()
-#'PlotStand3D(crownshape = "paraboloid", CL = 10, CW =7, 
+#'LiDARtrees3D(crownshape = "paraboloid", CL = 10, CW =7, 
 #'            HCB = 5, X =0, Y = 0, dbh = 0.4, crowncolor = "forestgreen", 
 #'                        stemcolor = "chocolate4", resolution="high", shape=T) 
 #'  
@@ -83,7 +83,7 @@
 #'
 #'#'Plot stand
 #'for( i in 1:Ntrees){
-#'  PlotStand3D(crownshape = "halfellipsoid", CL = CL[i], CW = CW[i], 
+#'  LiDARtrees3D(crownshape = "halfellipsoid", CL = CL[i], CW = CW[i], 
 #'              HCB = HCB[i], X = XYgrid[i,1], Y = XYgrid[i,2], dbh = 0.4, crowncolor = "forestgreen", 
 #'                            stemcolor = "chocolate4", resolution="high", shape=T) 
 #'                            }
@@ -106,7 +106,7 @@
 #'open3d() # open a rgl window
 #'#' Plot stand
 #'for( i in 1:Ntrees){
-#'  PlotStand3D(crownshape = "cone", CL = CL[i], CW = CW[i], 
+#'  LiDARtrees3D(crownshape = "cone", CL = CL[i], CW = CW[i], 
 #'              HCB = HCB[i], X = XYgrid[i,1], Y = XYgrid[i,2], dbh = 0.4, crowncolor = "forestgreen", 
 #'                            stemcolor = "chocolate4", resolution="high", shape=T) 
 #'                            }
@@ -145,7 +145,7 @@
 #'#'Plot stand
 #'
 #'for( i in 1:Ntrees){
-#'  PlotStand3D(crownshape = crownshape[i], CL = CL[i], CW = CW[i], 
+#'  LiDARtrees3D(crownshape = crownshape[i], CL = CL[i], CW = CW[i], 
 #'              HCB = HCB[i], X = XYgrid[i,1], Y = XYgrid[i,2], dbh = 0.4, crowncolor = "forestgreen", 
 #'                          stemcolor = "chocolate4", resolution="high", shape=T) 
 #'                          }
@@ -193,7 +193,7 @@
 #'  open3d() # open a rgl window
 #'#' Plot stand
 #'for( i in 1:Ntrees){  
-#'  PlotStand3D(crownshape = crownshape[i], CL = CL[i], CW = CW[i], 
+#'  LiDARtrees3D(crownshape = crownshape[i], CL = CL[i], CW = CW[i], 
 #'    HCB = HCB[i], X = XYgrid[i,1], Y = XYgrid[i,2], dbh = 0.4, crowncolor = crowncolor[i], 
 #'    stemcolor = "chocolate4", resolution="high", shape=T) 
 #'    }
