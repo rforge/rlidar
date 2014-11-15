@@ -36,7 +36,7 @@
 #
 #'#' Plotting the individual tree canopy boundary over the CHM
 #'plot(chm) # plotting CHM
-#'plot(boundaryTrees, add=T, border='red', bg='transparent', asp=1) # adding tree canopy boundary to the plot
+#'plot(boundaryTrees, add=T, border='red', bg='transparent') # adding tree canopy boundary
 #'
 #'#' Getting the individual tree detection canopy area list
 #'canopyList<-canopy[[2]]

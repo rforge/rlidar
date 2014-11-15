@@ -3,12 +3,13 @@
 #'@description LiDAR 3D stand visualization of trees. This function was adapted from MAESPA package,see
 #'\code{\link{MAESPA}}.  
 #'
-#'@usage LiDARtrees3D(crownshape = "halfellipsoid", CL = 4, CW = 8, HCB = 10, 
-#'                X = 0, Y = 0, dbh = 0.3, crowncolor = "forestgreen", 
-#'                stemcolor = "chocolate4", resolution="high", shape=TRUE) 
+#'@usage LiDARtrees3D(crownshape = c("cone", "ellipsoid", "halfellipsoid",
+#'                 "paraboloid", "cylinder"), CL = 4, CW = 8, HCB = 10, 
+#'                   X = 0, Y = 0, dbh = 0.3, crowncolor = "forestgreen", 
+#'                  stemcolor = "chocolate4", resolution="high", shape=TRUE) 
 #'
 #'@param crownshape Tree crown shape: "cone", "ellipsoid","halfellipsoid", "paraboloid" or "cylinder". Defaul is "halfellipsoid"
-#'@param CL Tree crown height
+#'@param CL Tree crown length
 #'@param CW Tree crown diameter
 #'@param HCB Tree trunk height
 #'@param X X Tree location
@@ -21,7 +22,7 @@
 #'
 #'@return returns Single 3D tree 
 #'@author Carlos Alberto Silva and Remko Duursma
-#'@references \url{http://maespa.github.io/},
+#'@references \link{http://maespa.github.io/}
 #'@examples
 #'
 #'\dontrun{

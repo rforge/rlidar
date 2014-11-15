@@ -2,7 +2,7 @@
 #'
 #'@description Importing and reading LAS file format. The LAS file is a public file format for the interchange of LiDAR 3-dimensional point cloud data (American Society of Photogrammetry and Remote Sensing - ASPRS)
 #'
-#'@usage readLAS(LASfile)
+#'@usage readLAS(LASfile, short=TRUE)
 #'
 #'@param LASfile A standard LAS data file
 #'@param short Return only : x, y, z, intensity and return number
@@ -100,7 +100,7 @@ readLAS <- function(LASfile, short=TRUE) {
   B <- readBin(t(allbytes[, 21:22]), "integer", size = 2, n = numberPointRecords, signed = FALSE, endian = "little")
    
     
-    if (short) {cbind(mm, Intensity, ReturnNumber)} else {
+    if (short=TRUE) {cbind(mm, Intensity, ReturnNumber)} else {
     cbind(mm, Intensity, ReturnNumber,NumberOfReturns,ScanDirectionFlag,EdgeofFlightLine,Classification,ScanAngleRank,gpstime,UserData,PointSourceID, R, G, B) }
     
     
