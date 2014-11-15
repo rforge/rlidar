@@ -1,11 +1,9 @@
 \name{chm}
 \alias{chm}
 \docType{data}
-\title{
-%%   ~~ data name/kind ... ~~
-}
+\title{chm}
 \description{
-%%  ~~ A concise (1-5 lines) description of the dataset. ~~
+LiDAR-derived Canopy Height Model - CHM
 }
 \usage{data(chm)}
 \format{
