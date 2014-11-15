@@ -73,4 +73,4 @@ Formal class 'RasterLayer' [package "raster"] with 12 slots
 data(chm)
 ## maybe str(chm) ; plot(chm) ...
 }
-\keyword{datasets}
+\keyword{file}

@@ -208,7 +208,7 @@
 LiDARtrees3D<-function (crownshape = c("cone", "ellipsoid",  
                                       "halfellipsoid", "paraboloid", "cylinder"), CL = 4, CW = 8, 
                        HCB = 10, X = 0, Y = 0, dbh = 0.3, crowncolor = "forestgreen", 
-                       stemcolor = "chocolate4", resolution="high",shape=TRUE, ...) 
+                       stemcolor = "chocolate4", resolution="high",shape=TRUE) 
 {
   
   

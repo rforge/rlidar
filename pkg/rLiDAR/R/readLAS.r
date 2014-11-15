@@ -16,7 +16,7 @@
 #'myLAS<-data(LASfile) # or set a LAS  file (myLAS<-"../LASfile.las)"
 #'
 #'#' Reading LAS file
-#'readLAS(myLAS)
+#'readLAS(myLAS,short=TRUE)
 #'
 #'#' Summary of the LAS file
 #'summary(myLAS)
