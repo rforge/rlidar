@@ -1,19 +1,19 @@
-#' LiDAR - Importing and reading LAS file
+#' LiDAR - Reading LAS file
 #'
-#'@description Importing and reading LAS file format. The LAS file is a public file format for the interchange of LiDAR 3-dimensional point cloud data (American Society of Photogrammetry and Remote Sensing - ASPRS)
+#'@description Read LAS file format. The LAS file is a public file format for the interchange of LiDAR 3-dimensional point cloud data (American Society of Photogrammetry and Remote Sensing - ASPRS)
 #'
 #'@usage readLAS(LASfile, short=TRUE)
 #'
-#'@param LASfile A standard LAS data file
+#'@param LASfile A standard LAS data file accorgin to ASPRS
 #'@param short Return only : x, y, z, intensity and return number
 #'@return Return dataframe of the LAS data set
-#'@author Michael Sumner
+#'@author Michael Sumner and Carlos Alberto Silva
 #'@examples
 #'
 #'
 #'\dontrun{
 #'#' Importing LAS file:
-#'myLAS<-data(LASfile) # or set a LAS  file (myLAS<-"../LASfile.las)"
+#'myLAS<-data(LASfile) # or set a LAS  file (myLAS<-"LASfile.las")
 #'
 #'#' Reading LAS file
 #'readLAS(myLAS,short=TRUE)
@@ -24,9 +24,10 @@
 #'
 #' @export
 readLAS <- function(LASfile, short=TRUE) {
+  
+  LASfile<-mylas
   skip <- 0
   nrows <- NULL
-  returnHeaderOnly <- FALSE
   
   hd <- publicHeaderDescription()
   pheader <- vector("list", nrow(hd))
@@ -47,9 +48,6 @@ readLAS <- function(LASfile, short=TRUE) {
   pointDataRecordLength <-pheader[["Point Data Record Length"]]
   xyzScaleOffset <- cbind(unlist(pheader[c("X scale factor", "Y scale factor", "Z scale factor")]),
                           unlist(pheader[c("X offset", "Y offset", "Z offset")]))
-  
-  
-  if (returnHeaderOnly) return(pheader)
   
   con <- file(LASfile, open = "rb")
   junk <- readBin(con, "raw", size = 1, n = offsetToPointData)
@@ -76,35 +74,148 @@ readLAS <- function(LASfile, short=TRUE) {
   mm[,3] <- mm[ ,3] * xyzScaleOffset[3,1] + xyzScaleOffset[3, 2]
   colnames(mm) <- c("X", "Y", "Z")
   
-  gpstime <- NULL
-  if (ncol(allbytes) == 28) gpstime <- readBin(t(allbytes[ , 21:28]), "numeric", size = 8, n = numberPointRecords, endian = "little")
-    
   Intensity <- readBin(t(allbytes[, 13:14]), "integer", size = 2, n = numberPointRecords, signed = FALSE, endian = "little")
     
   bytesList <- readBin(t(allbytes[,15]), "integer", size = 1, n = numberPointRecords, signed = FALSE, endian = "little")
-  ReturnNumber <- bitAnd(7, bytesList)
-  NumberOfReturns <- bitShiftR(bitAnd(56, bytesList), 3)
-  ScanDirectionFlag <- bitShiftR(bitAnd(bytesList, 64), 6)
-  EdgeofFlightLine <- bitShiftR(bitAnd(bytesList, 128), 7)
+
   
-  Classification <- readBin(t(allbytes[, 16]), "integer", size = 1, n = numberPointRecords, signed = FALSE, endian = "little")
-  
-  ScanAngleRank <-readBin(t(allbytes[, 17]), "integer", size = 1, n = numberPointRecords, signed = TRUE, endian = "little")
-  
-  UserData <-readBin(t(allbytes[, 18]), "integer", size = 1, n = numberPointRecords, signed = FALSE, endian = "little")
-  
-  PointSourceID <-readBin(t(allbytes[, 19:20]), "integer", size = 2, n = numberPointRecords, signed = FALSE, endian = "little")
+  if (pheader[17][[1]]==00) {
+    ReturnNumber <- bitAnd(7, bytesList)
+    NumberOfReturns <- bitShiftR(bitAnd(56, bytesList), 3)
+    ScanDirectionFlag <- bitShiftR(bitAnd(bytesList, 64), 6)
+    EdgeofFlightLine <- bitShiftR(bitAnd(bytesList, 128), 7)
+    Classification <- readBin(t(allbytes[, 16]), "integer", size = 1, n = numberPointRecords, signed = FALSE, endian = "little")
+    ScanAngleRank <-readBin(t(allbytes[, 17]), "integer", size = 1, n = numberPointRecords, signed = TRUE, endian = "little")
+    UserData <-readBin(t(allbytes[, 18]), "integer", size = 1, n = numberPointRecords, signed = FALSE, endian = "little")
+    PointSourceID <-readBin(t(allbytes[, 19:20]), "integer", size = 2, n = numberPointRecords, signed = FALSE, endian = "little")
+
+    if (short==TRUE) {cbind(mm, Intensity, ReturnNumber)} else {
+      cbind(mm, Intensity, ReturnNumber,NumberOfReturns,ScanDirectionFlag,EdgeofFlightLine,Classification,ScanAngleRank,UserData,PointSourceID) }}
     
-  R <- readBin(t(allbytes[, 23:24]), "integer", size = 2, n = numberPointRecords, signed = FALSE, endian = "little")
-  G <- readBin(t(allbytes[, 20:21]), "integer", size = 2, n = numberPointRecords, signed = FALSE, endian = "little")
-  B <- readBin(t(allbytes[, 21:22]), "integer", size = 2, n = numberPointRecords, signed = FALSE, endian = "little")
+    
+  if (pheader[17][[1]]==01) {
+    ReturnNumber <- bitAnd(7, bytesList)
+    NumberOfReturns <- bitShiftR(bitAnd(56, bytesList), 3)
+    ScanDirectionFlag <- bitShiftR(bitAnd(bytesList, 64), 6)
+    EdgeofFlightLine <- bitShiftR(bitAnd(bytesList, 128), 7)
+    Classification <- readBin(t(allbytes[, 16]), "integer", size = 1, n = numberPointRecords, signed = FALSE, endian = "little")
+    ScanAngleRank <-readBin(t(allbytes[, 17]), "integer", size = 1, n = numberPointRecords, signed = TRUE, endian = "little")
+    UserData <-readBin(t(allbytes[, 18]), "integer", size = 1, n = numberPointRecords, signed = FALSE, endian = "little")
+    PointSourceID <-readBin(t(allbytes[, 19:20]), "integer", size = 2, n = numberPointRecords, signed = FALSE, endian = "little")
+    gpstime <- NULL
+      
+    if (ncol(allbytes) == 28) gpstime <- readBin(t(allbytes[ , 21:28]), "numeric", size = 8, n = numberPointRecords, endian = "little")
+      
+    if (short==TRUE) {cbind(mm, Intensity, ReturnNumber)} else {
+        cbind(mm, Intensity, ReturnNumber,NumberOfReturns,ScanDirectionFlag,EdgeofFlightLine,Classification,ScanAngleRank,UserData,PointSourceID, gpstime) }}
+      
+        
+  if (pheader[17][[1]]==02) {
+    
+    ReturnNumber <- bitAnd(7, bytesList)
+    NumberOfReturns <- bitShiftR(bitAnd(56, bytesList), 3)
+    ScanDirectionFlag <- bitShiftR(bitAnd(bytesList, 64), 6)
+    EdgeofFlightLine <- bitShiftR(bitAnd(bytesList, 128), 7)
+    Classification <- readBin(t(allbytes[, 16]), "integer", size = 1, n = numberPointRecords, signed = FALSE, endian = "little")
+    
+    ScanAngleRank <-readBin(t(allbytes[, 17]), "integer", size = 1, n = numberPointRecords, signed = TRUE, endian = "little")
+    UserData <-readBin(t(allbytes[, 18]), "integer", size = 1, n = numberPointRecords, signed = FALSE, endian = "little")
+    PointSourceID <-readBin(t(allbytes[, 19:20]), "integer", size = 2, n = numberPointRecords, signed = FALSE, endian = "little")
+ 
+    R <- readBin(t(allbytes[, 21:22]), "integer", size = 2, n = numberPointRecords, signed = FALSE, endian = "little")
+    G <- readBin(t(allbytes[, 23:24]), "integer", size = 2, n = numberPointRecords, signed = FALSE, endian = "little")
+    B <- readBin(t(allbytes[, 25:26]), "integer", size = 2, n = numberPointRecords, signed = FALSE, endian = "little")
    
     
     if (short==TRUE) {cbind(mm, Intensity, ReturnNumber)} else {
-    cbind(mm, Intensity, ReturnNumber,NumberOfReturns,ScanDirectionFlag,EdgeofFlightLine,Classification,ScanAngleRank,gpstime,UserData,PointSourceID, R, G, B) }
-    
-    
+      cbind(mm, Intensity, ReturnNumber,NumberOfReturns,ScanDirectionFlag,EdgeofFlightLine,Classification,ScanAngleRank,UserData,PointSourceID, R,G,B) }}
   
+  if (pheader[17][[1]]==03) {
+    
+    ReturnNumber <- bitAnd(7, bytesList)
+    NumberOfReturns <- bitShiftR(bitAnd(56, bytesList), 3)
+    ScanDirectionFlag <- bitShiftR(bitAnd(bytesList, 64), 6)
+    EdgeofFlightLine <- bitShiftR(bitAnd(bytesList, 128), 7)
+    Classification <- readBin(t(allbytes[, 16]), "integer", size = 1, n = numberPointRecords, signed = FALSE, endian = "little")
+    
+    ScanAngleRank <-readBin(t(allbytes[, 17]), "integer", size = 1, n = numberPointRecords, signed = TRUE, endian = "little")
+    UserData <-readBin(t(allbytes[, 18]), "integer", size = 1, n = numberPointRecords, signed = FALSE, endian = "little")
+    PointSourceID <-readBin(t(allbytes[, 19:20]), "integer", size = 2, n = numberPointRecords, signed = FALSE, endian = "little")
+    
+    gpstime <- NULL
+    gpstime <- readBin(t(allbytes[ , 21:28]), "numeric", size = 8, n = numberPointRecords, endian = "little")
+    
+    R <- readBin(t(allbytes[, 29:30]), "integer", size = 2, n = numberPointRecords, signed = FALSE, endian = "little")
+    G <- readBin(t(allbytes[, 31:32]), "integer", size = 2, n = numberPointRecords, signed = FALSE, endian = "little")
+    B <- readBin(t(allbytes[, 33:34]), "integer", size = 2, n = numberPointRecords, signed = FALSE, endian = "little")
+    
+    
+    if (short==TRUE) {cbind(mm, Intensity, ReturnNumber)} else {
+      cbind(mm, Intensity, ReturnNumber,NumberOfReturns,ScanDirectionFlag,EdgeofFlightLine,Classification,ScanAngleRank,UserData,PointSourceID, R,G,B) }}
+  
+  if (pheader[17][[1]]==04) {
+    
+    ReturnNumber <- bitAnd(7, bytesList)
+    NumberOfReturns <- bitShiftR(bitAnd(56, bytesList), 3)
+    ScanDirectionFlag <- bitShiftR(bitAnd(bytesList, 64), 6)
+    EdgeofFlightLine <- bitShiftR(bitAnd(bytesList, 128), 7)
+    Classification <- readBin(t(allbytes[, 16]), "integer", size = 1, n = numberPointRecords, signed = FALSE, endian = "little")
+    
+    ScanAngleRank <-readBin(t(allbytes[, 17]), "integer", size = 1, n = numberPointRecords, signed = TRUE, endian = "little")
+    UserData <-readBin(t(allbytes[, 18]), "integer", size = 1, n = numberPointRecords, signed = FALSE, endian = "little")
+    PointSourceID <-readBin(t(allbytes[, 19:20]), "integer", size = 2, n = numberPointRecords, signed = FALSE, endian = "little")
+    
+    gpstime <- NULL
+    gpstime <- readBin(t(allbytes[ , 21:28]), "numeric", size = 8, n = numberPointRecords, endian = "little")
+    
+    WavePacket_Descriptor_Index <- readBin(t(allbytes[, 29]), "integer", size = 1, n = numberPointRecords, signed = FALSE, endian = "little")
+    Byte_offset_to_waveform_data <- readBin(t(allbytes[, 30:37]), "integer", size = 8, n = numberPointRecords, signed = FALSE, endian = "little")
+    Waveform_packet_size_in_bytes <- readBin(t(allbytes[, 38:41]), "integer", size = 4, n = numberPointRecords, signed = FALSE, endian = "little")
+    Return_Point_Waveform_Location<- readBin(t(allbytes[, 42:45]), "integer", size = 4, n = numberPointRecords, signed = FALSE, endian = "little")
+    X.t<- readBin(t(allbytes[, 46:49]), "intege", size = 4, n = numberPointRecords, signed = FALSE, endian = "little")
+    Y.t<- readBin(t(allbytes[, 50:53]), "integer", size = 4, n = numberPointRecords, signed = FALSE, endian = "little")
+    Z.t<- readBin(t(allbytes[, 54:57]), "integer", size = 4, n = numberPointRecords, signed = FALSE, endian = "little")
+    
+    
+    if (short==TRUE) {cbind(mm, Intensity, ReturnNumber)} else {
+      cbind(mm, Intensity, ReturnNumber,NumberOfReturns,ScanDirectionFlag,EdgeofFlightLine,Classification,ScanAngleRank,UserData,PointSourceID,gpstime,
+            WavePacket_Descriptor_Index,Byte_offset_to_waveform_data,Waveform_packet_size_in_bytes,
+            Return_Point_Waveform_Location,X.t,Y.t,Z.t) }}
+  
+  
+  if (pheader[17][[1]]==05) {
+    
+    ReturnNumber <- bitAnd(7, bytesList)
+    NumberOfReturns <- bitShiftR(bitAnd(56, bytesList), 3)
+    ScanDirectionFlag <- bitShiftR(bitAnd(bytesList, 64), 6)
+    EdgeofFlightLine <- bitShiftR(bitAnd(bytesList, 128), 7)
+    Classification <- readBin(t(allbytes[, 16]), "integer", size = 1, n = numberPointRecords, signed = FALSE, endian = "little")
+    
+    ScanAngleRank <-readBin(t(allbytes[, 17]), "integer", size = 1, n = numberPointRecords, signed = TRUE, endian = "little")
+    UserData <-readBin(t(allbytes[, 18]), "integer", size = 1, n = numberPointRecords, signed = FALSE, endian = "little")
+    PointSourceID <-readBin(t(allbytes[, 19:20]), "integer", size = 2, n = numberPointRecords, signed = FALSE, endian = "little")
+    
+    gpstime <- NULL
+    gpstime <- readBin(t(allbytes[ , 21:28]), "numeric", size = 8, n = numberPointRecords, endian = "little")
+    
+    R <- readBin(t(allbytes[, 29:30]), "integer", size = 2, n = numberPointRecords, signed = FALSE, endian = "little")
+    G <- readBin(t(allbytes[, 31:32]), "integer", size = 2, n = numberPointRecords, signed = FALSE, endian = "little")
+    B <- readBin(t(allbytes[, 33:34]), "integer", size = 2, n = numberPointRecords, signed = FALSE, endian = "little")
+    
+    WavePacket_Descriptor_Index <- readBin(t(allbytes[, 35]), "integer", size = 1, n = numberPointRecords, signed = FALSE, endian = "little")
+    Byte_offset_to_waveform_data <- readBin(t(allbytes[, 36:43]), "integer", size = 8, n = numberPointRecords, signed = FALSE, endian = "little")
+    Waveform_packet_size_in_bytes <- readBin(t(allbytes[, 44:47]), "integer", size = 4, n = numberPointRecords, signed = FALSE, endian = "little")
+    Return_Point_Waveform_Location<- readBin(t(allbytes[, 48:51]), "integer", size = 4, n = numberPointRecords, signed = FALSE, endian = "little")
+    X.t<- readBin(t(allbytes[, 52:55]), "intege", size = 4, n = numberPointRecords, signed = FALSE, endian = "little")
+    Y.t<- readBin(t(allbytes[, 56:59]), "integer", size = 4, n = numberPointRecords, signed = FALSE, endian = "little")
+    Z.t<- readBin(t(allbytes[, 60:63]), "integer", size = 4, n = numberPointRecords, signed = FALSE, endian = "little")
+    
+    
+    if (short==TRUE) {cbind(mm, Intensity, ReturnNumber)} else {
+      cbind(mm, Intensity, ReturnNumber,NumberOfReturns,ScanDirectionFlag,EdgeofFlightLine,Classification,ScanAngleRank,UserData,PointSourceID,gpstime,
+            R, G, B, WavePacket_Descriptor_Index,Byte_offset_to_waveform_data,Waveform_packet_size_in_bytes,
+            Return_Point_Waveform_Location,X.t,Y.t,Z.t) }}
+ 
 }
 
 

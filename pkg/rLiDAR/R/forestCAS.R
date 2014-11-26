@@ -4,11 +4,11 @@
 #'
 #'@usage ForestCAS(chm,loc,maxcrown,exclusion)
 #'
-#'@param chm A LiDAR-derived Canopy Height Model (CHM)
-#'@param loc A dataframe of the individual tree location and height (x,y and height) 
-#'@param maxcrown Maximum individual tree crown radius expected. Default 10.0 m
-#'@param exclusion Exclusion of the pixels that has values below the percent of maximum tree height. Default is 0.3 
-#'@return returns Individual tree canopy boundary [[1]] and list of canopy area [[2]] 
+#'@param chm A raster LiDAR-derived Canopy Height Model (CHM)
+#'@param loc A 3-column matrix with the x,y coordinates and heights of the individual tree
+#'@param maxcrown A single value of the maximum individual tree crown radius expected. Default 10.0 m
+#'@param exclusion A single value with the percent of pixel exclusion. E.g 0.5; exclusion of the pixels that has values below of the 50% of max tree height. Default is 0.3 
+#'@return returns A polygon of the individual tree canopy boundary [[1]] and dataframe of the canopy area [[2]] 
 #'@author Carlos Alberto Silva
 #'@examples
 #'
@@ -16,7 +16,7 @@
 #'\dontrun{
 #'
 #'#' Importing the LiDAR-derived CHM file
-#'data(chm) # or set a CHM. e.g. chm<-readGDAL("CHM_stand.asc") 
+#'data(chm) # or set a CHM. e.g. chm<-raster("CHM_stand.asc") 
 #'
 #'#' Set the loc parameter
 #'sCHM<-CHMsmoothing(chm, filter="mean", ws=5) # smoothing CHM

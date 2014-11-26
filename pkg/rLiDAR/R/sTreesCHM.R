@@ -4,10 +4,10 @@
 #'
 #'@usage sTreesCHM(chm, fws,htd)
 #'
-#'@param chm A LiDAR-derived Canopy Height Model (CHM)
-#'@param fws Single dimension of fixed square window size, e.g. 3, 5, 7 and so on. Default is 5. 
+#'@param chm A raster LiDAR-derived Canopy Height Model (CHM)
+#'@param fws A single dimension of fixed square window size, e.g. 3, 5, 7 and so on. Default is 5. 
 #'@param htd Detection individual tree above specified heightbreak, e.g. 1.37, 2.0, 3.5 m and so on. Default is 1.37 m.
-#'@return returns Individual tree dection list (x,y,and height)
+#'@return returns A 3- column matrix of the individual tree dectection(x,y,and height)
 #'@author Carlos Alberto Silva
 #'@examples
 #'

@@ -4,11 +4,11 @@
 #'
 #'@usage CHMsmoothing(chm, filter, ws, sigma)
 #'
-#'@param chm A LiDAR-derived Canopy Height Model - CHM (*.tif, *.asc or *.img)
-#'@param ws Single square matrix of weights dimension, e.g. 3,5, 7 and so on. Default is 5.
+#'@param chm A raster LiDAR-derived Canopy Height Model - CHM 
+#'@param ws A single square matrix of weights dimension, e.g. 3,5, 7 and so on. Default is 5.
 #'@param filter mean, median, maximum, minimum or gaussian. Default is "mean".
-#'@param sigma Used only when filter is equal to gaussian, e.g. 0.5, 1.0, 1.5 and so on. Default is 0.6. 
-#'@return returns CHM smoothed
+#'@param sigma Used only when filter parameter is equal to gaussian, e.g. 0.5, 1.0, 1.5 and so on. Default is 0.6. 
+#'@return returns A raster CHM smoothed
 #'@author Carlos Alberto Silva
 #'@examples
 #'
