@@ -2,7 +2,7 @@
 #'
 #'@description Getting the individual tree location and hieght from the the LiDAR-derived Canopy Height Model (CHM) 
 #'
-#'@usage sTreesCHM(chm, fws,htd)
+#'@usage singleTreeCHM(chm, fws,htd)
 #'
 #'@param chm A raster LiDAR-derived Canopy Height Model (CHM)
 #'@param fws A single dimension of fixed square window size, e.g. 3, 5, 7 and so on. Default is 5. 
@@ -24,7 +24,7 @@
 #'htd<-8.0
 #'
 #'#' Getting the individual tree detection list
-#'treeList<-sTreesCHM(chm, fws,htd)
+#'treeList<-singleTreeCHM(chm, fws,htd)
 #'summary(treeList)
 #'
 #'#' Plotting the individual tree location
@@ -33,7 +33,7 @@
 #'}
 #' 
 #' @export
-sTreesCHM<-function(chm, fws=5,htd=1.37) {
+singleTreeCHM<-function(chm, fws=5,htd=1.37) {
   
   w<-matrix(c(rep(1,fws*fws)),nrow=fws,ncol=fws)
   
