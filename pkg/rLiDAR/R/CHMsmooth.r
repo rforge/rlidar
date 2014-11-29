@@ -1,6 +1,6 @@
 #'LiDAR-derived Canopy Height Model (CHM) smoothing
 #'
-#'@description LiDAR-derived Canopy Height Model (CHM) smoothing using focal statistcs
+#'@description LiDAR-derived Canopy Height Model (CHM) smooth using focal statistcs
 #'
 #'@usage CHMsmoothing(chm, filter, ws, sigma)
 #'
