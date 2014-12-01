@@ -11,25 +11,28 @@
 #'@author Carlos Alberto Silva
 #'@examples
 #'
-#'
 #'\dontrun{
 #'
 #'#' Importing the LiDAR-derived CHM file
 #'data(chm) # or set a CHM. e.g. chm<-readGDAL("CHM_stand.asc") 
 #'
+#'#'#' Smoothing CHM
+#'schm<-CHMsmoothing(chm, "mean", 7, sigma=NULL)
+#'
 #'#' Set the fws:
-#'fws<-5 # dimention 3x3
+#'fws<-9 # dimention 9x9
 #'
 #'#' Set the specified heightbreak
 #'htd<-8.0
 #'
 #'#' Getting the individual tree detection list
-#'treeList<-singleTreeCHM(chm, fws,htd)
+#'treeList<-singleTreeCHM(schm, fws, htd)
 #'summary(treeList)
 #'
 #'#' Plotting the individual tree location
-#'plot(chm) # plotting CHM
+#'plot(schm) # plotting CHM
 #'plot(SpatialPoints(treeList[,1:2]), add=T, col="red") # plotthing tree location
+#'
 #'}
 #' 
 #' @export
