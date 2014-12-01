@@ -14,11 +14,12 @@
 #'
 #'
 #'\dontrun{
+#'
 #'#' Importing the LiDAR-derived CHM file
 #'data(chm) # or set a CHM. e.g. chm<-raster("CHM_stand.asc") 
 #'
 #'#' Set the loc parameter
-#'sCHM<-CHMsmoothing(chm, filter="mean", ws=5) # smoothing CHM
+#'sCHM<-CHMsmoothing(chm, filter="mean", ws=5, sigma=NULL) # smoothing CHM
 #'loc<-singleTreesCHM(sCHM, fws=5,htd=8) # or import a tree list
 #'
 #'#' Set the maxcrown parameter
@@ -28,7 +29,7 @@
 #'exclusion=0.3 # 30%
 #'
 #'#' Compute individual tree detection canopy area
-#'canopy<-ForestCAS(chm,loc, maxcrown,exclusion)
+#'canopy<-ForestCAS(chm,loc,maxcrown,exclusion)
 #'
 #'#' Getting the individual tree detection canopy area boundary
 #'boundaryTrees<-canopy[[1]]
@@ -44,7 +45,7 @@
 #'	
 #'} 
 #' @export
-ForestCAS<-function(chm,loc,maxcrown=10,exclusion=0.3) {
+ForestCAS<-function(chm,loc,maxcrown,exclusion) {
 
   chm<-as(chm, "SpatialGridDataFrame")
   Hthreshold<-min(loc[,3])*exclusion

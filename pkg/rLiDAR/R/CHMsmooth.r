@@ -45,7 +45,7 @@
 #'filter<-"mean"
 #'
 #'#' Smoothing CHM
-#'sCHM<-CHMsmoothing(chm, filter, ws, sigma)
+#'sCHM<-CHMsmoothing(chm, filter, ws, sigma=NULL)
 #'
 #'#' Plotting CHM smoothed
 #'plot(sCHM, main=paste(filter,"filter and window size", paste0(ws,"x",ws)))

@@ -38,8 +38,9 @@
 #'
 #'#' get the volume of the alpha-shape
 #'volume<-getVolume(xyz=xyz,id=id,alpha=alpha,cas=cas)
-#'
+#'head(volume)
 #'}
+#'
 #' @export
 getVolume<-function(xyz,id,alpha,cas) {
 

@@ -2,7 +2,7 @@
 #'
 #'@description Getting the individual tree location and hieght from the the LiDAR-derived Canopy Height Model (CHM) 
 #'
-#'@usage singleTreeCHM(chm, fws,htd)
+#'@usage singleTreeCHM(chm,fws,htd)
 #'
 #'@param chm A raster LiDAR-derived Canopy Height Model (CHM)
 #'@param fws A single dimension of fixed square window size, e.g. 3, 5, 7 and so on. Default is 5. 
@@ -17,10 +17,13 @@
 #'data(chm) # or set a CHM. e.g. chm<-readGDAL("CHM_stand.asc") 
 #'
 #'#'#' Smoothing CHM
-#'schm<-CHMsmoothing(chm, "mean", 7, sigma=NULL)
+#'schm<-CHMsmoothing(chm, "mean", 5, sigma=NULL)
+#'
+#'#' Plotting smothed CHM
+#'plot(schm) 
 #'
 #'#' Set the fws:
-#'fws<-9 # dimention 9x9
+#'fws<-5 # dimention 5x5
 #'
 #'#' Set the specified heightbreak
 #'htd<-8.0
@@ -29,8 +32,8 @@
 #'treeList<-singleTreeCHM(schm, fws, htd)
 #'summary(treeList)
 #'
-#'#' Plotting the individual tree location
-#'plot(schm) # plotting CHM
+#'#' Plotting the individual tree location on the CHM
+#'plot(chm) # plotting CHM
 #'plot(SpatialPoints(treeList[,1:2]), add=T, col="red") # plotthing tree location
 #'
 #'}
