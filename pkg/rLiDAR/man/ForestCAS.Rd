@@ -27,8 +27,8 @@ Compute and export individual tree canopy area detected on the LiDAR-derived Can
 data(chm) # or set a CHM. e.g. chm<-raster("CHM_stand.asc")
 
 #' Set the loc parameter
-sCHM<-CHMsmoothing(chm, filter="mean", ws=5) # smoothing CHM
-loc<-sTreesCHM(sCHM, fws=5,htd=8) # or import a tree list
+sCHM<-CHMsmoothing(chm, filter="mean", ws=5, sigma=NULL) # smoothing CHM
+loc<-singleTreesCHM(sCHM, fws=5,htd=8) # or import a tree list
 
 #' Set the maxcrown parameter
 maxcrown=10.0
@@ -37,7 +37,7 @@ maxcrown=10.0
 exclusion=0.3 # 30\%
 
 #' Compute individual tree detection canopy area
-canopy<-ForestCAS(chm,loc, maxcrown,exclusion)
+canopy<-ForestCAS(chm,loc,maxcrown,exclusion)
 
 #' Getting the individual tree detection canopy area boundary
 boundaryTrees<-canopy[[1]]
@@ -49,6 +49,7 @@ plot(boundaryTrees, add=T, border='red', bg='transparent') # adding tree canopy 
 canopyList<-canopy[[2]]
 summary(canopyList)
 plot(SpatialPoints(canopyList[,1:2]),col="black", add=T, pch="*") # adding tree location to the plot
+
 }
 }
 \author{

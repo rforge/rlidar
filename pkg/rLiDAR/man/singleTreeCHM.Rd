@@ -3,7 +3,7 @@
 \alias{singleTreeCHM}
 \title{Individual tree detection on the LiDAR-derived Canopy Height Model (CHM)}
 \usage{
-singleTreeCHM(chm, fws,htd)
+singleTreeCHM(chm,fws,htd)
 }
 \arguments{
 \item{chm}{A raster LiDAR-derived Canopy Height Model (CHM)}
@@ -24,19 +24,26 @@ Getting the individual tree location and hieght from the the LiDAR-derived Canop
 #' Importing the LiDAR-derived CHM file
 data(chm) # or set a CHM. e.g. chm<-readGDAL("CHM_stand.asc")
 
+#'#' Smoothing CHM
+schm<-CHMsmoothing(chm, "mean", 5, sigma=NULL)
+
+#' Plotting smothed CHM
+plot(schm)
+
 #' Set the fws:
-fws<-5 # dimention 3x3
+fws<-5 # dimention 5x5
 
 #' Set the specified heightbreak
 htd<-8.0
 
 #' Getting the individual tree detection list
-treeList<-singleTreeCHM(chm, fws,htd)
+treeList<-singleTreeCHM(schm, fws, htd)
 summary(treeList)
 
-#' Plotting the individual tree location
+#' Plotting the individual tree location on the CHM
 plot(chm) # plotting CHM
 plot(SpatialPoints(treeList[,1:2]), add=T, col="red") # plotthing tree location
+
 }
 }
 \author{

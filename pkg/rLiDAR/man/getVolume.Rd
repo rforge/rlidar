@@ -8,12 +8,11 @@ getVolume(xyz,id,alpha,cas)
 \arguments{
 \item{xyz}{A 3-column matrix with the x,y and z coordinates of the LiDAR input points}
 
-\item{id}{A value of the LiDAR input point id.}
+\item{id}{A vector id for the the items in xyz.}
 
 \item{alpha}{A single value or vector of values for alpha. Its range from 0 to 1.}
 
 \item{cas}{Logical, if TRUE (default) plot the alpha-shape.}
-
 }
 \value{
 Return dataframe of the LAS data set
@@ -23,6 +22,7 @@ This function calculates the volume of the alpha-shape of the LiDAR point cloud 
 }
 \examples{
 \dontrun{
+
 #' Importing LAS file:
 myLAS<-data(LASfile) # or set a LAS  file (myLAS<-"LASfile.las")
 
@@ -38,7 +38,7 @@ xyz<-LAS[,1:3]
 #' set the id vector
 id<-as.factor(clLAS$cluster)
 
-#' set the alpha value
+set the alpha value
 alpha<-0.25
 
 #' set the cas parameter
@@ -46,7 +46,7 @@ cas=TRUE
 
 #' get the volume of the alpha-shape
 volume<-getVolume(xyz=xyz,id=id,alpha=alpha,cas=cas)
-
+head(volume)
 }
 }
 \author{
