@@ -41,7 +41,7 @@
 #'
 #'}
 #' @export
-getVolume<-function(xyz,id,alpha,cas=TRUE) {
+getVolume<-function(xyz,id,alpha,cas) {
 
 if (nrow(xyz)!=length(id)) {stop("The xyz and id do not have the same length")}
 if (cas!=TRUE & cas!=FALSE) {stop("The cas parameter is invalid. Please, use TRUE or FALSE")}
