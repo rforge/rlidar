@@ -14,7 +14,6 @@
 #'
 #'
 #'\dontrun{
-#'
 #'#' Importing the LiDAR-derived CHM file
 #'data(chm) # or set a CHM. e.g. chm<-raster("CHM_stand.asc") 
 #'
@@ -42,6 +41,7 @@
 #'canopyList<-canopy[[2]]
 #'summary(canopyList)
 #'plot(SpatialPoints(canopyList[,1:2]),col="black", add=T, pch="*") # adding tree location to the plot
+#'
 #'} 
 #' @export
 ForestCAS<-function(chm,loc,maxcrown=10,exclusion=0.3) {
