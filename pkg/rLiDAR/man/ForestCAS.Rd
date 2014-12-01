@@ -6,16 +6,16 @@
 ForestCAS(chm,loc,maxcrown,exclusion)
 }
 \arguments{
-\item{chm}{A LiDAR-derived Canopy Height Model (CHM)}
+\item{chm}{A raster LiDAR-derived Canopy Height Model (CHM)}
 
-\item{loc}{A dataframe of the individual tree location and height (x,y and height)}
+\item{loc}{A 3-column matrix with the x,y coordinates and heights of the individual tree}
 
-\item{maxcrown}{Maximum individual tree crown radius expected. Default 10.0 m}
+\item{maxcrown}{A single value of the maximum individual tree crown radius expected. Default 10.0 m}
 
-\item{exclusion}{Exclusion of the pixels that has values below the percent of maximum tree height. Default is 0.3}
+\item{exclusion}{A single value with the percent of pixel exclusion. E.g 0.5; exclusion of the pixels that has values below of the 50% of max tree height. Default is 0.3}
 }
 \value{
-returns Individual tree canopy boundary [[1]] and list of canopy area [[2]]
+returns A polygon of the individual tree canopy boundary [[1]] and dataframe of the canopy area [[2]]
 }
 \description{
 Compute and export individual tree canopy area detected on the LiDAR-derived Canopy Height Model (CHM)
@@ -24,7 +24,7 @@ Compute and export individual tree canopy area detected on the LiDAR-derived Can
 \dontrun{
 
 #' Importing the LiDAR-derived CHM file
-data(chm) # or set a CHM. e.g. chm<-readGDAL("CHM_stand.asc")
+data(chm) # or set a CHM. e.g. chm<-raster("CHM_stand.asc")
 
 #' Set the loc parameter
 sCHM<-CHMsmoothing(chm, filter="mean", ws=5) # smoothing CHM
@@ -43,7 +43,7 @@ canopy<-ForestCAS(chm,loc, maxcrown,exclusion)
 boundaryTrees<-canopy[[1]]
 #' Plotting the individual tree canopy boundary over the CHM
 plot(chm) # plotting CHM
-plot(boundaryTrees, add=T, border='red', bg='transparent', asp=1) # adding tree canopy boundary to the plot
+plot(boundaryTrees, add=T, border='red', bg='transparent') # adding tree canopy boundary
 
 #' Getting the individual tree detection canopy area list
 canopyList<-canopy[[2]]

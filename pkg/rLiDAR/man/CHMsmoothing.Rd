@@ -6,19 +6,19 @@
 CHMsmoothing(chm, filter, ws, sigma)
 }
 \arguments{
-\item{chm}{A LiDAR-derived Canopy Height Model - CHM (*.tif, *.asc or *.img)}
+\item{chm}{A raster LiDAR-derived Canopy Height Model - CHM}
 
 \item{filter}{mean, median, maximum, minimum or gaussian. Default is "mean".}
 
-\item{ws}{Single square matrix of weights dimension, e.g. 3,5, 7 and so on. Default is 5.}
+\item{ws}{A single square matrix of weights dimension, e.g. 3,5, 7 and so on. Default is 5.}
 
-\item{sigma}{Used only when filter is equal to gaussian, e.g. 0.5, 1.0, 1.5 and so on. Default is 0.6.}
+\item{sigma}{Used only when filter parameter is equal to gaussian, e.g. 0.5, 1.0, 1.5 and so on. Default is 0.6.}
 }
 \value{
-returns CHM smoothed
+returns A raster CHM smoothed
 }
 \description{
-LiDAR-derived Canopy Height Model (CHM) smoothing using focal statistcs
+LiDAR-derived Canopy Height Model (CHM) smooth using focal statistcs
 }
 \examples{
 \dontrun{

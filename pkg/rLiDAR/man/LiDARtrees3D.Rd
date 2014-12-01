@@ -3,14 +3,15 @@
 \alias{LiDARtrees3D}
 \title{LiDAR 3D stand visualization of trees}
 \usage{
-LiDARtrees3D(crownshape = "halfellipsoid", CL = 4, CW = 8, HCB = 10,
-               X = 0, Y = 0, dbh = 0.3, crowncolor = "forestgreen",
-               stemcolor = "chocolate4", resolution="high", shape=TRUE)
+LiDARtrees3D(crownshape = c("cone", "ellipsoid", "halfellipsoid",
+                "paraboloid", "cylinder"), CL = 4, CW = 8, HCB = 10,
+                  X = 0, Y = 0, dbh = 0.3, crowncolor = "forestgreen",
+                 stemcolor = "chocolate4", resolution="high", shape=TRUE)
 }
 \arguments{
 \item{crownshape}{Tree crown shape: "cone", "ellipsoid","halfellipsoid", "paraboloid" or "cylinder". Defaul is "halfellipsoid"}
 
-\item{CL}{Tree crown height}
+\item{CL}{Tree crown length}
 
 \item{CW}{Tree crown diameter}
 
@@ -44,25 +45,25 @@ LiDAR 3D stand visualization of trees. This function was adapted from MAESPA pac
 
 #' shape cone crown
 open3d()
-PlotStand3D(crownshape = "cone", CL = 10, CW =7,
+LiDARtrees3D(crownshape = "cone", CL = 10, CW =7,
            HCB = 5, X =0, Y = 0, dbh = 0.4, crowncolor = "forestgreen",
                        stemcolor = "chocolate4", resolution="high", shape=T)
 
 #' elliptois crown shape
 open3d()
-PlotStand3D(crownshape = "ellipsoid", CL = 10, CW =7,
+LiDARtrees3D(crownshape = "ellipsoid", CL = 10, CW =7,
            HCB = 5, X =0, Y = 0, dbh = 0.4, crowncolor = "forestgreen",
                        stemcolor = "chocolate4", resolution="high", shape=T)
 
 #' halfellipsoid crown shape
 open3d()
-PlotStand3D(crownshape = "halfellipsoid", CL = 10, CW =7,
+LiDARtrees3D(crownshape = "halfellipsoid", CL = 10, CW =7,
            HCB = 5, X =0, Y = 0, dbh = 0.4, crowncolor = "forestgreen",
                        stemcolor = "chocolate4", resolution="high", shape=T)
 
 #' paraboloid crown shape
 open3d()
-PlotStand3D(crownshape = "paraboloid", CL = 10, CW =7,
+LiDARtrees3D(crownshape = "paraboloid", CL = 10, CW =7,
            HCB = 5, X =0, Y = 0, dbh = 0.4, crowncolor = "forestgreen",
                        stemcolor = "chocolate4", resolution="high", shape=T)
 
@@ -96,7 +97,7 @@ open3d() # open a rgl window
 
 #'Plot stand
 for( i in 1:Ntrees){
- PlotStand3D(crownshape = "halfellipsoid", CL = CL[i], CW = CW[i],
+ LiDARtrees3D(crownshape = "halfellipsoid", CL = CL[i], CW = CW[i],
              HCB = HCB[i], X = XYgrid[i,1], Y = XYgrid[i,2], dbh = 0.4, crowncolor = "forestgreen",
                            stemcolor = "chocolate4", resolution="high", shape=T)
                            }
@@ -119,7 +120,7 @@ CW<-HCB*1.3 # tree crown diameter
 open3d() # open a rgl window
 #' Plot stand
 for( i in 1:Ntrees){
- PlotStand3D(crownshape = "cone", CL = CL[i], CW = CW[i],
+ LiDARtrees3D(crownshape = "cone", CL = CL[i], CW = CW[i],
              HCB = HCB[i], X = XYgrid[i,1], Y = XYgrid[i,2], dbh = 0.4, crowncolor = "forestgreen",
                            stemcolor = "chocolate4", resolution="high", shape=T)
                            }
@@ -158,7 +159,7 @@ open3d() # open a rgl window
 #'Plot stand
 
 for( i in 1:Ntrees){
- PlotStand3D(crownshape = crownshape[i], CL = CL[i], CW = CW[i],
+ LiDARtrees3D(crownshape = crownshape[i], CL = CL[i], CW = CW[i],
              HCB = HCB[i], X = XYgrid[i,1], Y = XYgrid[i,2], dbh = 0.4, crowncolor = "forestgreen",
                          stemcolor = "chocolate4", resolution="high", shape=T)
                          }
@@ -206,7 +207,7 @@ for (i in 1:Ntrees){
  open3d() # open a rgl window
 #' Plot stand
 for( i in 1:Ntrees){
- PlotStand3D(crownshape = crownshape[i], CL = CL[i], CW = CW[i],
+ LiDARtrees3D(crownshape = crownshape[i], CL = CL[i], CW = CW[i],
    HCB = HCB[i], X = XYgrid[i,1], Y = XYgrid[i,2], dbh = 0.4, crowncolor = crowncolor[i],
    stemcolor = "chocolate4", resolution="high", shape=T)
    }
@@ -221,6 +222,6 @@ planes3d(a=0,b=0,c=-1,d=0.0001,color="gray",alpha=1) # set a terrain plane
 Carlos Alberto Silva and Remko Duursma
 }
 \references{
-\url{http://maespa.github.io/},
+\link{http://maespa.github.io/}
 }
 

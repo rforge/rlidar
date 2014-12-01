@@ -6,7 +6,6 @@ Date: 2014-10-05
 Author: Carlos Alberto Silva, Nicholas L. Crookston,
     Andrew Thomas Hudak and Lee Vierling.
 Maintainer: Carlos Alberto Silva <carlos_engflorestal@outlook.com>
-Depends: R (>= 2.15.0)
 Depends:
     spatstat,rgdal,rgeos,deldir,plyr,maptools,raster,geometry,rgl,tools,moments,bitops,alphashape3d,matlab
 Description: rLiDAR is a library to import, processing and visualizing small
