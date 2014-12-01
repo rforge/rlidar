@@ -5,7 +5,7 @@
 #'@usage getVolume(xyz,id,alpha,cas)
 #'
 #'@param xyz A 3-column matrix with the x,y and z coordinates of the LiDAR input points
-#'@param id A value of the LiDAR input point id. 
+#'@param id A vector id for the the items in xyz. 
 #'@param alpha A single value or vector of values for alpha. Its range from 0 to 1.
 #'@param cas Logical, if TRUE (default) plot the alpha-shape.
 #'@return Return dataframe of the LAS data set
@@ -37,7 +37,7 @@
 #'cas=TRUE
 #'
 #'#' get the volume of the alpha-shape
-#'volume<-getVolume(xyz=xyz,id=id,alpha,cas=cas)
+#'volume<-getVolume(xyz=xyz,id=id,alpha=alpha,cas=cas)
 #'
 #'}
 #' @export
