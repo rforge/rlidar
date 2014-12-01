@@ -12,33 +12,30 @@
 #'@examples
 #'
 #'\dontrun{
-#'
-#'#' Importing the LiDAR-derived CHM file
+#'# Importing the LiDAR-derived CHM file
 #'data(chm) # or set a CHM. e.g. chm<-readGDAL("CHM_stand.asc") 
 #'
-#'#'#' Smoothing CHM
+#'# Smoothing CHM
 #'schm<-CHMsmoothing(chm, "mean", 5, sigma=NULL)
 #'
-#'#' Plotting smothed CHM
+#'# Plotting smothed CHM
 #'plot(schm) 
 #'
-#'#' Set the fws:
+#'# Set the fws:
 #'fws<-5 # dimention 5x5
 #'
-#'#' Set the specified heightbreak
+#'# Set the specified heightbreak
 #'htd<-8.0
 #'
-#'#' Getting the individual tree detection list
+#'# Getting the individual tree detection list
 #'treeList<-singleTreeCHM(schm, fws, htd)
 #'summary(treeList)
 #'
-#'#' Plotting the individual tree location on the CHM
+#'# Plotting the individual tree location on the CHM
 #'plot(chm) # plotting CHM
 #'plot(SpatialPoints(treeList[,1:2]), add=T, col="red") # plotthing tree location
-#'
 #'}
-#' 
-#' @export
+#'@export
 singleTreeCHM<-function(chm, fws=5,htd=1.37) {
   
   w<-matrix(c(rep(1,fws*fws)),nrow=fws,ncol=fws)

@@ -17,41 +17,38 @@
 #'
 #'
 #'\dontrun{
+#'# Example 01: Computing LiDAR metrics for a single LAS file
 #'
-#'#' Example 01: Computing LiDAR metrics for a single LAS file
-#'
-#'#' Importing the LAS data file
+#'# Importing the LAS data file
 #'nLAS<-data("nLASfile.las") # In this case a height normaliZed LAS file
 #'
-#'#' Set the minht and above parameters
+#'# Set the minht and above parameters
 #'minht<-1.37 # meters or feet
 #'above<-2.00  # meters or feet
 #'
-#''#' LiDAR metrics computation
+#''# LiDAR metrics computation
 #'LiDARmetrics<-LASmetrics(nLAS,minht,above)
 #'
 #'
-#'#' Example 02: Computing LiDAR metrics for a multiple LAS files within a folder
+#'# Example 02: Computing LiDAR metrics for a multiple LAS files within a folder
 #'
-#'#' Set a folder where there are LAS files
+#'# Set a folder where there are LAS files
 #'folder="../lasfolder"
 #'
-#'#' Get a list of LAS file in the folder
+#'# Get a list of LAS file in the folder
 #'LASlist <- list.files(folder, pattern="*.las", full.names=TRUE)
 #'
-#'#' Set the minht and above parameters
+#'# Set the minht and above parameters
 #'minht<-1.37 # meters or feet
 #'above<-2.00  # meters or feet
 #'
-#'#' Creatin a empty dataframe to store the LiDAR metrics
+#'# Creatin a empty dataframe to store the LiDAR metrics
 #'LiDARmetrics<-data.frame()
 #'
-#'#' Set a loop to computate the LiDAR metrics
+#'# Set a loop to computate the LiDAR metrics
 #'for ( i in LASlist) {
 #'  LiDARmetrics<-rbind(LiDARmetrics,LASmetrics(i,minht,above))}
-#'
 #'}
-#'
 #'@export
 LASmetrics<-function(LASfile,minht=1.37,above=2) {
   ??write.raster

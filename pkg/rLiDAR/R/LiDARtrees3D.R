@@ -26,53 +26,52 @@
 #'@examples
 #'
 #'\dontrun{
+#'# EXAMPLE 01: Plotting isolate trees
 #'
-#'#' EXAMPLE 01: Plotting isolate trees
-#'
-#'#' shape cone crown 
+#'# shape cone crown 
 #'open3d() 
 #'LiDARtrees3D(crownshape = "cone", CL = 10, CW =7, 
 #'            HCB = 5, X =0, Y = 0, dbh = 0.4, crowncolor = "forestgreen", 
 #'                        stemcolor = "chocolate4", resolution="high", shape=T) 
 #'                        
-#'#' elliptois crown shape 
+#'# elliptois crown shape 
 #'open3d()
 #'LiDARtrees3D(crownshape = "ellipsoid", CL = 10, CW =7, 
 #'            HCB = 5, X =0, Y = 0, dbh = 0.4, crowncolor = "forestgreen", 
 #'                        stemcolor = "chocolate4", resolution="high", shape=T) 
 #'                        
-#'#' halfellipsoid crown shape 
+#'# halfellipsoid crown shape 
 #'open3d()
 #'LiDARtrees3D(crownshape = "halfellipsoid", CL = 10, CW =7, 
 #'            HCB = 5, X =0, Y = 0, dbh = 0.4, crowncolor = "forestgreen", 
 #'                        stemcolor = "chocolate4", resolution="high", shape=T) 
 #'                        
-#'#' paraboloid crown shape 
+#'# paraboloid crown shape 
 #'open3d()
 #'LiDARtrees3D(crownshape = "paraboloid", CL = 10, CW =7, 
 #'            HCB = 5, X =0, Y = 0, dbh = 0.4, crowncolor = "forestgreen", 
 #'                        stemcolor = "chocolate4", resolution="high", shape=T) 
 #'  
 #'                                              
-#'#'EXAMPLE 02: Plotting plantation forest stands
+#'#EXAMPLE 02: Plotting plantation forest stands
 #' 
-#'#' Set the lenght of the stand
+#'# Set the lenght of the stand
 #'xlenght<-30 # x lenght
 #'ylenght<-20 # y lenght
 #'
-#'#' Set the space between trees
+#'# Set the space between trees
 #'sx<-3 # x space lengh
 #'sy<-2 # y space lenght
 #'
-#'#'#' Tree location grid
+#'# Tree location grid
 #'XYgrid <- expand.grid(x = seq(1,xlenght,sx), y = seq(1,ylenght,sy))
 #'
-#'#' Get the number of trees
+#'# Get the number of trees
 #'Ntrees<-nrow(XYgrid)
 #'
-#'#'Plotting a Eucalyptus plantation stand using halfellipsoid for the tree crown shape
+#'# Plotting a Eucalyptus plantation stand using halfellipsoid for the tree crown shape
 #'
-#'#' Set stand trees parameters
+#'# Set stand trees parameters
 #'meanHCB<-5 # mean tree crown base heigh
 #'sdHCB<-0.1 # standard deviation tree crown base heigh
 #'HCB<-rnorm(Ntrees, mean=meanHCB, sd=sdHCB) # tree crown base heigh
@@ -81,22 +80,22 @@
 #'
 #'open3d() # open a rgl window
 #'
-#'#'Plot stand
+#'# Plot stand
 #'for( i in 1:Ntrees){
 #'  LiDARtrees3D(crownshape = "halfellipsoid", CL = CL[i], CW = CW[i], 
 #'              HCB = HCB[i], X = XYgrid[i,1], Y = XYgrid[i,2], dbh = 0.4, crowncolor = "forestgreen", 
 #'                            stemcolor = "chocolate4", resolution="high", shape=T) 
 #'                            }
 #'                            
-#'#' Plot parameters
+#'# Plot parameters
 #'axes3d(c("x-","x-", "y-","z"), col="gray") # axes
 #'title3d(xlab = "Easting", ylab = "Northing", zlab = "Height", col="red") # title
 #'planes3d(a=0,b=0,c=-1,d=0.0001,color="gray",alpha=1) # set a terrain plane
 #'
 #'
-#'#'Plotting a Eucalyptus plantation stand using halfellipsoid for the tree crown shape
+#'# Plotting a Eucalyptus plantation stand using halfellipsoid for the tree crown shape
 #'
-#'#'Set stand trees parameters
+#'# Set stand trees parameters
 #'meanHCB<-3 # mean tree crown base heigh
 #'sdHCB<-0.1 # standard deviation tree crown base heigh
 #'HCB<-rnorm(Ntrees, mean=meanHCB, sd=sdHCB) # tree crown base heigh
@@ -111,27 +110,27 @@
 #'                            stemcolor = "chocolate4", resolution="high", shape=T) 
 #'                            }
 #'                            
-#'#' Plot parameters
+#'# Plot parameters
 #'axes3d(c("x-","x-", "y-","z"), col="gray") # axes
 #'title3d(xlab = "Easting", ylab = "Northing", zlab = "Height", col="red") # title
 #'planes3d(a=0,b=0,c=-1,d=0.0001,color="gray",alpha=1) # set a terrain plane
 #'
 #'
-#'#' EXAMPLE 03: Plotting natural mixed forest stands 
+#'# EXAMPLE 03: Plotting natural mixed forest stands 
 #'
-#'#' Difers species of trees on the stand using diferents crown shapes
+#'# Difers species of trees on the stand using diferents crown shapes
 #'
-#'#' Set the number of trees
+#'# Set the number of trees
 #'Ntrees<-80 
 #'
 #'# Set the trees locations
 #'xcoord<-sample(1:100,Ntrees) # x coord
 #'coord<-sample(1:100,Ntrees) # x coord
 #'
-#'#'#' Set a location grid of trees 
+#'# Set a location grid of trees 
 #'XYgrid<-cbind(xcoord,ycoord)
 #'
-#'#' plot the location of the trees
+#'# plot the location of the trees
 #'plot(XYgrid, main="Tree location")
 #'
 #'meanHCB<-7 # mean tree crown base heigh
@@ -142,7 +141,7 @@
 #'CW<-HCB # tree crown diameter
 #'
 #'open3d() # open a rgl window
-#'#'Plot stand
+#'# Plot stand
 #'
 #'for( i in 1:Ntrees){
 #'  LiDARtrees3D(crownshape = crownshape[i], CL = CL[i], CW = CW[i], 
@@ -150,25 +149,25 @@
 #'                          stemcolor = "chocolate4", resolution="high", shape=T) 
 #'                          }
 #'                          
-#'#' Plot parameters
+#'# Plot parameters
 #'axes3d(c("x-","x-", "y-","z"), col="gray") # axes
 #'title3d(xlab = "Easting", ylab = "Northing", zlab = "Height", col="red") # title
 #'planes3d(a=0,b=0,c=-1,d=0.0001,color="gray",alpha=1) # set a terrain plane
 #'
 #'
-#'#' Difers trees height on the stand using diferents crown colors
+#'# Difers trees height on the stand using diferents crown colors
 #'
-#'#'Set the number of trees
+#'# Set the number of trees
 #'Ntrees<-80 
 #'
-#'#' Set the trees locations
+#'# Set the trees locations
 #'xcoord<-sample(1:100,Ntrees) # x coord
 #'ycoord<-sample(1:100,Ntrees) # x coord
 #'
-#'#'Set a location grid of trees 
+#'# Set a location grid of trees 
 #'XYgrid<-cbind(xcoord,ycoord)
 #'
-#'#'plot the location of the trees
+#'# plot the location of the trees
 #'plot(XYgrid, main="Tree location")
 #'
 #'meanHCB<-7 # mean tree crown base heigh
@@ -178,11 +177,11 @@
 #'CL<-HCB*1.3 # tree crown heigh
 #'CW<-HCB # tree crown diameter
 #'
-#'#'Plot tree hiegh based on the HCB quantiles
+#'# Plot tree hiegh based on the HCB quantiles
 #'HCBq<-quantile(HCB) # HCB quantiles
 #'crowncolor<-NA*(1:Ntrees) # set a empty crowncolor vector
 #'
-#'#'classify trees by HCB quantile
+#'# classify trees by HCB quantile
 #'for (i in 1:Ntrees){
 #'  if (HCB[i] <= HCBq[2]) {crowncolor[i]<-"red"} # group 1
 #'  if (HCB[i] > HCBq[2] & HCB[i] <= HCBq[3] ) {crowncolor[i]<-"blue"}  # group 2
@@ -191,19 +190,19 @@
 #'  }
 #'    
 #'  open3d() # open a rgl window
-#'#' Plot stand
+#'# Plot stand
 #'for( i in 1:Ntrees){  
 #'  LiDARtrees3D(crownshape = crownshape[i], CL = CL[i], CW = CW[i], 
 #'    HCB = HCB[i], X = XYgrid[i,1], Y = XYgrid[i,2], dbh = 0.4, crowncolor = crowncolor[i], 
 #'    stemcolor = "chocolate4", resolution="high", shape=T) 
 #'    }
 #'    
-#'#' Plot parameters
+#'# Plot parameters
 #'axes3d(c("x-","x-", "y-","z"), col="gray") # axes
 #'title3d(xlab = "Easting", ylab = "Northing", zlab = "Height", col="red") # title
 #'planes3d(a=0,b=0,c=-1,d=0.0001,color="gray",alpha=1) # set a terrain plane
 #'}
-#' 
+
 #'@export
 LiDARtrees3D<-function (crownshape = c("cone", "ellipsoid",  
                                       "halfellipsoid", "paraboloid", "cylinder"), CL = 4, CW = 8, 

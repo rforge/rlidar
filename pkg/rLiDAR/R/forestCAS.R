@@ -14,35 +14,33 @@
 #'
 #'
 #'\dontrun{
-#'
-#'#' Importing the LiDAR-derived CHM file
+#'# Importing the LiDAR-derived CHM file
 #'data(chm) # or set a CHM. e.g. chm<-raster("CHM_stand.asc") 
 #'
-#'#' Set the loc parameter
+#'# Set the loc parameter
 #'sCHM<-CHMsmoothing(chm, filter="mean", ws=5, sigma=NULL) # smoothing CHM
 #'loc<-singleTreesCHM(sCHM, fws=5,htd=8) # or import a tree list
 #'
-#'#' Set the maxcrown parameter
+#'# Set the maxcrown parameter
 #'maxcrown=10.0 
 #'
-#'#' Set the exclusion parameter
+#'# Set the exclusion parameter
 #'exclusion=0.3 # 30%
 #'
-#'#' Compute individual tree detection canopy area
+#'# Compute individual tree detection canopy area
 #'canopy<-ForestCAS(chm,loc,maxcrown,exclusion)
 #'
-#'#' Getting the individual tree detection canopy area boundary
+#'# Getting the individual tree detection canopy area boundary
 #'boundaryTrees<-canopy[[1]]
 #
-#'#' Plotting the individual tree canopy boundary over the CHM
+#'# Plotting the individual tree canopy boundary over the CHM
 #'plot(chm) # plotting CHM
 #'plot(boundaryTrees, add=T, border='red', bg='transparent') # adding tree canopy boundary
 #'
-#'#' Getting the individual tree detection canopy area list
+#'# Getting the individual tree detection canopy area list
 #'canopyList<-canopy[[2]]
 #'summary(canopyList)
 #'plot(SpatialPoints(canopyList[,1:2]),col="black", add=T, pch="*") # adding tree location to the plot
-#'	
 #'} 
 #' @export
 ForestCAS<-function(chm,loc,maxcrown,exclusion) {

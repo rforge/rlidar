@@ -18,13 +18,13 @@ Read LAS file format. The LAS file is a public file format for the interchange o
 }
 \examples{
 \dontrun{
-#' Importing LAS file:
+# Importing LAS file:
 myLAS<-data(LASfile) # or set a LAS  file (myLAS<-"LASfile.las")
 
-#' Reading LAS file
+# Reading LAS file
 readLAS(myLAS,short=TRUE)
 
-#' Summary of the LAS file
+# Summary of the LAS file
 summary(myLAS)
 }
 }

@@ -14,33 +14,31 @@
 #'@examples
 #'
 #'\dontrun{
-#'
-#'#' Importing LAS file:
+#'# Importing LAS file:
 #'myLAS<-data(LASfile) # or set a LAS  file (myLAS<-"LASfile.las")
 #'
-#'#' Reading LAS file
+#'# Reading LAS file
 #'LAS<-readLAS(myLAS,short=TRUE)
 #'
-#'#' Finding clusters
+#'# Finding clusters
 #'clLAS<-kmeans(LAS[,3], 32)
 #'
-#'#' set the xyz coordenates
+#'# set the xyz coordenates
 #'xyz<-LAS[,1:3]
 #'
-#'#' set the id vector
+#'# set the id vector
 #'id<-as.factor(clLAS$cluster)
 #'
-#'#' set the alpha value
+#'# set the alpha value
 #'alpha<-0.25
 #'
-#'#' set the cas parameter
+#'# set the cas parameter
 #'cas=TRUE
 #'
-#'#' get the volume of the alpha-shape
+#'# get the volume of the alpha-shape
 #'volume<-getVolume(xyz=xyz,id=id,alpha=alpha,cas=cas)
 #'head(volume)
 #'}
-#'
 #'@export
 getVolume<-function(xyz,id,alpha,cas) {
 

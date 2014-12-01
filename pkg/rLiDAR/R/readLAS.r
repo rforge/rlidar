@@ -1,4 +1,4 @@
-#' LiDAR - Reading LAS file
+#'LiDAR - Reading LAS file
 #'
 #'@description Read LAS file format. The LAS file is a public file format for the interchange of LiDAR 3-dimensional point cloud data (American Society of Photogrammetry and Remote Sensing - ASPRS)
 #'
@@ -10,18 +10,16 @@
 #'@author Michael Sumner and Carlos Alberto Silva
 #'@examples
 #'
-#'
 #'\dontrun{
-#'#' Importing LAS file:
+#'# Importing LAS file:
 #'myLAS<-data(LASfile) # or set a LAS  file (myLAS<-"LASfile.las")
 #'
-#'#' Reading LAS file
+#'# Reading LAS file
 #'readLAS(myLAS,short=TRUE)
 #'
-#'#' Summary of the LAS file
+#'# Summary of the LAS file
 #'summary(myLAS)
 #'}
-#'
 #' @export
 readLAS <- function(LASfile, short=TRUE) {
   

@@ -22,42 +22,40 @@ LiDAR-derived Canopy Height Model (CHM) smooth using focal statistcs
 }
 \examples{
 \dontrun{
-
-#'#' Importing the LiDAR-derived CHM file
+# Importing the LiDAR-derived CHM file
 data(chm) # or set a CHM. e.g. chm<-readGDAL("CHM_stand.asc")
 
-#' Example 01: Smoothing CHM using gaussian filter
+# Example 01: Smoothing CHM using gaussian filter
 
-#' Set the ws:
+# Set the ws:
 ws<-3 # dimention 3x3
 
-#' Set the filter type
+# Set the filter type
 filter<-"gaussian"
 
-#' Set the sigma value
+# Set the sigma value
 sigma<-0.6
 
-#' Smoothing CHM
+# Smoothing CHM
 sCHM<-CHMsmoothing(chm, filter, ws, sigma)
 
-#' Plotting CHM smoothed
+# Plotting CHM smoothed
 plot(sCHM, main=paste(filter,"filter and windows size", paste0(ws,"x",ws)))
 
 
-#' Example 02: Smoothing CHM using mean filter
+# Example 02: Smoothing CHM using mean filter
 
-#' Set the ws:
+# Set the ws:
 ws<-5 # dimention 5x5
 
-#' Set the filter type
+# Set the filter type
 filter<-"mean"
 
-#' Smoothing CHM
+# Smoothing CHM
 sCHM<-CHMsmoothing(chm, filter, ws, sigma=NULL)
 
-#' Plotting CHM smoothed
+# Plotting CHM smoothed
 plot(sCHM, main=paste(filter,"filter and window size", paste0(ws,"x",ws)))
-
 }
 }
 \author{
