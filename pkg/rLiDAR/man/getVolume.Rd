@@ -3,22 +3,23 @@
 \alias{getVolume}
 \title{LiDAR - getVolume 3D}
 \usage{
-getVolume(xyz,id,alpha)
+getVolume(xyz,id,alpha,cas)
 }
 \arguments{
 \item{xyz}{A 3-column matrix with the x,y and z coordinates of the LiDAR input points}
 
-\item{alpha}{A value of the LiDAR input point id}
+\item{id}{A value of the LiDAR input point id.}
 
-\item{cas}{Logical, if TRUE (default) plot the ??-shape.}
+\item{alpha}{A single value or vector of values for α. Its range from 0 to 1.}
 
-\item{alpha}{A single value or vector of values for ??.}
+\item{cas}{Logical, if TRUE (default) plot the α-shape.}
+
 }
 \value{
 Return dataframe of the LAS data set
 }
 \description{
-This function calculates the volume of the ??-shape of the LiDAR point cloud in the three-dimensional space using alphashape3d package.
+This function calculates the volume of the α-shape of the LiDAR point cloud in the three-dimensional space using alphashape3d package.
 }
 \examples{
 \dontrun{
@@ -37,16 +38,19 @@ xyz<-LAS[,1:3]
 #' set the id vector
 id<-as.factor(clLAS$cluster)
 
+#' set the α value
+alpha<-0.25
+
 #' set the cas parameter
 cas=TRUE
 
-#' get the volume of the ??-shape
-volume<-getVolume(xyz=xyz,id=id,cas=cas)
+#' get the volume of the α-shape
+volume<-getVolume(xyz=xyz,id=id,alpha=alpha,cas=cas)
 
 }
 }
 \author{
-Carlos Alberto Silva. Uses code by Beatriz Pateiro-Lopez (alphashape3d package)
+Carlos Alberto Silva. Uses code by Beatriz Pateiro-Lopez (alphashape3d R-package)
 }
 \references{
 \link{http://cran.r-project.org/web/packages/alphashape3d/index.html}

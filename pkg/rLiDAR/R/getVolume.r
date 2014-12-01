@@ -1,20 +1,20 @@
 #' LiDAR - getVolume 3D
 #'
-#'@description This function calculates the volume of the ??-shape of the LiDAR point cloud in the three-dimensional space using alphashape3d package.
+#'@description This function calculates the volume of the α-shape of the LiDAR point cloud in the three-dimensional space using alphashape3d package.
 #'
 #'@usage getVolume(xyz,id,alpha,cas)
 #'
 #'@param xyz A 3-column matrix with the x,y and z coordinates of the LiDAR input points
-#'@param alpha A value of the LiDAR input point id
-#'@param alpha A single value or vector of values for ??.
-#'@param cas Logical, if TRUE (default) plot the ??-shape.
+#'@param id A value of the LiDAR input point id. 
+#'@param alpha A single value or vector of values for alpha. Its range from 0 to 1.
+#'@param cas Logical, if TRUE (default) plot the α-shape.
 #'@return Return dataframe of the LAS data set
-#'@author Carlos Alberto Silva. Uses code by Beatriz Pateiro-Lopez (alphashape3d package)
+#'@author Carlos Alberto Silva. Uses code by Beatriz Pateiro-Lopez (alphashape3d R-package)
 #'@references \link{http://cran.r-project.org/web/packages/alphashape3d/index.html}
 #'@examples
 #'
-#'
 #'\dontrun{
+#'
 #'#' Importing LAS file:
 #'myLAS<-data(LASfile) # or set a LAS  file (myLAS<-"LASfile.las")
 #'
@@ -30,17 +30,21 @@
 #'#' set the id vector
 #'id<-as.factor(clLAS$cluster)
 #'
+#' set the α value
+#'alpha<-0.25
+#'
 #'#' set the cas parameter
 #'cas=TRUE
 #'
-#'#' get the volume of the ??-shape
-#'volume<-getVolume(xyz=xyz,id=id,cas=cas)
+#'#' get the volume of the α-shape
+#'volume<-getVolume(xyz=xyz,id=id,alpha,cas=cas)
 #'
 #'}
 #' @export
 getVolume<-function(xyz,id,alpha,cas=TRUE) {
 
 if (nrow(xyz)!=length(id)) {stop("The xyz and id do not have the same length")}
+if (cas!=TRUE & cas!=FALSE) {stop("The cas parameter is invalid. Please, use TRUE or FALSE")}
 
   xrange1<-range(xyz[,1])
   yrange2<-range(xyz[,2])
@@ -99,6 +103,5 @@ if (nrow(xyz)!=length(id)) {stop("The xyz and id do not have the same length")}
   colnames(volume3d.trees)<-c("id","V")
   
  return(volume3d.trees)
-  
-}
+ }
 
