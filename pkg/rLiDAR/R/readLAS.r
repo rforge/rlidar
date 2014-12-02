@@ -20,7 +20,7 @@
 #'# Summary of the LAS file
 #'summary(myLAS)
 #'}
-#' @export
+#'@export
 readLAS <- function(LASfile, short=TRUE) {
   
   LASfile<-mylas
@@ -207,7 +207,6 @@ readLAS <- function(LASfile, short=TRUE) {
     X.t<- readBin(t(allbytes[, 52:55]), "intege", size = 4, n = numberPointRecords, signed = FALSE, endian = "little")
     Y.t<- readBin(t(allbytes[, 56:59]), "integer", size = 4, n = numberPointRecords, signed = FALSE, endian = "little")
     Z.t<- readBin(t(allbytes[, 60:63]), "integer", size = 4, n = numberPointRecords, signed = FALSE, endian = "little")
-    
     
     if (short==TRUE) {cbind(mm, Intensity, ReturnNumber)} else {
       cbind(mm, Intensity, ReturnNumber,NumberOfReturns,ScanDirectionFlag,EdgeofFlightLine,Classification,ScanAngleRank,UserData,PointSourceID,gpstime,
