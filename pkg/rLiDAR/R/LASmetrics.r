@@ -1,4 +1,4 @@
-#' LiDAR metrics computation
+#'LiDAR metrics computation
 #'
 #'@description Compute statistics metrics that describe the LiDAR data set
 #'
@@ -26,7 +26,7 @@
 #'minht<-1.37 # meters or feet
 #'above<-2.00  # meters or feet
 #'
-#''# LiDAR metrics computation
+#'# LiDAR metrics computation
 #'LiDARmetrics<-LASmetrics(nLAS,minht,above)
 #'
 #'
@@ -51,7 +51,6 @@
 #'}
 #'@export
 LASmetrics<-function(LASfile,minht=1.37,above=2) {
-  ??write.raster
   LASfile<-readLAS(LASfile, short=T)
   
   allreturn<-nrow(LASfile)
@@ -66,9 +65,8 @@ LASmetrics<-function(LASfile,minht=1.37,above=2) {
   allabovemode<-subset(LASfile, LASfile[,"Z"] > hmode)
   
   metrics<-data.frame(
-    
-    # return metrics
-    Total.all.return.count=nrow(LASfile),
+
+  Total.all.return.count=nrow(LASfile),
     Total.first.return.count=nrow(firstReturn),
     Total.all.return.count.aboveXX=nrow(allreturn_minht),
     
@@ -81,8 +79,6 @@ LASmetrics<-function(LASfile,minht=1.37,above=2) {
     Return.7.count=nrow(subset(allreturn_minht, allreturn_minht[,"ReturnNumber"]==7)),
     Return.8.count=nrow(subset(allreturn_minht, allreturn_minht[,"ReturnNumber"]==8)),
     Return.9.count=nrow(subset(allreturn_minht, allreturn_minht[,"ReturnNumber"]==9)),
-    
-    # height metrics 
     
     hmin=round(min(allreturn_minht[,"Z"]), digits=2),
     hmax=round(max(allreturn_minht[,"Z"]), digits=2),
@@ -115,12 +111,9 @@ LASmetrics<-function(LASfile,minht=1.37,above=2) {
     hP90=round(quantile(allreturn_minht[,"Z"],0.90),digits=2),
     hP95=round(quantile(allreturn_minht[,"Z"],0.95),digits=2),
     hP99=round(quantile(allreturn_minht[,"Z"],0.99),digits=2),
-    
-    # Canopy relief ratio
-    
+       
     Canopy.relief.ratio= ((mean(allreturn_minht[,"Z"])-min(allreturn_minht[,"Z"]))/(max(allreturn_minht[,"Z"])-min(allreturn_minht[,"Z"]))),
     
-    # Intensity metrics
     Imin=round(min(allreturn_minht[,"Intensity"],digits=2)),
     Imax=round(max(allreturn_minht[,"Intensity"]),digits=2),
     Imean=round(mean(allreturn_minht[,"Intensity"]),digits=2),
@@ -151,8 +144,6 @@ LASmetrics<-function(LASfile,minht=1.37,above=2) {
     IP90=round(quantile(allreturn_minht[,"Intensity"],0.90),digits=2),
     IP95=round(quantile(allreturn_minht[,"Intensity"],0.95),digits=2),
     IP99=round(quantile(allreturn_minht[,"Intensity"],0.99),digits=2),
-    
-    # density metrics
     
     Pentage.first.returns.Above.XX=(nrow(firstReturnAbove))/(nrow(firstReturn))*100,
     Percentage.all.returns.above.XX=(nrow(allreturnAbove)/allreturn)*100,

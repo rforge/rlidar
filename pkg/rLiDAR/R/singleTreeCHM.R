@@ -44,7 +44,7 @@ singleTreeCHM<-function(chm, fws=5,htd=1.37) {
   
   chm[chm < htd]<-NA
   
-  f <- function(chm) max(chm) # , na.rm=TRUE
+  f <- function(chm) max(chm)
   rlocalmax <- focal(chm, fun=f, w=w, pad=TRUE, padValue=NA)
   
   setNull<- chm==rlocalmax

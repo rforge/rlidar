@@ -34,7 +34,6 @@
 #'# Plotting CHM smoothed
 #'plot(sCHM, main=paste(filter,"filter and windows size", paste0(ws,"x",ws)))
 #' 
-#'   
 #'# Example 02: Smoothing CHM using mean filter
 #'
 #'# Set the ws:
@@ -76,16 +75,13 @@ CHMsmoothing<-function(chm, filter="mean", ws=5, sigma=0.6) {
   
   if (filter =="gaussian") {
     
-    # Gaussian filter for square cells
     fgauss <- function(sigma, n=ws) {
       m <- matrix(nc=n, nr=n)
       col <- rep(1:n, n)
       row <- rep(1:n, each=n)
       x <- col - ceiling(n/2)
       y <- row - ceiling(n/2)
-      # according to http://en.wikipedia.org/wiki/Gaussian_filter
       m[cbind(row, col)] <- 1/(2*pi*sigma^2) * exp(-(x^2+y^2)/(2*sigma^2))
-      # sum of weights should add up to 1  
       m / sum(m)
     }
     gf=fgauss(sigma)

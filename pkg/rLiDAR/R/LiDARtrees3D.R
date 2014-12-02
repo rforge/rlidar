@@ -103,7 +103,7 @@
 #'CW<-HCB*1.3 # tree crown diameter
 #'
 #'open3d() # open a rgl window
-#'#' Plot stand
+#'# Plot stand
 #'for( i in 1:Ntrees){
 #'  LiDARtrees3D(crownshape = "cone", CL = CL[i], CW = CW[i], 
 #'              HCB = HCB[i], X = XYgrid[i,1], Y = XYgrid[i,2], dbh = 0.4, crowncolor = "forestgreen", 
@@ -202,7 +202,6 @@
 #'title3d(xlab = "Easting", ylab = "Northing", zlab = "Height", col="red") # title
 #'planes3d(a=0,b=0,c=-1,d=0.0001,color="gray",alpha=1) # set a terrain plane
 #'}
-
 #'@export
 LiDARtrees3D<-function (crownshape = c("cone", "ellipsoid",  
                                       "halfellipsoid", "paraboloid", "cylinder"), CL = 4, CW = 8, 
