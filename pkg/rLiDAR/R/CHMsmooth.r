@@ -11,8 +11,6 @@
 #'@return returns A raster CHM smoothed
 #'@author Carlos Alberto Silva
 #'@examples
-#'
-#'
 #'\dontrun{
 #'# Importing the LiDAR-derived CHM file
 #'data(chm) # or set a CHM. e.g. chm<-readGDAL("CHM_stand.asc") 

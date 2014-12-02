@@ -12,7 +12,6 @@
 #'@author Carlos Alberto Silva. Uses code by Beatriz Pateiro-Lopez (alphashape3d R-package)
 #'@references \link{http://cran.r-project.org/web/packages/alphashape3d/index.html}
 #'@examples
-#'
 #'\dontrun{
 #'# Importing LAS file:
 #'myLAS<-data(LASfile) # or set a LAS  file (myLAS<-"LASfile.las")

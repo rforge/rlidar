@@ -14,8 +14,6 @@
 #'Forest Service, Pacific Northwest Research Station. Available at
 #'http://http://forsys.cfr.washington.edu/fusion/fusionlatest.html.
 #'@examples
-#'
-#'
 #'\dontrun{
 #'# Example 01: Computing LiDAR metrics for a single LAS file
 #'

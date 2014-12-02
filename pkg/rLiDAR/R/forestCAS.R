@@ -11,8 +11,6 @@
 #'@return returns A polygon of the individual tree canopy boundary [[1]] and dataframe of the canopy area [[2]] 
 #'@author Carlos Alberto Silva
 #'@examples
-#'
-#'
 #'\dontrun{
 #'# Importing the LiDAR-derived CHM file
 #'data(chm) # or set a CHM. e.g. chm<-raster("CHM_stand.asc") 
@@ -42,7 +40,7 @@
 #'summary(canopyList)
 #'plot(SpatialPoints(canopyList[,1:2]),col="black", add=T, pch="*") # adding tree location to the plot
 #'} 
-#' @export
+#'@export
 ForestCAS<-function(chm,loc,maxcrown,exclusion) {
 
   chm<-as(chm, "SpatialGridDataFrame")

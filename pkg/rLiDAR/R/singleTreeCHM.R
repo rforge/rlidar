@@ -10,7 +10,6 @@
 #'@return returns A 3- column matrix of the individual tree dectection(x,y,and height)
 #'@author Carlos Alberto Silva
 #'@examples
-#'
 #'\dontrun{
 #'# Importing the LiDAR-derived CHM file
 #'data(chm) # or set a CHM. e.g. chm<-readGDAL("CHM_stand.asc") 

@@ -9,7 +9,6 @@
 #'@return Return dataframe of the LAS data set
 #'@author Michael Sumner and Carlos Alberto Silva
 #'@examples
-#'
 #'\dontrun{
 #'# Importing LAS file:
 #'myLAS<-data(LASfile) # or set a LAS  file (myLAS<-"LASfile.las")

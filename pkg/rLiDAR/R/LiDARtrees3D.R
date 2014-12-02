@@ -24,7 +24,6 @@
 #'@author Carlos Alberto Silva and Remko Duursma
 #'@references \link{http://maespa.github.io/}
 #'@examples
-#'
 #'\dontrun{
 #'# EXAMPLE 01: Plotting isolate trees
 #'
@@ -51,8 +50,7 @@
 #'LiDARtrees3D(crownshape = "paraboloid", CL = 10, CW =7, 
 #'            HCB = 5, X =0, Y = 0, dbh = 0.4, crowncolor = "forestgreen", 
 #'                        stemcolor = "chocolate4", resolution="high", shape=T) 
-#'  
-#'                                              
+#'                                            
 #'#EXAMPLE 02: Plotting plantation forest stands
 #' 
 #'# Set the lenght of the stand
