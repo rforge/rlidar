@@ -1,3 +1,45 @@
+#'LiDAR individual tree canopy area 
+#'
+#'@description Compute and export individual tree canopy area detected on the LiDAR-derived Canopy Height Model (CHM) 
+#'
+#'@usage ForestCAS(chm,loc,maxcrown,exclusion)
+#'
+#'@param chm A raster LiDAR-derived Canopy Height Model (CHM)
+#'@param loc A 3-column matrix with the x,y coordinates and heights of the individual tree
+#'@param maxcrown A single value of the maximum individual tree crown radius expected. Default 10.0 m
+#'@param exclusion A single value with the percent of pixel exclusion. E.g 0.5; exclusion of the pixels that has values below of the 50% of max tree height. Default is 0.3 
+#'@return returns A polygon of the individual tree canopy boundary [[1]] and dataframe of the canopy area [[2]] 
+#'@author Carlos Alberto Silva
+#'@examples
+#'\dontrun{
+#'# Importing the LiDAR-derived CHM file
+#'data(chm) # or set a CHM. e.g. chm<-raster("CHM_stand.asc") 
+#'
+#'# Set the loc parameter
+#'sCHM<-CHMsmoothing(chm, filter="mean", ws=5, sigma=NULL) # smoothing CHM
+#'loc<-singleTreesCHM(sCHM, fws=5,htd=8) # or import a tree list
+#'
+#'# Set the maxcrown parameter
+#'maxcrown=10.0 
+#'
+#'# Set the exclusion parameter
+#'exclusion=0.3 # 30%
+#'
+#'# Compute individual tree detection canopy area
+#'canopy<-ForestCAS(chm,loc,maxcrown,exclusion)
+#'
+#'# Getting the individual tree detection canopy area boundary
+#'boundaryTrees<-canopy[[1]]
+#
+#'# Plotting the individual tree canopy boundary over the CHM
+#'plot(chm) # plotting CHM
+#'plot(boundaryTrees, add=T, border='red', bg='transparent') # adding tree canopy boundary
+#'
+#'# Getting the individual tree detection canopy area list
+#'canopyList<-canopy[[2]]
+#'summary(canopyList)
+#'plot(SpatialPoints(canopyList[,1:2]),col="black", add=T, pch="*") # adding tree location to the plot
+#'} 
 #'@export
 ForestCAS<-function(chm,loc,maxcrown,exclusion) {
 

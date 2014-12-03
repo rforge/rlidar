@@ -1,3 +1,43 @@
+#'LiDAR - getVolume 3D
+#'
+#'@description This function calculates the volume of the alpha-shape of the LiDAR point cloud in the three-dimensional space using alphashape3d package.
+#'
+#'@usage getVolume(xyz,id,alpha,cas)
+#'
+#'@param xyz A 3-column matrix with the x,y and z coordinates of the LiDAR input points
+#'@param id A vector id for the the items in xyz. 
+#'@param alpha A single value or vector of values for alpha. Its range from 0 to 1.
+#'@param cas Logical, if TRUE (default) plot the alpha-shape.
+#'@return Return dataframe of the LAS data set
+#'@author Carlos Alberto Silva. Uses code by Beatriz Pateiro-Lopez (alphashape3d R-package)
+#'@references \link{http://cran.r-project.org/web/packages/alphashape3d/index.html}
+#'@examples
+#'\dontrun{
+#'# Importing LAS file:
+#'myLAS<-data(LASfile) # or set a LAS  file (myLAS<-"LASfile.las")
+#'
+#'# Reading LAS file
+#'LAS<-readLAS(myLAS,short=TRUE)
+#'
+#'# Finding clusters
+#'clLAS<-kmeans(LAS[,3], 32)
+#'
+#'# set the xyz coordenates
+#'xyz<-LAS[,1:3]
+#'
+#'# set the id vector
+#'id<-as.factor(clLAS$cluster)
+#'
+#'# set the alpha value
+#'alpha<-0.25
+#'
+#'# set the cas parameter
+#'cas=TRUE
+#'
+#'# get the volume of the alpha-shape
+#'volume<-getVolume(xyz=xyz,id=id,alpha=alpha,cas=cas)
+#'head(volume)
+#'}
 #'@export
 getVolume<-function(xyz,id,alpha,cas) {
 
