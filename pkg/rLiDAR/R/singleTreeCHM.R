@@ -1,39 +1,3 @@
-#'Individual tree detection on the LiDAR-derived Canopy Height Model (CHM) 
-#'
-#'@description Getting the individual tree location and hieght from the the LiDAR-derived Canopy Height Model (CHM) 
-#'
-#'@usage singleTreeCHM(chm,fws,htd)
-#'
-#'@param chm A raster LiDAR-derived Canopy Height Model (CHM)
-#'@param fws A single dimension of fixed square window size, e.g. 3, 5, 7 and so on. Default is 5. 
-#'@param htd Detection individual tree above specified heightbreak, e.g. 1.37, 2.0, 3.5 m and so on. Default is 1.37 m.
-#'@return returns A 3- column matrix of the individual tree dectection(x,y,and height)
-#'@author Carlos Alberto Silva
-#'@examples
-#'\dontrun{
-#'# Importing the LiDAR-derived CHM file
-#'data(chm) # or set a CHM. e.g. chm<-readGDAL("CHM_stand.asc") 
-#'
-#'# Smoothing CHM
-#'schm<-CHMsmoothing(chm, "mean", 5, sigma=NULL)
-#'
-#'# Plotting smothed CHM
-#'plot(schm) 
-#'
-#'# Set the fws:
-#'fws<-5 # dimention 5x5
-#'
-#'# Set the specified heightbreak
-#'htd<-8.0
-#'
-#'# Getting the individual tree detection list
-#'treeList<-singleTreeCHM(schm, fws, htd)
-#'summary(treeList)
-#'
-#'# Plotting the individual tree location on the CHM
-#'plot(chm) # plotting CHM
-#'plot(SpatialPoints(treeList[,1:2]), add=T, col="red") # plotthing tree location
-#'}
 #'@export
 singleTreeCHM<-function(chm, fws=5,htd=1.37) {
   
