@@ -15,7 +15,7 @@
 #'# Example 01: Computing LiDAR metrics for a single LAS file
 #'
 #'# Importing the LAS data file
-#'nLAS<-data("nLASfile.las") # In this case a height normaliZed LAS file
+#'nLAS<-data("nLASfile.las") # In this case a height normalized LAS file
 #'
 #'# Set the minht and above parameters
 #'minht<-1.37 # meters or feet
@@ -28,7 +28,7 @@
 #'# Example 02: Computing LiDAR metrics for a multiple LAS files within a folder
 #'
 #'# Set a folder where there are LAS files
-#'folder="../lasfolder"
+#'folder="C:/lasfolder"
 #'
 #'# Get a list of LAS file in the folder
 #'LASlist <- list.files(folder, pattern="*.las", full.names=TRUE)

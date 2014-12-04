@@ -17,7 +17,7 @@
 #'
 #'# Set the loc parameter
 #'sCHM<-CHMsmoothing(chm, filter="mean", ws=5, sigma=NULL) # smoothing CHM
-#'loc<-singleTreesCHM(sCHM, fws=5,htd=8) # or import a tree list
+#'loc<-singleTreeCHM(sCHM, fws=5,htd=8) # or import a tree list
 #'
 #'# Set the maxcrown parameter
 #'maxcrown=10.0 
@@ -86,7 +86,7 @@ ForestCAS<-function(chm,loc,maxcrown,exclusion) {
   RpD.filter<-subset(RpD[,1:5],RpD[,1]>=Hthreshold)
   RpD.filter<-cbind(RpD.filter[,1:3],RpD.filter[,5])
   colnames(RpD.filter)<-c("z","x","y","g")
-  h.mH<-ddply(RpD.filter,.(g), function (RpD.filter)
+  h.mH<-ddply(RpD.filter,"g", function (RpD.filter)
     subset(RpD.filter,RpD.filter[,1]>= max(RpD.filter[,1])*exclusion))
   
   DF2raster<-function(h.mH, i){
@@ -109,7 +109,7 @@ ForestCAS<-function(chm,loc,maxcrown,exclusion) {
     assign(paste0("SP.polys", j), DF2raster(h.mH,j))
     print(paste("computting canopy area: Tree",j))}
   
-  polygons <- slot(SP.polys1, "polygons")
+  polygons <- slot(get("SP.polys1"), "polygons")
   
   for (i in 1:nlevels(factor(h.mH[,4]))) {
     data.loc <- get(paste0("SP.polys",i))

@@ -7,3 +7,16 @@ export(LiDARtrees3D)
 export(getVolume)
 export(readLAS)
 export(singleTreeCHM)
+
+
+importFrom(spatstat, disc)
+importFrom(sp, Polygon, Polygons,SpatialPolygons,over,SpatialPoints,SpatialPolygonsDataFrame,SpatialGridDataFrame,coordinates,gridded)
+importFrom(deldir, deldir,tile.list)
+importFrom(plyr, ddply)
+importFrom(raster, focal, raster,projection,xyFromCell,rasterToPolygons,boundaries,Which)
+importFrom(geometry, convhulln)
+importFrom(rgl, plot3d,bg3d,rgl.triangles)
+importFrom(moments, kurtosis, skewness)
+importFrom(bitops, bitAnd,bitShiftR)
+importFrom(alphashape3d, ashape3d,volume_ashape3d)
+

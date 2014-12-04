@@ -74,7 +74,7 @@ CHMsmoothing<-function(chm, filter="mean", ws=5, sigma=0.6) {
   if (filter =="gaussian") {
     
     fgauss <- function(sigma, n=ws) {
-      m <- matrix(nc=n, nr=n)
+      m <- matrix(ncol=n, nrow=n)
       col <- rep(1:n, n)
       row <- rep(1:n, each=n)
       x <- col - ceiling(n/2)

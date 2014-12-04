@@ -22,7 +22,7 @@
 #'
 #'@return returns Single 3D tree 
 #'@author Carlos Alberto Silva and Remko Duursma
-#'@references \link{http://maespa.github.io/}
+#'@references \code{\link{http://maespa.github.io/}}
 #'@examples
 #'\dontrun{
 #'# EXAMPLE 01: Plotting isolate trees
@@ -134,7 +134,8 @@
 #'meanHCB<-7 # mean tree crown base heigh
 #'sdHCB<-3 # standard deviation tree crown base heigh
 #'HCB<-rnorm(Ntrees, mean=meanHCB, sd=sdHCB) # tree crown base heigh
-#'crownshape<-sample(c("cone", "ellipsoid","halfellipsoid", "paraboloid"), Ntrees, replace=T) # tree crown shape 
+#'crownshape<-sample(c("cone", "ellipsoid","halfellipsoid", "paraboloid"), 
+#'						Ntrees, replace=T) # tree crown shape 
 #'CL<-HCB*1.3 # tree crown heigh
 #'CW<-HCB # tree crown diameter
 #'
@@ -171,7 +172,8 @@
 #'meanHCB<-7 # mean tree crown base heigh
 #'sdHCB<-3 # standard deviation tree crown base heigh
 #'HCB<-rnorm(Ntrees, mean=meanHCB, sd=sdHCB) # tree crown base heigh
-#'crownshape<-sample(c("cone", "ellipsoid","halfellipsoid", "paraboloid"), Ntrees, replace=T) # tree crown shape 
+#'crownshape<-sample(c("cone", "ellipsoid","halfellipsoid", "paraboloid"), 
+#'                   Ntrees, replace=T) # tree crown shape 
 #'CL<-HCB*1.3 # tree crown heigh
 #'CW<-HCB # tree crown diameter
 #'
@@ -227,8 +229,8 @@ LiDARtrees3D<-function (crownshape = c("cone", "ellipsoid",
   m2 <- coord3dshape("cone", CW = dbase, CL = H, z0 = 0, x0 = X, 
                       y0 = Y, nz = nz, nalpha = nalpha)
   
-  interpol(m1, col = crowncolor, ...)
-  interpol(m2, col = stemcolor, ...)
+  interpol(m1, col = crowncolor)
+  interpol(m2, col = stemcolor)
   
   } else {
     TreesModel(crownshape=crownshape, CW = CW, CL = CL, z0 = 0,HCB=HCB, x0 = X, 

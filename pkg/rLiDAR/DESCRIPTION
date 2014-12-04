@@ -1,13 +1,13 @@
 Package: rLiDAR
 Type: Package
-Title: LiDAR data processing and visualization.
+Title: LiDAR data processing and visualization for forest inventory applications
 Version: 0.01
 Date: 2014-10-05
 Author: Carlos Alberto Silva, Nicholas L. Crookston,
     Andrew Thomas Hudak and Lee Vierling.
 Maintainer: Carlos Alberto Silva <carlos_engflorestal@outlook.com>
 Depends:
-    spatstat,rgdal,rgeos,deldir,plyr,maptools,raster,geometry,rgl,tools,moments,bitops,alphashape3d,matlab
-Description: rLiDAR is a library to import, processing and visualizing small
+    spatstat,sp,rgdal,rgeos,deldir,plyr,maptools,raster,geometry,rgl,tools,moments,bitops,alphashape3d,matlab
+Description: rLiDAR is a library to reading, processing and visualizing small
     set of LiDAR data for forest inventory applications
 License: GPL-2

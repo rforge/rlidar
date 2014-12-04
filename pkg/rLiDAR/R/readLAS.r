@@ -21,8 +21,7 @@
 #'}
 #'@export
 readLAS <- function(LASfile, short=TRUE) {
-  
-  LASfile<-mylas
+
   skip <- 0
   nrows <- NULL
   
