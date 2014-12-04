@@ -42,7 +42,6 @@ sCHM<-CHMsmoothing(chm, filter, ws, sigma)
 # Plotting CHM smoothed
 plot(sCHM, main=paste(filter,"filter and windows size", paste0(ws,"x",ws)))
 
-
 # Example 02: Smoothing CHM using mean filter
 
 # Set the ws:
