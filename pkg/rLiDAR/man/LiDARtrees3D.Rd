@@ -149,7 +149,8 @@ plot(XYgrid, main="Tree location")
 meanHCB<-7 # mean tree crown base heigh
 sdHCB<-3 # standard deviation tree crown base heigh
 HCB<-rnorm(Ntrees, mean=meanHCB, sd=sdHCB) # tree crown base heigh
-crownshape<-sample(c("cone", "ellipsoid","halfellipsoid", "paraboloid"), Ntrees, replace=T) # tree crown shape
+crownshape<-sample(c("cone", "ellipsoid","halfellipsoid", "paraboloid"),
+						Ntrees, replace=T) # tree crown shape
 CL<-HCB*1.3 # tree crown heigh
 CW<-HCB # tree crown diameter
 
@@ -186,7 +187,8 @@ plot(XYgrid, main="Tree location")
 meanHCB<-7 # mean tree crown base heigh
 sdHCB<-3 # standard deviation tree crown base heigh
 HCB<-rnorm(Ntrees, mean=meanHCB, sd=sdHCB) # tree crown base heigh
-crownshape<-sample(c("cone", "ellipsoid","halfellipsoid", "paraboloid"), Ntrees, replace=T) # tree crown shape
+crownshape<-sample(c("cone", "ellipsoid","halfellipsoid", "paraboloid"),
+                  Ntrees, replace=T) # tree crown shape
 CL<-HCB*1.3 # tree crown heigh
 CW<-HCB # tree crown diameter
 
@@ -220,6 +222,6 @@ planes3d(a=0,b=0,c=-1,d=0.0001,color="gray",alpha=1) # set a terrain plane
 Carlos Alberto Silva and Remko Duursma
 }
 \references{
-\link{http://maespa.github.io/}
+\code{\link{http://maespa.github.io/}}
 }
 

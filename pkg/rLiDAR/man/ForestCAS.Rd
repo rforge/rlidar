@@ -27,7 +27,7 @@ data(chm) # or set a CHM. e.g. chm<-raster("CHM_stand.asc")
 
 # Set the loc parameter
 sCHM<-CHMsmoothing(chm, filter="mean", ws=5, sigma=NULL) # smoothing CHM
-loc<-singleTreesCHM(sCHM, fws=5,htd=8) # or import a tree list
+loc<-singleTreeCHM(sCHM, fws=5,htd=8) # or import a tree list
 
 # Set the maxcrown parameter
 maxcrown=10.0
