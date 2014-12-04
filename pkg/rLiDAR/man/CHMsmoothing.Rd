@@ -4,8 +4,6 @@
 \title{LiDAR-derived Canopy Height Model (CHM) smoothing}
 \usage{
 CHMsmoothing(chm, filter, ws, sigma)
-
-CHMsmoothing(chm, filter, ws, sigma)
 }
 \arguments{
 \item{chm}{A raster LiDAR-derived Canopy Height Model - CHM}
