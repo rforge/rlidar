@@ -29,7 +29,7 @@ nLAS<-data("nLASfile.las") # In this case a height normaliZed LAS file
 minht<-1.37 # meters or feet
 above<-2.00  # meters or feet
 
-'# LiDAR metrics computation
+# LiDAR metrics computation
 LiDARmetrics<-LASmetrics(nLAS,minht,above)
 
 
@@ -57,9 +57,6 @@ for ( i in LASlist) {
 Carlos Alberto Silva
 }
 \seealso{
-McGaughey, R. 2014. FUSION/LDV: Software for lidar data analysis and
-visualiZation. Version 3.41. Seattle, WA: U.S. Department of Agriculture,
-Forest Service, Pacific Northwest Research Station. Available at
-http://http://forsys.cfr.washington.edu/fusion/fusionlatest.html.
+McGaughey, R. 2014. FUSION/LDV: Software for lidar data analysis and visualiZation. Version 3.41. Seattle, WA: U.S. Department of Agriculture, Forest Service, Pacific Northwest Research Station. Available at http://http://forsys.cfr.washington.edu/fusion/fusionlatest.html.
 }
 

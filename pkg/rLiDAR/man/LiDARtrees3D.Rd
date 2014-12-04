@@ -66,7 +66,6 @@ LiDARtrees3D(crownshape = "paraboloid", CL = 10, CW =7,
            HCB = 5, X =0, Y = 0, dbh = 0.4, crowncolor = "forestgreen",
                        stemcolor = "chocolate4", resolution="high", shape=T)
 
-
 #EXAMPLE 02: Plotting plantation forest stands
 
 # Set the lenght of the stand
@@ -117,7 +116,7 @@ CL<-HCB*2.0 # tree crown heigh
 CW<-HCB*1.3 # tree crown diameter
 
 open3d() # open a rgl window
-#' Plot stand
+# Plot stand
 for( i in 1:Ntrees){
  LiDARtrees3D(crownshape = "cone", CL = CL[i], CW = CW[i],
              HCB = HCB[i], X = XYgrid[i,1], Y = XYgrid[i,2], dbh = 0.4, crowncolor = "forestgreen",

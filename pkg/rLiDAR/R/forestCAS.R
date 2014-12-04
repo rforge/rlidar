@@ -7,8 +7,8 @@
 #'@param chm A raster LiDAR-derived Canopy Height Model (CHM)
 #'@param loc A 3-column matrix with the x,y coordinates and heights of the individual tree
 #'@param maxcrown A single value of the maximum individual tree crown radius expected. Default 10.0 m
-#'@param exclusion A single value with the percent of pixel exclusion. E.g 0.5; exclusion of the pixels that has values below of the 50% of max tree height. Default is 0.3 
-#'@return returns A polygon of the individual tree canopy boundary [[1]] and dataframe of the canopy area [[2]] 
+#'@param exclusion A single value with the percent of pixel exclusion. E.g 0.5 exclusion of the pixels that has values below of the 50 of max tree height. Default is 0.3 
+#'@return returns A list that contains the individual tree canopy boundary polygon and the dataframe of the canopy area  
 #'@author Carlos Alberto Silva
 #'@examples
 #'\dontrun{
@@ -23,7 +23,7 @@
 #'maxcrown=10.0 
 #'
 #'# Set the exclusion parameter
-#'exclusion=0.3 # 30%
+#'exclusion=0.3 # 30
 #'
 #'# Compute individual tree detection canopy area
 #'canopy<-ForestCAS(chm,loc,maxcrown,exclusion)
