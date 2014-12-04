@@ -24,12 +24,8 @@ CHMsmoothing(chm, filter, ws, sigma)
 }
 \value{
 returns A raster CHM smoothed
-
-returns A raster CHM smoothed
 }
 \description{
-LiDAR-derived Canopy Height Model (CHM) smooth using focal statistcs
-
 LiDAR-derived Canopy Height Model (CHM) smooth using focal statistcs
 }
 \examples{
