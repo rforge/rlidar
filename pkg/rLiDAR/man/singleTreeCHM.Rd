@@ -6,22 +6,24 @@
 singleTreeCHM(chm,fws,htd)
 }
 \arguments{
-\item{chm}{A raster LiDAR-derived Canopy Height Model (CHM)}
+\item{chm}{A LiDAR-derived Canopy Height Model (CHM) raster  file}
 
-\item{fws}{A single dimension of fixed square window size, e.g. 3, 5, 7 and so on. Default is 5.}
+\item{fws}{A single dimension of fixed square window size, e.g. 3, 5, 7 and so on. Default is 5}
 
-\item{htd}{Detection individual tree above specified heightbreak, e.g. 1.37, 2.0, 3.5 m and so on. Default is 1.37 m.}
+\item{htd}{Detection individual tree above specified heightbreak, e.g. 1.37, 2.0, 3.5 m and so on. Default is 1.37 m}
 }
 \value{
-returns A 3- column matrix of the individual tree dectection(x,y,and height)
+returns A 3-column matrix of the individual tree dectection information(x,y,and height)
 }
 \description{
 Getting the individual tree location and hieght from the the LiDAR-derived Canopy Height Model (CHM)
 }
 \examples{
 \dontrun{
-# Importing the LiDAR-derived CHM file
-data(chm) # or set a CHM. e.g. chm<-readGDAL("CHM_stand.asc")
+
+# Importing the LiDAR-derived CHM raster file
+library(raster)
+data(chm) # or set a CHM. e.g. chm<-raster("CHM_stand.asc")
 
 # Smoothing CHM
 schm<-CHMsmoothing(chm, "mean", 5, sigma=NULL)
@@ -40,6 +42,7 @@ treeList<-singleTreeCHM(schm, fws, htd)
 summary(treeList)
 
 # Plotting the individual tree location on the CHM
+library(sp)
 plot(chm) # plotting CHM
 plot(SpatialPoints(treeList[,1:2]), add=T, col="red") # plotthing tree location
 }

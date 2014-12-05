@@ -9,9 +9,11 @@
 #'@param above Compute covers metrics using specified heightbreak, e.g. 2.5 m. Default is 2 m.
 #'@return Returns LiDAR-derived metrics acoording to McGaughey (2014)
 #'@author Carlos Alberto Silva
-#'@seealso McGaughey, R. 2014. FUSION/LDV: Software for lidar data analysis and visualiZation. Version 3.41. Seattle, WA: U.S. Department of Agriculture, Forest Service, Pacific Northwest Research Station. Available at http://http://forsys.cfr.washington.edu/fusion/fusionlatest.html.
+#'@seealso McGaughey, R. 2014. FUSION/LDV: Software for lidar data analysis and visualiZation. Version 3.41. Seattle, WA: U.S. Department of Agriculture, Forest Service, Pacific Northwest Research Station. Available at \code{\link{http://http://forsys.cfr.washington.edu/fusion/fusionlatest.html}}.
 #'@examples
 #'\dontrun{
+#'
+#'#---------------------------------------------------------#
 #'# Example 01: Computing LiDAR metrics for a single LAS file
 #'
 #'# Importing the LAS data file
@@ -24,7 +26,7 @@
 #'# LiDAR metrics computation
 #'LiDARmetrics<-LASmetrics(nLAS,minht,above)
 #'
-#'
+#'#---------------------------------------------------------#
 #'# Example 02: Computing LiDAR metrics for a multiple LAS files within a folder
 #'
 #'# Set a folder where there are LAS files
@@ -44,8 +46,12 @@
 #'for ( i in LASlist) {
 #'  LiDARmetrics<-rbind(LiDARmetrics,LASmetrics(i,minht,above))}
 #'}
+#'
 #'@export
+#'@importFrom moments kurtosis skewness
+#'@importFrom bitops bitAnd bitShiftR
 LASmetrics<-function(LASfile,minht=1.37,above=2) {
+
   LASfile<-readLAS(LASfile, short=T)
   
   allreturn<-nrow(LASfile)

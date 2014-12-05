@@ -1,31 +1,32 @@
-#'LiDAR 3D stand visualization of trees
+#'LiDAR 3D trees stand visualization
 #'
-#'@description LiDAR 3D stand visualization of trees. This function was adapted from MAESPA package,see
-#'\code{\link{MAESPA}}.  
+#'@description Draws a 3D scatterplot for LiDAR trees.   
 #'
 #'@usage LiDARtrees3D(crownshape = c("cone", "ellipsoid", "halfellipsoid",
 #'                 "paraboloid", "cylinder"), CL = 4, CW = 8, HCB = 10, 
 #'                   X = 0, Y = 0, dbh = 0.3, crowncolor = "forestgreen", 
 #'                  stemcolor = "chocolate4", resolution="high", shape=TRUE) 
 #'
-#'@param crownshape Tree crown shape: "cone", "ellipsoid","halfellipsoid", "paraboloid" or "cylinder". Defaul is "halfellipsoid"
-#'@param CL Tree crown length
-#'@param CW Tree crown diameter
-#'@param HCB Tree trunk height
-#'@param X X Tree location
-#'@param Y Y Tree location
-#'@param dbh Tree stem diameter
-#'@param crowncolor Tree crown color
-#'@param stemcolor Tree stem color
-#'@param resolution Tree crown resolution: "low", "median" and "high"
-#'@param shape TRUE return a interpolate tree crown shape  
-#'
-#'@return returns Single 3D tree 
-#'@author Carlos Alberto Silva and Remko Duursma
+#'@param crownshape Tree crown shape: "cone", "ellipsoid","halfellipsoid", "paraboloid" or "cylinder". Default is "halfellipsoid".
+#'@param CL Tree crown length. Defaut is 4m.
+#'@param CW Tree crown diameter. Defaut is 8 m.
+#'@param HCB Tree trunk height. Defaut is 10 m.
+#'@param X X Tree location. Defaut is 0.
+#'@param Y Y Tree location. Defaut is 0.
+#'@param dbh Tree stem base diameter. Defaut is 0.3 m.
+#'@param crowncolor Tree crown color. Defaut is "forestgreen".
+#'@param stemcolor Tree stem color. Defaut is "chocolate4".
+#'@param resolution Tree crown resolution: "low", "median" and "high". Defaut is "high".
+#'@param shape Logical, if TRUE (default) returns a tree crown mesh model, and if FALSE returns a tree crown line mode.  
+#'@return returns 3D plot with single LiDAR trees 
+#'@author Carlos Alberto Silva and Remko Duursma. Uses code by Remko Duursma (MAESPA package,see
+#'\code{\link{MAESPA}}).
 #'@references \code{\link{http://maespa.github.io/}}
 #'@examples
 #'\dontrun{
-#'# EXAMPLE 01: Plotting isolate trees
+#'
+#'#---------------------------------------------------------#
+#'# EXAMPLE 01: Plotting single trees
 #'
 #'# shape cone crown 
 #'open3d() 
@@ -49,9 +50,16 @@
 #'open3d()
 #'LiDARtrees3D(crownshape = "paraboloid", CL = 10, CW =7, 
 #'            HCB = 5, X =0, Y = 0, dbh = 0.4, crowncolor = "forestgreen", 
-#'                        stemcolor = "chocolate4", resolution="high", shape=T) 
-#'                                            
-#'#EXAMPLE 02: Plotting plantation forest stands
+#'                        stemcolor = "chocolate4", resolution="high", shape=T)
+#'
+#'# Set the shape=FALSE 
+#'open3d()
+#'LiDARtrees3D(crownshape = "paraboloid", CL = 10, CW =7, 
+#'            HCB = 5, X =0, Y = 0, dbh = 0.4, crowncolor = "forestgreen", 
+#'                        stemcolor = "chocolate4", resolution="high", shape=FALSE)
+#' 
+#'#---------------------------------------------------------#                                           
+#'#EXAMPLE 02: Plotting a virtual forest plantation stand
 #' 
 #'# Set the lenght of the stand
 #'xlenght<-30 # x lenght
@@ -67,12 +75,12 @@
 #'# Get the number of trees
 #'Ntrees<-nrow(XYgrid)
 #'
-#'# Plotting a Eucalyptus plantation stand using halfellipsoid for the tree crown shape
+#'# Plotting a virtual Eucalyptus forest plantation stand using halfellipsoid tree crown shape
 #'
 #'# Set stand trees parameters
 #'meanHCB<-5 # mean tree crown base heigh
 #'sdHCB<-0.1 # standard deviation tree crown base heigh
-#'HCB<-rnorm(Ntrees, mean=meanHCB, sd=sdHCB) # tree crown base heigh
+#'HCB<-rnorm(Ntrees, mean=meanHCB, sd=sdHCB) # tree crown base height
 #'CL<-HCB # tree crown heigh
 #'CW<-HCB*0.6 # tree crown diameter
 #'
@@ -85,18 +93,18 @@
 #'                            stemcolor = "chocolate4", resolution="high", shape=T) 
 #'                            }
 #'                            
-#'# Plot parameters
+#'# Adding other plot parameters
 #'axes3d(c("x-","x-", "y-","z"), col="gray") # axes
-#'title3d(xlab = "Easting", ylab = "Northing", zlab = "Height", col="red") # title
+#'title3d(xlab = "X Coord", ylab = " Y Coord", zlab = "Height", col="red") # title
 #'planes3d(a=0,b=0,c=-1,d=0.0001,color="gray",alpha=1) # set a terrain plane
 #'
 #'
-#'# Plotting a Eucalyptus plantation stand using halfellipsoid for the tree crown shape
+#'# Plotting a virtual Pine forest plantation stand using cone tree crown shape
 #'
 #'# Set stand trees parameters
 #'meanHCB<-3 # mean tree crown base heigh
 #'sdHCB<-0.1 # standard deviation tree crown base heigh
-#'HCB<-rnorm(Ntrees, mean=meanHCB, sd=sdHCB) # tree crown base heigh
+#'HCB<-rnorm(Ntrees, mean=meanHCB, sd=sdHCB) # tree crown base height
 #'CL<-HCB*2.0 # tree crown heigh
 #'CW<-HCB*1.3 # tree crown diameter
 #'
@@ -108,15 +116,15 @@
 #'                            stemcolor = "chocolate4", resolution="high", shape=T) 
 #'                            }
 #'                            
-#'# Plot parameters
+#'# Adding other plot parameters
 #'axes3d(c("x-","x-", "y-","z"), col="gray") # axes
-#'title3d(xlab = "Easting", ylab = "Northing", zlab = "Height", col="red") # title
+#'title3d(xlab = "X Coord", ylab = " Y Coord", zlab = "Height", col="red") # title
 #'planes3d(a=0,b=0,c=-1,d=0.0001,color="gray",alpha=1) # set a terrain plane
 #'
+#'#---------------------------------------------------------#
+#'# EXAMPLE 03: Plotting a virtual natural mixed forest stand
 #'
-#'# EXAMPLE 03: Plotting natural mixed forest stands 
-#'
-#'# Difers species of trees on the stand using diferents crown shapes
+#'# 01. Difers trees species on the stand using diferents crown shapes
 #'
 #'# Set the number of trees
 #'Ntrees<-80 
@@ -148,13 +156,13 @@
 #'                          stemcolor = "chocolate4", resolution="high", shape=T) 
 #'                          }
 #'                          
-#'# Plot parameters
+#'# Adding other plot parameters
 #'axes3d(c("x-","x-", "y-","z"), col="gray") # axes
-#'title3d(xlab = "Easting", ylab = "Northing", zlab = "Height", col="red") # title
+#'title3d(xlab = "X Coord", ylab = " Y Coord", zlab = "Height", col="red") # title
 #'planes3d(a=0,b=0,c=-1,d=0.0001,color="gray",alpha=1) # set a terrain plane
 #'
 #'
-#'# Difers trees height on the stand using diferents crown colors
+#'# 02. Difers trees height on the stand using diferents crown colors
 #'
 #'# Set the number of trees
 #'Ntrees<-80 
@@ -171,13 +179,13 @@
 #'
 #'meanHCB<-7 # mean tree crown base heigh
 #'sdHCB<-3 # standard deviation tree crown base heigh
-#'HCB<-rnorm(Ntrees, mean=meanHCB, sd=sdHCB) # tree crown base heigh
+#'HCB<-rnorm(Ntrees, mean=meanHCB, sd=sdHCB) # tree crown base height
 #'crownshape<-sample(c("cone", "ellipsoid","halfellipsoid", "paraboloid"), 
 #'                   Ntrees, replace=T) # tree crown shape 
 #'CL<-HCB*1.3 # tree crown heigh
 #'CW<-HCB # tree crown diameter
 #'
-#'# Plot tree hiegh based on the HCB quantiles
+#'# Plot tree height based on the HCB quantiles
 #'HCBq<-quantile(HCB) # HCB quantiles
 #'crowncolor<-NA*(1:Ntrees) # set a empty crowncolor vector
 #'
@@ -197,12 +205,15 @@
 #'    stemcolor = "chocolate4", resolution="high", shape=T) 
 #'    }
 #'    
-#'# Plot parameters
+#'# Adding other plot parameters
 #'axes3d(c("x-","x-", "y-","z"), col="gray") # axes
-#'title3d(xlab = "Easting", ylab = "Northing", zlab = "Height", col="red") # title
+#'title3d(xlab = "X Coord", ylab = " Y Coord", zlab = "Height", col="red") # title
 #'planes3d(a=0,b=0,c=-1,d=0.0001,color="gray",alpha=1) # set a terrain plane
 #'}
+#'
 #'@export
+#'@importFrom geometry convhulln
+#'@importFrom rgl plot3d open3d bg3d rgl.triangles 
 LiDARtrees3D<-function (crownshape = c("cone", "ellipsoid",  
                                       "halfellipsoid", "paraboloid", "cylinder"), CL = 4, CW = 8, 
                        HCB = 10, X = 0, Y = 0, dbh = 0.3, crowncolor = "forestgreen", 

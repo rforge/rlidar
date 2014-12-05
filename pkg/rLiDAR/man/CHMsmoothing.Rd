@@ -6,7 +6,7 @@
 CHMsmoothing(chm, filter, ws, sigma)
 }
 \arguments{
-\item{chm}{A raster LiDAR-derived Canopy Height Model - CHM}
+\item{chm}{A LiDAR-derived Canopy Height Model (CHM) raster file}
 
 \item{filter}{mean, median, maximum, minimum or gaussian. Default is "mean".}
 
@@ -15,16 +15,18 @@ CHMsmoothing(chm, filter, ws, sigma)
 \item{sigma}{Used only when filter parameter is equal to gaussian, e.g. 0.5, 1.0, 1.5 and so on. Default is 0.6.}
 }
 \value{
-returns A raster CHM smoothed
+returns A CHM smoothed raster
 }
 \description{
 LiDAR-derived Canopy Height Model (CHM) smooth using focal statistcs
 }
 \examples{
 \dontrun{
-# Importing the LiDAR-derived CHM file
+
+# Importing the LiDAR-derived CHM raster file
 data(chm) # or set a CHM. e.g. chm<-readGDAL("CHM_stand.asc")
 
+#------------------------------------------------#
 # Example 01: Smoothing CHM using gaussian filter
 
 # Set the ws:
@@ -42,6 +44,7 @@ sCHM<-CHMsmoothing(chm, filter, ws, sigma)
 # Plotting CHM smoothed
 plot(sCHM, main=paste(filter,"filter and windows size", paste0(ws,"x",ws)))
 
+#------------------------------------------------#
 # Example 02: Smoothing CHM using mean filter
 
 # Set the ws:

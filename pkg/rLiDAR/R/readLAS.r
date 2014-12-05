@@ -19,7 +19,9 @@
 #'# Summary of the LAS file
 #'summary(myLAS)
 #'}
+#'
 #'@export
+#'@importFrom bitops bitAnd bitShiftR
 readLAS <- function(LASfile, short=TRUE) {
 
   skip <- 0

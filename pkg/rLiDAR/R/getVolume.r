@@ -13,6 +13,7 @@
 #'@references \code{\link{http://cran.r-project.org/web/packages/alphashape3d/alphashape3d.pdf}}
 #'@examples
 #'\dontrun{
+#'
 #'# Importing LAS file:
 #'myLAS<-data(LASfile) # or set a LAS  file (myLAS<-"LASfile.las")
 #'
@@ -39,6 +40,8 @@
 #'head(volume)
 #'}
 #'@export
+#'@importFrom alphashape3d ashape3d volume_ashape3d
+#'@importFrom rgl bg3d plot3d 
 getVolume<-function(xyz,id,alpha,cas) {
 
 if (nrow(xyz)!=length(id)) {stop("The xyz and id do not have the same length")}
@@ -52,7 +55,6 @@ if (cas!=TRUE & cas!=FALSE) {stop("The cas parameter is invalid. Please, use TRU
   xyzid<-cbind(xyz,id)
   
   repmat = function(X,m,n){
-
     mx = dim(X)[1]
     nx = dim(X)[2]
     matrix(t(matrix(X,mx,nx*n)),mx*m,nx*n,byrow=T)

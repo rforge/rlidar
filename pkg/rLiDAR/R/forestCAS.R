@@ -7,12 +7,13 @@
 #'@param chm A raster LiDAR-derived Canopy Height Model (CHM)
 #'@param loc A 3-column matrix with the x,y coordinates and heights of the individual tree
 #'@param maxcrown A single value of the maximum individual tree crown radius expected. Default 10.0 m
-#'@param exclusion A single value with the percent of pixel exclusion. E.g 0.5 exclusion of the pixels that has values below of the 50\out{\%} of max tree height. Default is 0.3 
-#'@return returns A list that contains the individual tree canopy boundary polygon and the dataframe of the canopy area  
+#'@param exclusion A single value with the percent of pixel exclusion. e.g 0.5 exclusion of the pixels of a single tree that has values below of the 50 \out{\%} of max tree height detected for that tree. Default is 0.3 
+#'@return returns A list that contains the individual tree canopy boundary polygons and the dataframe of the canopy area  
 #'@author Carlos Alberto Silva
 #'@examples
 #'\dontrun{
-#'# Importing the LiDAR-derived CHM file
+#'
+#'# Importing the LiDAR-derived CHM raster file
 #'data(chm) # or set a CHM. e.g. chm<-raster("CHM_stand.asc") 
 #'
 #'# Set the loc parameter
@@ -41,6 +42,11 @@
 #'plot(SpatialPoints(canopyList[,1:2]),col="black", add=T, pch="*") # adding tree location to the plot
 #'} 
 #'@export
+#'@importFrom spatstat disc
+#'@importFrom sp Polygon Polygons SpatialPolygons over SpatialPoints SpatialPolygonsDataFrame SpatialGridDataFrame coordinates gridded
+#'@importFrom deldir deldir 
+#'@importFrom plyr ddply
+#'@importFrom raster raster rasterToPolygons boundaries
 ForestCAS<-function(chm,loc,maxcrown,exclusion) {
 
   chm<-as(chm, "SpatialGridDataFrame")
@@ -65,9 +71,9 @@ ForestCAS<-function(chm,loc,maxcrown,exclusion) {
   polybuffs<-SpatialPolygons(spolys) 
 
   chmdf<-as.data.frame(chm,xy=TRUE)
-  Points.Ply<-over(SpatialPoints(chmdf[,2:3]),polybuffs) # overlay
-  Points.PlyD<-cbind(chmdf,Points.Ply) # cbind
-  Points.PlyD<-na.omit(Points.PlyD) # omite NAs
+  Points.Ply<-over(SpatialPoints(chmdf[,2:3]),polybuffs) 
+  Points.PlyD<-cbind(chmdf,Points.Ply) 
+  Points.PlyD<-na.omit(Points.PlyD) 
  vor =  deldir(loc[,1], loc[,2], z=loc[,3],suppressMsge=T)
   tile = tile.list(vor)
   polys = vector(mode='list', length=length(tile))

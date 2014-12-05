@@ -22,6 +22,7 @@ This function calculates the volume of the 3D \if{latex}{\out{\alpha}}\ifelse{ht
 }
 \examples{
 \dontrun{
+
 # Importing LAS file:
 myLAS<-data(LASfile) # or set a LAS  file (myLAS<-"LASfile.las")
 
