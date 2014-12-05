@@ -6,7 +6,7 @@
 ForestCAS(chm,loc,maxcrown,exclusion)
 }
 \arguments{
-\item{chm}{A raster LiDAR-derived Canopy Height Model (CHM)}
+\item{chm}{A LiDAR-derived Canopy Height Model (CHM) raster }
 
 \item{loc}{A 3-column matrix with the x,y coordinates and heights of the individual tree}
 

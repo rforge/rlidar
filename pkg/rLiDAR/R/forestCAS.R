@@ -4,7 +4,7 @@
 #'
 #'@usage ForestCAS(chm,loc,maxcrown,exclusion)
 #'
-#'@param chm A raster LiDAR-derived Canopy Height Model (CHM)
+#'@param chm A LiDAR-derived Canopy Height Model (CHM) raster 
 #'@param loc A 3-column matrix with the x,y coordinates and heights of the individual tree
 #'@param maxcrown A single value of the maximum individual tree crown radius expected. Default 10.0 m
 #'@param exclusion A single value with the percent of pixel exclusion. e.g 0.5 exclusion of the pixels of a single tree that has values below of the 50 \out{\%} of max tree height detected for that tree. Default is 0.3 
