@@ -1,4 +1,4 @@
-#'Individual tree detection on the LiDAR-derived Canopy Height Model-(CHM) 
+#'Individual tree detection on the LiDAR-derived Canopy Height Model (CHM) 
 #'
 #'@description Getting the individual tree location and hieght from the the LiDAR-derived Canopy Height Model (CHM) 
 #'

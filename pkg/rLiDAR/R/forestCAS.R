@@ -4,11 +4,11 @@
 #'
 #'@usage ForestCAS(chm,loc,maxcrown,exclusion)
 #'
-#'@param chm A LiDAR-derived Canopy Height Model (CHM) raster 
-#'@param loc A 3-column matrix with the x,y coordinates and heights of the individual tree
-#'@param maxcrown A single value of the maximum individual tree crown radius expected. Default 10.0 m
-#'@param exclusion A single value with the percent of pixel exclusion. e.g 0.5 exclusion of the pixels of a single tree that has values below of the 50 \out{\%} of max tree height detected for that tree. Default is 0.3 
-#'@return returns A list that contains the individual tree canopy boundary polygons and the dataframe of the canopy area  
+#'@param chm A LiDAR-derived Canopy Height Model (CHM) raster.
+#'@param loc A 3-column matrix with the x,y coordinates and heights of the individual tree.
+#'@param maxcrown A single value of the maximum individual tree crown radius expected. Default 10.0 m.
+#'@param exclusion A single value from 0 to 1 that represent the \out{\%} of pixel exclusion. e.g. 0.5: It will exclude all the pixels for a single tree that has height value less 50\out{\%} of the maximum height from the same tree. Default is 0.3. 
+#'@return returns A list that contains the individual tree canopy boundary polygons and the 3-column matrix with the x,y coordinates, heights and the canopy area (meter square).  
 #'@author Carlos Alberto Silva
 #'@examples
 #'\dontrun{
@@ -42,6 +42,7 @@
 #'plot(SpatialPoints(canopyList[,1:2]),col="black", add=T, pch="*") # adding tree location to the plot
 #'} 
 #'@export
+#'@import rgeos
 #'@importFrom spatstat disc
 #'@importFrom sp Polygon Polygons SpatialPolygons over SpatialPoints SpatialPolygonsDataFrame SpatialGridDataFrame coordinates gridded
 #'@importFrom deldir deldir 

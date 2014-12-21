@@ -6,16 +6,16 @@
 ForestCAS(chm,loc,maxcrown,exclusion)
 }
 \arguments{
-\item{chm}{A LiDAR-derived Canopy Height Model (CHM) raster }
+\item{chm}{A LiDAR-derived Canopy Height Model (CHM) raster.}
 
-\item{loc}{A 3-column matrix with the x,y coordinates and heights of the individual tree}
+\item{loc}{A 3-column matrix with the x,y coordinates and heights of the individual tree.}
 
-\item{maxcrown}{A single value of the maximum individual tree crown radius expected. Default 10.0 m}
+\item{maxcrown}{A single value of the maximum individual tree crown radius expected. Default 10.0 m.}
 
-\item{exclusion}{A single value with the percent of pixel exclusion. e.g 0.5 exclusion of the pixels of a single tree that has values below of the 50 \out{\%} of max tree height detected for that tree. Default is 0.3}
+\item{exclusion}{A single value from 0 to 1 that represent the \out{\%} of pixel exclusion. e.g. 0.5: It will exclude all the pixels for a single tree that has height value less 50\out{\%} of the maximum height from the same tree. Default is 0.3.}
 }
 \value{
-returns A list that contains the individual tree canopy boundary polygons and the dataframe of the canopy area
+returns A list that contains the individual tree canopy boundary polygons and the 3-column matrix with the x,y coordinates, heights and the canopy area (meter square).
 }
 \description{
 Compute and export individual tree canopy area detected on the LiDAR-derived Canopy Height Model (CHM)

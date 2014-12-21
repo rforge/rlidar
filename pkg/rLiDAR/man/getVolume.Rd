@@ -6,7 +6,7 @@
 getVolume(xyz,id,alpha,cas)
 }
 \arguments{
-\item{xyz}{A 3-column matrix with the x,y and z coordinates of the 3D LiDAR point cloud}
+\item{xyz}{A 3-column matrix with the x,y and z coordinates of the 3D LiDAR point cloud.}
 
 \item{id}{A vector id for the xyz observations.}
 
@@ -15,7 +15,7 @@ getVolume(xyz,id,alpha,cas)
 \item{cas}{Logical, if TRUE (default) plot the \if{latex}{\out{\alpha}}\ifelse{html}{\out{&alpha;}}{alpha}-shape 3D.}
 }
 \value{
-Return dataframe of the LAS data set
+Return dataframe of the LAS data set.
 }
 \description{
 This function calculates the volume of the 3D \if{latex}{\out{\alpha}}\ifelse{html}{\out{&alpha;}}{alpha}-shape of the LiDAR point cloud.
@@ -30,7 +30,7 @@ myLAS<-data(LASfile) # or set a LAS  file (myLAS<-"LASfile.las")
 LAS<-readLAS(myLAS,short=TRUE)
 
 # Finding clusters
-clLAS<-kmeans(LAS[,3], 32)
+clLAS<-kmeans(LAS[,1:2], 32)
 
 # set the xyz coordenates
 xyz<-LAS[,1:3]
@@ -47,6 +47,12 @@ cas=TRUE
 # get the volume
 volume<-getVolume(xyz=xyz,id=id,alpha=alpha,cas=cas)
 head(volume)
+
+# Adding other plot parameters
+axes3d(c("x-","x-", "y-","z"), col="gray") # axes
+title3d(xlab = "X Coord", ylab = " Y Coord", zlab = "Height", col="red") # title
+planes3d(a=0,b=0,c=-1,d=0.0001,color="gray",alpha=1) # set a terrain plane
+
 }
 }
 \author{
