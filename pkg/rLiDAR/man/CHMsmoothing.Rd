@@ -24,7 +24,7 @@ LiDAR-derived Canopy Height Model (CHM) smooth using focal statistcs
 \dontrun{
 
 # Importing the LiDAR-derived CHM file
-data(chm) # or set a CHM. e.g. chm<-readGDAL("CHM_stand.asc")
+data(chm) # or set a CHM. e.g. chm<-raster("CHM_stand.asc")
 
 #------------------------------------------------#
 # Example 01: Smoothing CHM using gaussian filter
@@ -61,6 +61,9 @@ plot(sCHM, main=paste(filter,"filter and window size", paste0(ws,"x",ws)))
 }
 }
 \author{
-Carlos Alberto Silva
+Carlos Alberto Silva.
+}
+\seealso{
+Focal in R raster package at \code{\url{http://cran.r-project.org/web/packages/raster/}}.
 }
 

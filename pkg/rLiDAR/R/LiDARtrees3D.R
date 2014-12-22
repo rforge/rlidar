@@ -20,7 +20,7 @@
 #'@param shape Logical, if TRUE (default) returns a tree crown mesh model, and if FALSE returns a tree crown line mode.  
 #'@return returns 3D plot with single LiDAR trees 
 #'@author Carlos Alberto Silva and Remko Duursma. Uses code by Remko Duursma (MAESPA package,see \code{\link{MAESPA}}).
-#'@references \code{\link{http://maespa.github.io/}}
+#'@references \code{\url{http://maespa.github.io/}}
 #'@examples
 #'\dontrun{
 #'

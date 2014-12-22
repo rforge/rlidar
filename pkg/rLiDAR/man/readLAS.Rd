@@ -31,7 +31,4 @@ summary(myLAS)
 \author{
 Michael Sumner and Carlos Alberto Silva.
 }
-\references{
-\code{\link{http://staff.acecrc.org.au/~mdsumner/las/readLAS.R}}
-}
 

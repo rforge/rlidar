@@ -59,6 +59,6 @@ planes3d(a=0,b=0,c=-1,d=0.0001,color="gray",alpha=1) # set a terrain plane
 Carlos Alberto Silva. Uses code by Beatriz Pateiro-Lopez (alphashape3d R-package)
 }
 \references{
-\code{\link{http://cran.r-project.org/web/packages/alphashape3d/alphashape3d.pdf}}
+\code{\url{}{http://cran.r-project.org/web/packages/alphashape3d/alphashape3d.pdf}}
 }
 

@@ -8,7 +8,6 @@
 #'@param short Logical, if TRUE it will return only a 3-column matrix with the x, y, z, intensity and return number information
 #'@return Return a matrix of the information stored in the LAS file
 #'@author Michael Sumner and Carlos Alberto Silva. 
-#'@references \code{\link{http://staff.acecrc.org.au/~mdsumner/las/readLAS.R}}
 #'@examples
 #'\dontrun{
 #'# Importing LAS file:

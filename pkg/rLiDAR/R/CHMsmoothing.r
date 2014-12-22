@@ -9,12 +9,13 @@
 #'@param filter mean, median, maximum, minimum or gaussian. Default is "mean".
 #'@param sigma Used only when filter parameter is equal to gaussian, e.g. 0.5, 1.0, 1.5 and so on. Default is 0.6. 
 #'@return returns A CHM smoothed raster.
-#'@author Carlos Alberto Silva
+#'@author Carlos Alberto Silva. 
+#'@seealso Focal in R raster package at \code{\url{http://cran.r-project.org/web/packages/raster/}}.
 #'@examples
 #'\dontrun{
 #'
 #'# Importing the LiDAR-derived CHM file
-#'data(chm) # or set a CHM. e.g. chm<-readGDAL("CHM_stand.asc") 
+#'data(chm) # or set a CHM. e.g. chm<-raster("CHM_stand.asc") 
 #'
 #'#------------------------------------------------#
 #'# Example 01: Smoothing CHM using gaussian filter

@@ -9,7 +9,7 @@
 #'@param above Compute covers metrics using specified heightbreak, e.g. 2.5 m. Default is 2 m.
 #'@return Returns LiDAR-derived metrics acoording to McGaughey (2014)
 #'@author Carlos Alberto Silva
-#'@seealso McGaughey, R. 2014. FUSION/LDV: Software for lidar data analysis and visualiZation. Version 3.41. Seattle, WA: U.S. Department of Agriculture, Forest Service, Pacific Northwest Research Station. Available at \code{\link{http://http://forsys.cfr.washington.edu/fusion/fusionlatest.html}}.
+#'@seealso McGaughey, R. 2014. FUSION/LDV: Software for lidar data analysis and visualiZation. Version 3.41. Seattle, WA: U.S. Department of Agriculture, Forest Service, Pacific Northwest Research Station. Available at \code{\url{http://http://forsys.cfr.washington.edu/fusion/fusionlatest.html}}.
 #'@examples
 #'\dontrun{
 #'

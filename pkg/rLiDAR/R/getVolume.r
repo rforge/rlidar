@@ -10,7 +10,7 @@
 #'@param cas Logical, if TRUE (default) plot the \if{latex}{\out{\alpha}}-shape 3D.
 #'@return Return dataframe of the LAS data set.
 #'@author Carlos Alberto Silva. Uses code by Beatriz Pateiro-Lopez (alphashape3d R-package)
-#'@references \code{\link{http://cran.r-project.org/web/packages/alphashape3d/alphashape3d.pdf}}
+#'@references \code{\url{}{http://cran.r-project.org/web/packages/alphashape3d/alphashape3d.pdf}}
 #'@examples
 #'\dontrun{
 #'
