@@ -7,7 +7,7 @@ Author: Carlos Alberto Silva, Nicholas L. Crookston,
     Andrew Thomas Hudak and Lee Vierling.
 Maintainer: Carlos Alberto Silva <carlos_engflorestal@outlook.com>
 Depends:
-    spatstat,sp,rgdal,rgeos,deldir,plyr,raster,geometry,rgl,moments,bitops,alphashape3d
+    spatstat,sp,rgdal,rgeos,deldir,plyr,raster,geometry,rgl,moments,bitops,alphashape3d,matlab
 Description: rLiDAR is a library to reading, processing and visualizing small
     set of LiDAR data in forest inventory applications
 License: GPL-2
