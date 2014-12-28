@@ -38,9 +38,9 @@
 #'plot(SpatialPoints(treeList[,1:2]), add=T, col="red") # plotthing tree location
 #'}
 #'
-#'@export
 #'@importFrom raster raster focal xyFromCell projection Which
 #'@importFrom sp SpatialPoints over SpatialGridDataFrame
+#'@export
 singleTreeCHM<-function(chm, fws=5,htd=1.37) {
   
   w<-matrix(c(rep(1,fws*fws)),nrow=fws,ncol=fws)
@@ -49,7 +49,6 @@ singleTreeCHM<-function(chm, fws=5,htd=1.37) {
   
   chm[chm < htd]<-NA
   
-  f <- function(chm) max(chm)
   rlocalmax <- focal(chm, fun=f, w=w, pad=TRUE, padValue=NA)
   
   setNull<- chm==rlocalmax

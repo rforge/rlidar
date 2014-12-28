@@ -7,16 +7,16 @@
 #'                   X = 0, Y = 0, dbh = 0.3, crowncolor = "forestgreen", 
 #'                  stemcolor = "chocolate4", resolution="high", shape=TRUE) 
 #'
-#'@param crownshape Tree crown shape: "cone", "ellipsoid","halfellipsoid", "paraboloid" or "cylinder". Default is "halfellipsoid".
-#'@param CL Tree crown length. Defaut is 4m.
-#'@param CW Tree crown diameter. Defaut is 8 m.
-#'@param HCB Tree trunk height. Defaut is 10 m.
-#'@param X X Tree location. Defaut is 0.
-#'@param Y Y Tree location. Defaut is 0.
-#'@param dbh Tree stem base diameter. Defaut is 0.3 m.
-#'@param crowncolor Tree crown color. Defaut is "forestgreen".
-#'@param stemcolor Tree stem color. Defaut is "chocolate4".
-#'@param resolution Tree crown resolution: "low", "median" and "high". Defaut is "high".
+#'@param crownshape crown shape: "cone", "ellipsoid","halfellipsoid", "paraboloid" or "cylinder". Default is "halfellipsoid".
+#'@param CL crown length
+#'@param CW crown diameter
+#'@param HCB canopy base height
+#'@param X x-coordinate
+#'@param Y y-coordinate.
+#'@param dbh stem base diameter
+#'@param crowncolor crown color
+#'@param stemcolor stem color
+#'@param resolution crown resolution: "low", "median" and "high"
 #'@param shape Logical, if TRUE (default) returns a tree crown mesh model, and if FALSE returns a tree crown line mode.  
 #'@return returns 3D plot with single LiDAR trees 
 #'@author Carlos Alberto Silva and Remko Duursma. Uses code by Remko Duursma (MAESPA package,see \code{\link{MAESPA}}).

@@ -50,8 +50,9 @@
 #'# Plotting CHM smoothed
 #'plot(sCHM, main=paste(filter,"filter and window size", paste0(ws,"x",ws)))
 #'}
-#'@export
+#'
 #'@importFrom raster raster focal
+#'@export CHMsmoothing
 CHMsmoothing<-function(chm, filter="mean", ws=5, sigma=0.6) {
 
   if (class(chm)[1]!='RasterLayer') {
@@ -90,6 +91,5 @@ CHMsmoothing<-function(chm, filter="mean", ws=5, sigma=0.6) {
     gf=fgauss(sigma)
     chmR <- focal(chmInput, w=gf)
   }
-  
   return(chmR)
 }

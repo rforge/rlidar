@@ -17,14 +17,14 @@
 #'# Example 01: Computing LiDAR metrics for a single LAS file
 #'
 #'# Importing the LAS data file
-#'nLAS<-data("nLASfile.las") # In this case a height normalized LAS file
+#'LASfile<-paste0(path.package("rLiDAR"),"/data/LASexample.las") # In this case a height normalized LAS file
 #'
 #'# Set the minht and above parameters
 #'minht<-1.37 # meters or feet
 #'above<-2.00  # meters or feet
 #'
 #'# LiDAR metrics computation
-#'LiDARmetrics<-LASmetrics(nLAS,minht,above)
+#'LiDARmetrics<-LASmetrics(LASfile,minht,above)
 #'
 #'#---------------------------------------------------------#
 #'# Example 02: Computing LiDAR metrics for a multiple LAS files within a folder
@@ -47,9 +47,9 @@
 #'  LiDARmetrics<-rbind(LiDARmetrics,LASmetrics(i,minht,above))}
 #'}
 #'
-#'@export
 #'@importFrom moments kurtosis skewness
 #'@importFrom bitops bitAnd bitShiftR
+#'@export
 LASmetrics<-function(LASfile,minht=1.37,above=2) {
 
   LASfile<-readLAS(LASfile, short=T)

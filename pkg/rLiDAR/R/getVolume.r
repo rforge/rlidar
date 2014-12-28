@@ -45,10 +45,10 @@
 #'planes3d(a=0,b=0,c=-1,d=0.0001,color="gray",alpha=1) # set a terrain plane
 #'
 #'}
-#'@export
 #'@import matlab
 #'@importFrom alphashape3d ashape3d volume_ashape3d
 #'@importFrom rgl bg3d plot3d 
+#'@export
 getVolume<-function(xyz,id,alpha,cas) {
 
 if (nrow(xyz)!=length(id)) {stop("The xyz and id do not have the same length")}

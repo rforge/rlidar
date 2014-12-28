@@ -41,13 +41,12 @@
 #'summary(canopyList)
 #'plot(SpatialPoints(canopyList[,1:2]),col="black", add=T, pch="*") # adding tree location to the plot
 #'} 
-#'@export
-#'@import rgeos
 #'@importFrom spatstat disc
 #'@importFrom sp Polygon Polygons SpatialPolygons over SpatialPoints SpatialPolygonsDataFrame SpatialGridDataFrame coordinates gridded
 #'@importFrom deldir deldir 
 #'@importFrom plyr ddply
 #'@importFrom raster raster rasterToPolygons boundaries
+#'@export
 ForestCAS<-function(chm,loc,maxcrown,exclusion) {
 
   chm<-as(chm, "SpatialGridDataFrame")
@@ -56,7 +55,7 @@ ForestCAS<-function(chm,loc,maxcrown,exclusion) {
   width<-numeric()  
   
   for(i in 1:nrow(loc)) { 
-    width[i] =maxcrown
+    width[i]=maxcrown
     discbuff<-disc(radius=width[i], centre=c(loc$x[i], loc$y[i])) 
     discpoly<-Polygon(rbind(cbind(discbuff$bdry[[1]]$x, 
                                   y=discbuff$bdry[[1]]$y), c(discbuff$bdry[[1]]$x[1], 
@@ -75,10 +74,11 @@ ForestCAS<-function(chm,loc,maxcrown,exclusion) {
   Points.Ply<-over(SpatialPoints(chmdf[,2:3]),polybuffs) 
   Points.PlyD<-cbind(chmdf,Points.Ply) 
   Points.PlyD<-na.omit(Points.PlyD) 
- vor =  deldir(loc[,1], loc[,2], z=loc[,3],suppressMsge=T)
+  vor =  deldir(loc[,1], loc[,2], z=loc[,3],suppressMsge=T)
   tile = tile.list(vor)
   polys = vector(mode='list', length=length(tile))
-  for (i in seq(along=polys)) {
+  
+ for (i in seq(along=polys)) {
     pcrds = cbind(tile[[i]]$x, tile[[i]]$y)
     pcrds = rbind(pcrds, pcrds[1,])
     polys[[i]] = Polygons(list(Polygon(pcrds)), ID=as.character(i))
@@ -95,23 +95,7 @@ ForestCAS<-function(chm,loc,maxcrown,exclusion) {
   colnames(RpD.filter)<-c("z","x","y","g")
   h.mH<-ddply(RpD.filter,"g", function (RpD.filter)
     subset(RpD.filter,RpD.filter[,1]>= max(RpD.filter[,1])*exclusion))
-  
-  DF2raster<-function(h.mH, i){
-    h.mHkl<-subset(h.mH,h.mH[,4]==levels(factor(h.mH[,4]))[i])
-    
-    if (nrow(h.mHkl==1)==TRUE) {
-      h.mHkl<-rbind(h.mHkl,c(h.mHkl[,1],h.mHkl[,2]+0.005,h.mHkl[,3]+0.005,h.mHkl[,4]))}
-    
-    spP <- cbind(h.mHkl[,2:3],h.mHkl[,1],h.mHkl[,4])
-    coordinates(spP)<- ~ x + y
-    suppressWarnings(gridded(spP) <- TRUE)
-    
-    rasterDF <- raster(spP)
-    hhg<- boundaries(rasterDF, type='outer') 
-    p <- rasterToPolygons(hhg, dissolve=TRUE)
-    sp.polys <- p[1,]
-    return(sp.polys)}
- 
+   
   for ( j in 1:nlevels(factor(h.mH[,4]))){
     assign(paste0("SP.polys", j), DF2raster(h.mH,j))
     print(paste("computting canopy area: Tree",j))}
