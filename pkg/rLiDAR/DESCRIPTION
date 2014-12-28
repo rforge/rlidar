@@ -13,7 +13,7 @@ Description: rLiDAR is a library to reading, processing and visualizing small
 License: GPL-2
 Collate:
     'CHMsmoothing.r'
-    'ForestCAS.R'
+    'forestCAS.R'
     'LASmetrics.r'
     'LiDARtrees3D.R'
     'getVolume.r'
