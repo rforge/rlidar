@@ -60,6 +60,6 @@ for ( i in LASlist) {
 Carlos Alberto Silva
 }
 \seealso{
-McGaughey, R. 2014. FUSION/LDV: Software for lidar data analysis and visualiZation. Version 3.41. Seattle, WA: U.S. Department of Agriculture, Forest Service, Pacific Northwest Research Station. Available at \code{\url{http://http://forsys.cfr.washington.edu/fusion/fusionlatest.html}}.
+McGaughey, R. 2014. FUSION/LDV: Software for lidar data analysis and visualiZation. Version 3.41. Seattle, WA: U.S. Department of Agriculture, Forest Service, Pacific Northwest Research Station. Available at \url{http://http://forsys.cfr.washington.edu/fusion/fusionlatest.html}.
 }
 

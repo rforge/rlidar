@@ -19,8 +19,8 @@
 #'@param resolution crown resolution: "low", "median" and "high"
 #'@param shape Logical, if TRUE (default) returns a tree crown mesh model, and if FALSE returns a tree crown line mode.  
 #'@return returns 3D plot with single LiDAR trees 
-#'@author Carlos Alberto Silva and Remko Duursma. Uses code by Remko Duursma (MAESPA package,see \code{\link{MAESPA}}).
-#'@references \code{\url{http://maespa.github.io/}}
+#'@author Carlos Alberto Silva and Remko Duursma. Uses code by Remko Duursma (\code{Maeswrap} package package,see \code{\link{Plotstand}}).
+#'@references \url{http://maespa.github.io/}
 #'@examples
 #'\dontrun{
 #'

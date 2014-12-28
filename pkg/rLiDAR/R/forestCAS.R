@@ -2,7 +2,7 @@
 #'
 #'@description Compute and export individual tree canopy area detected on the LiDAR-derived Canopy Height Model (CHM) 
 #'
-#'@usage ForestCAS(chm,loc,maxcrown,exclusion)
+#'@usage forestCAS(chm,loc,maxcrown,exclusion)
 #'
 #'@param chm A LiDAR-derived Canopy Height Model (CHM) raster.
 #'@param loc A 3-column matrix with the x,y coordinates and heights of the individual tree.
@@ -27,7 +27,7 @@
 #'exclusion=0.3 # 30
 #'
 #'# Compute individual tree detection canopy area
-#'canopy<-ForestCAS(chm,loc,maxcrown,exclusion)
+#'canopy<-forestCAS(chm,loc,maxcrown,exclusion)
 #'
 #'# Getting the individual tree detection canopy area boundary
 #'boundaryTrees<-canopy[[1]]
@@ -47,7 +47,7 @@
 #'@importFrom plyr ddply
 #'@importFrom raster raster rasterToPolygons boundaries
 #'@export
-ForestCAS<-function(chm,loc,maxcrown,exclusion) {
+forestCAS<-function(chm,loc,maxcrown,exclusion) {
 
   chm<-as(chm, "SpatialGridDataFrame")
   Hthreshold<-min(loc[,3])*exclusion

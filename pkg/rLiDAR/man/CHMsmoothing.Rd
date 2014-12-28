@@ -65,6 +65,6 @@ plot(sCHM, main=paste(filter,"filter and window size", paste0(ws,"x",ws)))
 Carlos Alberto Silva.
 }
 \seealso{
-Focal in R raster package at \code{\url{http://cran.r-project.org/web/packages/raster/}}.
+\code{\link{focal}} in the \code{raster} package.
 }
 

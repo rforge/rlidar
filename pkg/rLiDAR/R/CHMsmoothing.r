@@ -10,7 +10,7 @@
 #'@param sigma Used only when filter parameter is equal to gaussian, e.g. 0.5, 1.0, 1.5 and so on. Default is 0.6. 
 #'@return returns A CHM smoothed raster.
 #'@author Carlos Alberto Silva. 
-#'@seealso Focal in R raster package at \code{\url{http://cran.r-project.org/web/packages/raster/}}.
+#'@seealso \code{\link{focal}} in the \code{raster} package.
 #'@examples
 #'\dontrun{
 #'

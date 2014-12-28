@@ -11,15 +11,15 @@ getVolume(xyz,id,alpha,cas)
 
 \item{id}{A vector id for the xyz observations.}
 
-\item{alpha}{A single value or vector of values for \if{latex}{\out{\alpha}}. Its range from 0 to 1.}
+\item{alpha}{A single value or vector of values for \if{latex}{\out{\alpha}}\ifelse{html}{\out{&alpha;}}{alpha}. Its range from 0 to 1.}
 
-\item{cas}{Logical, if TRUE (default) plot the \if{latex}{\out{\alpha}}-shape 3D.}
+\item{cas}{Logical, if TRUE (default) plot the \if{latex}{\out{\alpha}}\ifelse{html}{\out{&alpha;}}{alpha}-shape 3D.}
 }
 \value{
 Return dataframe of the LAS data set.
 }
 \description{
-This function calculates the volume of the 3D \if{latex}{\out{\alpha}}-shape of the LiDAR point cloud.
+This function calculates the volume of the 3D \if{latex}{\out{\alpha}}\ifelse{html}{\out{&alpha;}}{alpha} -shape of the LiDAR point cloud.
 }
 \examples{
 \dontrun{
@@ -60,6 +60,6 @@ planes3d(a=0,b=0,c=-1,d=0.0001,color="gray",alpha=1) # set a terrain plane
 Carlos Alberto Silva. Uses code by Beatriz Pateiro-Lopez (alphashape3d R-package)
 }
 \references{
-\code{\url{}{http://cran.r-project.org/web/packages/alphashape3d/alphashape3d.pdf}}
+\code{alphashape3d} package.
 }
 

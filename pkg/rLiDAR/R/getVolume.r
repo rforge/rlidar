@@ -1,16 +1,16 @@
 #'LiDAR - getVolume 3D
 #'
-#'@description This function calculates the volume of the 3D \if{latex}{\out{\alpha}}-shape of the LiDAR point cloud.
+#'@description This function calculates the volume of the 3D \if{latex}{\out{\alpha}}\ifelse{html}{\out{&alpha;}}{alpha} -shape of the LiDAR point cloud.
 #'
 #'@usage getVolume(xyz,id,alpha,cas)
 #'
 #'@param xyz A 3-column matrix with the x,y and z coordinates of the 3D LiDAR point cloud.
 #'@param id A vector id for the xyz observations. 
-#'@param alpha A single value or vector of values for \if{latex}{\out{\alpha}}. Its range from 0 to 1.
-#'@param cas Logical, if TRUE (default) plot the \if{latex}{\out{\alpha}}-shape 3D.
+#'@param alpha A single value or vector of values for \if{latex}{\out{\alpha}}\ifelse{html}{\out{&alpha;}}{alpha}. Its range from 0 to 1.
+#'@param cas Logical, if TRUE (default) plot the \if{latex}{\out{\alpha}}\ifelse{html}{\out{&alpha;}}{alpha}-shape 3D.
 #'@return Return dataframe of the LAS data set.
 #'@author Carlos Alberto Silva. Uses code by Beatriz Pateiro-Lopez (alphashape3d R-package)
-#'@references \code{\url{}{http://cran.r-project.org/web/packages/alphashape3d/alphashape3d.pdf}}
+#'@references \code{alphashape3d} package.
 #'@examples
 #'\dontrun{
 #'
