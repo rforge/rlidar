@@ -11,30 +11,30 @@ getVolume(xyz,id,alpha,cas)
 
 \item{id}{A vector id for the xyz observations.}
 
-\item{alpha}{A single value or vector of values for \if{latex}{\out{\alpha}}\ifelse{html}{\out{&alpha;}}{alpha}. Its range from 0 to 1.}
+\item{alpha}{A single value or vector of values for \if{latex}{\out{\alpha}}\ifelse{html}{\out{&alpha;}}{alpha}{. Its range from 0 to 1.}}
 
-\item{cas}{Logical, if TRUE (default) plot the \if{latex}{\out{\alpha}}\ifelse{html}{\out{&alpha;}}{alpha}-shape 3D.}
+\item{cas}{Logical, if TRUE (default) plot the \if{latex}{\out{\alpha}}\ifelse{html}{\out{&alpha;}}{alpha}{-shape 3D}.}
 }
 \value{
 Return dataframe of the LAS data set.
 }
 \description{
-This function calculates the volume of the 3D \if{latex}{\out{\alpha}}\ifelse{html}{\out{&alpha;}}{alpha} -shape of the LiDAR point cloud.
+This function calculates the volume of the 3D \if{latex}{\out{\alpha}}\ifelse{html}{\out{&alpha;}}{alpha}{-shape of the LiDAR point cloud.}
 }
 \examples{
 \dontrun{
 
 # Importing LAS file:
-myLAS<-data(LASfile) # or set a LAS  file (myLAS<-"LASfile.las")
+LASfile <- system.file("extdata", "LASexample.las", package="rLiDAR")
 
 # Reading LAS file
-LAS<-readLAS(myLAS,short=TRUE)
+LAS<-readLAS(LASfile,short=TRUE)
+
+# set the xyz coordenates and subset the data
+xyz<-subset(LAS[,1:3],LAS[,3] >= 1.37)
 
 # Finding clusters
-clLAS<-kmeans(LAS[,1:2], 32)
-
-# set the xyz coordenates
-xyz<-LAS[,1:3]
+clLAS<-kmeans(xyz, 32)
 
 # set the id vector
 id<-as.factor(clLAS$cluster)
@@ -50,6 +50,7 @@ volume<-getVolume(xyz=xyz,id=id,alpha=alpha,cas=cas)
 head(volume)
 
 # Adding other plot parameters
+aspect3d(1,1,0.5)
 axes3d(c("x-","x-", "y-","z"), col="gray") # axes
 title3d(xlab = "X Coord", ylab = " Y Coord", zlab = "Height", col="red") # title
 planes3d(a=0,b=0,c=-1,d=0.0001,color="gray",alpha=1) # set a terrain plane
@@ -57,9 +58,6 @@ planes3d(a=0,b=0,c=-1,d=0.0001,color="gray",alpha=1) # set a terrain plane
 }
 }
 \author{
-Carlos Alberto Silva. Uses code by Beatriz Pateiro-Lopez (alphashape3d R-package)
-}
-\references{
-\code{alphashape3d} package.
+Carlos Alberto Silva. Uses code by Beatriz Pateiro-Lopez (\code{alphashape3d} package,see \code{\link{volume_ashape3d}})
 }
 

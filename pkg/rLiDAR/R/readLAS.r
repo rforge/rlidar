@@ -11,7 +11,7 @@
 #'@examples
 #'\dontrun{
 #'# Importing LAS file:
-#'LASfile<-paste0(path.package("rLiDAR"),"/data/LASexample.las") 
+#'LASfile <- system.file("extdata", "LASexample.las", package="rLiDAR")
 #'
 #'# Reading LAS file
 #'rLAS<-readLAS(LASfile,short=TRUE)

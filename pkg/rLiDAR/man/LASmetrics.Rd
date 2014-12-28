@@ -26,7 +26,7 @@ Compute statistics metrics that describe the LiDAR data set
 # Example 01: Computing LiDAR metrics for a single LAS file
 
 # Importing the LAS data file
-LASfile<-paste0(path.package("rLiDAR"),"/data/LASexample.las") # In this case a height normalized LAS file
+LASfile <- system.file("extdata", "LASexample.las", package="rLiDAR")
 
 # Set the minht and above parameters
 minht<-1.37 # meters or feet

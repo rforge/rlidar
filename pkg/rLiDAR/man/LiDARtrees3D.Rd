@@ -228,7 +228,7 @@ planes3d(a=0,b=0,c=-1,d=0.0001,color="gray",alpha=1) # set a terrain plane
 }
 }
 \author{
-Carlos Alberto Silva and Remko Duursma. Uses code by Remko Duursma (\code{Maeswrap} package package,see \code{\link{Plotstand}}).
+Carlos Alberto Silva and Remko Duursma. Uses code by Remko Duursma (\code{Maeswrap} package,see \code{\link{Plotstand}}).
 }
 \references{
 \url{http://maespa.github.io/}
