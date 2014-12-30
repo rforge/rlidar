@@ -43,7 +43,7 @@
 #'} 
 #'@importFrom spatstat disc
 #'@importFrom sp Polygon Polygons SpatialPolygons over SpatialPoints SpatialPolygonsDataFrame SpatialGridDataFrame coordinates gridded
-#'@importFrom deldir deldir 
+#'@importFrom deldir tile.list 
 #'@importFrom plyr ddply
 #'@importFrom raster raster rasterToPolygons boundaries
 #'@export

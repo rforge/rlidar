@@ -117,9 +117,10 @@
 #'# Plot stand
 #'for( i in 1:Ntrees){
 #'  LiDARtrees3D(crownshape = "cone", CL = CL[i], CW = CW[i], 
-#'              HCB = HCB[i], X = XYgrid[i,1], Y = XYgrid[i,2], dbh = 0.4, crowncolor = "forestgreen", 
-#'                            stemcolor = "chocolate4", resolution="high", plotmesh=TRUE) 
-#'                            }
+#'              HCB = HCB[i], X = XYgrid[i,1], Y = XYgrid[i,2], dbh = 0.4, 
+#'              crowncolor = "forestgreen",stemcolor = "chocolate4", 
+#'              resolution="high", plotmesh=TRUE) 
+#'              }
 #'                            
 #'# Adding other plot parameters
 #'axes3d(c("x-","x-", "y-","z"), col="gray") # axes
@@ -157,9 +158,10 @@
 #'
 #'for( i in 1:Ntrees){
 #'  LiDARtrees3D(crownshape = crownshape[i], CL = CL[i], CW = CW[i], 
-#'              HCB = HCB[i], X = as.numeric(XYgrid[i,1]), Y = as.numeric(XYgrid[i,2]), dbh = 0.4, crowncolor = "forestgreen", 
-#'                          stemcolor = "chocolate4", resolution="high", plotmesh=TRUE) 
-#'                          }
+#'              HCB = HCB[i], X = as.numeric(XYgrid[i,1]), Y = as.numeric(XYgrid[i,2]), dbh = 0.4, 
+#'              crowncolor = "forestgreen", stemcolor = "chocolate4", 
+#'              resolution="high", plotmesh=TRUE)
+#'              }
 #'                          
 #'# Adding other plot parameters
 #'axes3d(c("x-","x-", "y-","z"), col="gray") # axes
@@ -206,7 +208,8 @@
 #'# Plot stand
 #'for( i in 1:Ntrees){  
 #'  LiDARtrees3D(crownshape = crownshape[i], CL = CL[i], CW = CW[i], 
-#'    HCB = HCB[i], X = as.numeric(XYgrid[i,1]), Y = as.numeric(XYgrid[i,2]), dbh = 0.4, crowncolas.numeric(or = crowncolor[i], 
+#'    HCB = HCB[i], X = as.numeric(XYgrid[i,1]), Y = as.numeric(XYgrid[i,2]), dbh = 0.4, 
+#'    crowncolas.numeric(or = crowncolor[i], 
 #'    stemcolor = "chocolate4", resolution="high", plotmesh=TRUE) 
 #'    }
 #'    
