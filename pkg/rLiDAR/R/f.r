@@ -1,1 +1,0 @@
-f <- function(chm) max(chm)
