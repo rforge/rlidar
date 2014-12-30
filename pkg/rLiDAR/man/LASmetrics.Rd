@@ -7,17 +7,17 @@
 LASmetrics(LASfile,minht,above)
 }
 \arguments{
-\item{LASfile}{A LAS standard data file}
+\item{LASfile}{A LAS standard LiDAR data file}
 
 \item{minht}{Use only returns above specified heightbreak, e.g. 1.30 m. Default is 1.37 m.}
 
 \item{above}{Compute covers metrics using specified heightbreak, e.g. 2.5 m. Default is 2 m.}
 }
 \value{
-Returns LiDAR-derived metrics acoording to McGaughey (2014)
+Returns LiDAR-derived vegetation height and canopy cover metrics (see \emph{cloudmetrics}, in McGaughey,2014)
 }
 \description{
-Compute statistics metrics that describe the LiDAR data set
+Compute statistics metrics that describe the LiDAR dataset
 }
 \examples{
 \dontrun{
@@ -26,7 +26,7 @@ Compute statistics metrics that describe the LiDAR data set
 # Example 01: Computing LiDAR metrics for a single LAS file
 
 # Importing the LAS data file
-LASfile <- system.file("extdata", "LASexample.las", package="rLiDAR")
+LASfile <- system.file("extdata", "LASexample1.las", package="rLiDAR")
 
 # Set the minht and above parameters
 minht<-1.37 # meters or feet
@@ -39,7 +39,7 @@ LiDARmetrics<-LASmetrics(LASfile,minht,above)
 # Example 02: Computing LiDAR metrics for a multiple LAS files within a folder
 
 # Set a folder where there are LAS files
-folder="C:/lasfolder"
+folder=dirname(LASfile)
 
 # Get a list of LAS file in the folder
 LASlist <- list.files(folder, pattern="*.las", full.names=TRUE)
@@ -48,18 +48,23 @@ LASlist <- list.files(folder, pattern="*.las", full.names=TRUE)
 minht<-1.37 # meters or feet
 above<-2.00  # meters or feet
 
-# Creatin a empty dataframe to store the LiDAR metrics
-LiDARmetrics<-data.frame()
+# Creating a empty dataframe to store the LiDAR metrics
+getMetrics<-data.frame()
 
-# Set a loop to computate the LiDAR metrics
+# Set a loop to compute the LiDAR metrics
 for ( i in LASlist) {
- LiDARmetrics<-rbind(LiDARmetrics,LASmetrics(i,minht,above))}
+ getMetrics<-rbind(getMetrics,LASmetrics(i,minht,above))}
+
+# show the LiDAR metrics
+LiDARmetrics<-cbind(Files=c(basename(LASlist)),getMetrics)
+LiDARmetrics
+
 }
 }
 \author{
 Carlos Alberto Silva
 }
 \seealso{
-McGaughey, R. 2014. FUSION/LDV: Software for lidar data analysis and visualiZation. Version 3.41. Seattle, WA: U.S. Department of Agriculture, Forest Service, Pacific Northwest Research Station. Available at \url{http://http://forsys.cfr.washington.edu/fusion/fusionlatest.html}.
+McGaughey, R. 2014. FUSION/LDV: Software for lidar data analysis and visualization. Version 3.41. Seattle, WA: U.S. Department of Agriculture, Forest Service, Pacific Northwest Research Station. Available at \url{http://http://forsys.cfr.washington.edu/fusion/fusionlatest.html}.
 }
 

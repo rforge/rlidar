@@ -1,16 +1,16 @@
 #'LiDAR-derived Canopy Height Model (CHM) smoothing
 #'
-#'@description LiDAR-derived Canopy Height Model (CHM) smooth using focal statistcs
+#'@description LiDAR-derived Canopy Height Model (CHM) smoothing to eliminate spurious local maxima caused by branches.
 #'
 #'@usage CHMsmoothing(chm, filter, ws, sigma)
 #'
-#'@param chm A LiDAR-derived Canopy Height Model (CHM) raster file.
+#'@param chm A LiDAR-derived Canopy Height Model (CHM) RasterLayer or SpatialGridDataFrame file.
 #'@param ws A single square matrix of weights dimension, e.g. 3,5, 7 and so on. Default is 5.
-#'@param filter mean, median, maximum, minimum or gaussian. Default is "mean".
+#'@param filter A filter type: mean, median, maximum or gaussian. Default is "mean".
 #'@param sigma Used only when filter parameter is equal to gaussian, e.g. 0.5, 1.0, 1.5 and so on. Default is 0.6. 
 #'@return returns A CHM smoothed raster.
 #'@author Carlos Alberto Silva. 
-#'@seealso \code{\link{focal}} in the \code{raster} package.
+#'@seealso \code{\link[raster]{focal}} in the \emph{raster} package.
 #'@examples
 #'\dontrun{
 #'
@@ -44,11 +44,9 @@
 #'# Set the filter type
 #'filter<-"mean"
 #'
-#'# Smoothing CHM
-#'sCHM<-CHMsmoothing(chm, filter, ws, sigma=NULL)
+#'# Smoothing and Plotting LiDAR-derived CHM 
+#'sCHM<-CHMsmoothing(chm, filter, ws)
 #'
-#'# Plotting CHM smoothed
-#'plot(sCHM, main=paste(filter,"filter and window size", paste0(ws,"x",ws)))
 #'}
 #'
 #'@importFrom raster raster focal
@@ -59,6 +57,10 @@ CHMsmoothing<-function(chm, filter="mean", ws=5, sigma=0.6) {
       chmInput<-raster(chm)
       } else {chmInput<-chm
   }
+  
+  if (filter!="mean" & filter!="median" & filter!="maximum" & filter!="gaussian") {stop("The filter parameter is invalid. Please, use one of this filter types: 'mean','median','maximum','minimum',gaussian'")}
+  if (class(ws)!="numeric") {stop("The ws parameter is invalid. It is not a numeric input")}
+  if (class(sigma)!="numeric") {stop("The sigma parameter is invalid. It is not a numeric input")}
   
   if (filter == "mean") {
     wf<-matrix(c(rep(1,ws*ws)),nrow=ws,ncol=ws)
@@ -71,10 +73,6 @@ CHMsmoothing<-function(chm, filter="mean", ws=5, sigma=0.6) {
   if (filter == "maximum") {
     wf<-matrix(c(rep(1,ws*ws)),nrow=ws,ncol=ws)
     chmR <- focal(chmInput, w=wf, fun=max)
-  }
-  if (filter == "minimum") {
-    wf<-matrix(c(rep(1,ws*ws)),nrow=ws,ncol=ws)
-    chmR <- focal(chmInput, w=wf, fun=min)
   }
   
   if (filter =="gaussian") {
@@ -89,7 +87,12 @@ CHMsmoothing<-function(chm, filter="mean", ws=5, sigma=0.6) {
       m / sum(m)
     }
     gf=fgauss(sigma)
+   
     chmR <- focal(chmInput, w=gf)
   }
+  plot(chmR, main=paste("LiDAR-derived CHM smoothed \n",
+          "filter:",filter," ws:", paste0(ws,"x",ws)))
+  
   return(chmR)
+  
 }

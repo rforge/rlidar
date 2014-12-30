@@ -4,28 +4,28 @@
 \alias{getVolume}
 \title{LiDAR - getVolume 3D}
 \usage{
-getVolume(xyz,id,alpha,cas)
+getVolume(xyz,id,alpha,plotCAS)
 }
 \arguments{
-\item{xyz}{A 3-column matrix with the x,y and z coordinates of the 3D LiDAR point cloud.}
+\item{xyz}{A 3-column matrix or dataframe with the x,y and z coordinates of the 3D LiDAR point cloud.}
 
 \item{id}{A vector id for the xyz observations.}
 
-\item{alpha}{A single value or vector of values for \if{latex}{\out{\alpha}}\ifelse{html}{\out{&alpha;}}{alpha}. Its range from 0 to 1.}
+\item{alpha}{A single value or vector of values for \eqn{\alpha}. Its range from 0 to 1.}
 
-\item{cas}{Logical, if TRUE (default) plot the \if{latex}{\out{\alpha}}\ifelse{html}{\out{&alpha;}}{alpha}-shape 3D.}
+\item{plotCAS}{Logical, if TRUE (default) plot the \eqn{\alpha}-shape 3D.}
 }
 \value{
-Return dataframe of the LAS data set.
+Return Volume of the 3D \eqn{\alpha}-shape of the LiDAR point cloud.
 }
 \description{
-This function calculates the volume of the 3D \if{latex}{\out{\alpha}}\ifelse{html}{\out{&alpha;}}{alpha}-shape of the LiDAR point cloud.
+This function calculates the volume of the 3D \eqn{\alpha}-shape of the LiDAR point cloud.
 }
 \examples{
 \dontrun{
 
 # Importing LAS file:
-LASfile <- system.file("extdata", "LASexample.las", package="rLiDAR")
+LASfile <- system.file("extdata", "LASexample1.las", package="rLiDAR")
 
 # Reading LAS file
 LAS<-readLAS(LASfile,short=TRUE)
@@ -42,22 +42,20 @@ id<-as.factor(clLAS$cluster)
 # set the alpha
 alpha<-0.25
 
-# set the cas parameter
-cas=TRUE
+# set the plotCAS parameter
+plotCAS=TRUE
 
 # get the volume
-volume<-getVolume(xyz=xyz,id=id,alpha=alpha,cas=cas)
-head(volume)
+volume<-getVolume(xyz=xyz,id=id,alpha=alpha,plotCAS=plotCAS)
 
 # Adding other plot parameters
 aspect3d(1,1,0.5)
 axes3d(c("x-","x-", "y-","z"), col="gray") # axes
 title3d(xlab = "X Coord", ylab = " Y Coord", zlab = "Height", col="red") # title
-planes3d(a=0,b=0,c=-1,d=0.0001,color="gray",alpha=1) # set a terrain plane
-
+planes3d(0,0,-1,0.001,col="red",alpha=0.7)
 }
 }
 \author{
-Carlos Alberto Silva. Uses code by Beatriz Pateiro-Lopez (\code{alphashape3d} package,see \code{\link{volume_ashape3d}})
+Carlos Alberto Silva. Uses code by Beatriz Pateiro-Lopez (\emph{alphashape3d} package,see \code{\link[alphashape3d]{volume_ashape3d}})
 }
 

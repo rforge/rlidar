@@ -1,24 +1,24 @@
-#'LiDAR individual tree canopy area 
+#'LiDAR-derived individual tree canopy area 
 #'
 #'@description Compute and export individual tree canopy area detected on the LiDAR-derived Canopy Height Model (CHM) 
 #'
 #'@usage forestCAS(chm,loc,maxcrown,exclusion)
 #'
-#'@param chm A LiDAR-derived Canopy Height Model (CHM) raster.
-#'@param loc A 3-column matrix with the x,y coordinates and heights of the individual tree.
+#'@param chm A LiDAR-derived Canopy Height Model (CHM) RasterLayer or SpatialGridDataFrame file.
+#'@param loc A 3-column matrix or dataframe with the x,y coordinates and heights of the individual trees.
 #'@param maxcrown A single value of the maximum individual tree crown radius expected. Default 10.0 m.
 #'@param exclusion A single value from 0 to 1 that represent the \out{\%} of pixel exclusion. e.g. 0.5: It will exclude all the pixels for a single tree that has height value less 50\out{\%} of the maximum height from the same tree. Default is 0.3. 
-#'@return returns A list that contains the individual tree canopy boundary polygons and the 3-column matrix with the x,y coordinates, heights and the canopy area (meter square).  
+#'@return returns A list that contains the individual tree canopy boundary polygons and the 3-column matrix with the x,y coordinates, heights and the canopy area (square meter).  
 #'@author Carlos Alberto Silva
 #'@examples
 #'\dontrun{
 #'
-#'# Importing the LiDAR-derived CHM raster file
+#'# Importing the LiDAR-derived CHM file
 #'data(chm) # or set a CHM. e.g. chm<-raster("CHM_stand.asc") 
 #'
 #'# Set the loc parameter
-#'sCHM<-CHMsmoothing(chm, filter="mean", ws=5, sigma=NULL) # smoothing CHM
-#'loc<-singleTreeCHM(sCHM, fws=5,htd=8) # or import a tree list
+#'sCHM<-CHMsmoothing(chm, filter="mean", ws=5) # smoothing CHM
+#'loc<-singleTreeCHM(sCHM, fws=5,minht=8) # or import a tree list
 #'
 #'# Set the maxcrown parameter
 #'maxcrown=10.0 
@@ -49,7 +49,14 @@
 #'@export
 forestCAS<-function(chm,loc,maxcrown,exclusion) {
 
-  chm<-as(chm, "SpatialGridDataFrame")
+  if (class(chm)!="RasterLayer" & class(chm)!="SpatialGridDataFrame") {stop("The chm is invalid. It must to be a RasterLayer or SpatialGridDataFrame'")}
+  if (ncol(loc)!=3) {stop("The input loc is invalid. It must to be 3-column matrix or dataframe with the x,y coordinates and heights of the individual trees")}
+  if (class(maxcrown)!="numeric") {stop("The maxcrown parameter is invalid. It is not a numeric input")}
+  if (class(exclusion)!="numeric") {stop("The exclusion parameter is invalid. It is not a numeric input")}
+  if (exclusion >=1) {stop("The exclusion parameter is invalid. It must to be less than 1numeric input")}
+
+  if (class(chm)=="RasterLayer"){ chm<-as(chm, "SpatialGridDataFrame")}
+    
   Hthreshold<-min(loc[,3])*exclusion
   polys<-list() 
   width<-numeric()  

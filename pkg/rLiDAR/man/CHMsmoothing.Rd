@@ -7,9 +7,9 @@
 CHMsmoothing(chm, filter, ws, sigma)
 }
 \arguments{
-\item{chm}{A LiDAR-derived Canopy Height Model (CHM) raster file.}
+\item{chm}{A LiDAR-derived Canopy Height Model (CHM) RasterLayer or SpatialGridDataFrame file.}
 
-\item{filter}{mean, median, maximum, minimum or gaussian. Default is "mean".}
+\item{filter}{A filter type: mean, median, maximum or gaussian. Default is "mean".}
 
 \item{ws}{A single square matrix of weights dimension, e.g. 3,5, 7 and so on. Default is 5.}
 
@@ -19,7 +19,7 @@ CHMsmoothing(chm, filter, ws, sigma)
 returns A CHM smoothed raster.
 }
 \description{
-LiDAR-derived Canopy Height Model (CHM) smooth using focal statistcs
+LiDAR-derived Canopy Height Model (CHM) smoothing to eliminate spurious local maxima caused by branches.
 }
 \examples{
 \dontrun{
@@ -54,17 +54,15 @@ ws<-5 # dimention 5x5
 # Set the filter type
 filter<-"mean"
 
-# Smoothing CHM
-sCHM<-CHMsmoothing(chm, filter, ws, sigma=NULL)
+# Smoothing and Plotting LiDAR-derived CHM
+sCHM<-CHMsmoothing(chm, filter, ws)
 
-# Plotting CHM smoothed
-plot(sCHM, main=paste(filter,"filter and window size", paste0(ws,"x",ws)))
 }
 }
 \author{
 Carlos Alberto Silva.
 }
 \seealso{
-\code{\link{focal}} in the \code{raster} package.
+\code{\link[raster]{focal}} in the \emph{raster} package.
 }
 

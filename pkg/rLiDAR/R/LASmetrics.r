@@ -1,15 +1,15 @@
 #'LiDAR metrics computation
 #'
-#'@description Compute statistics metrics that describe the LiDAR data set
+#'@description Compute statistics metrics that describe the LiDAR dataset
 #'
 #'@usage LASmetrics(LASfile,minht,above)
 #'
-#'@param LASfile A LAS standard data file
+#'@param LASfile A LAS standard LiDAR data file
 #'@param minht Use only returns above specified heightbreak, e.g. 1.30 m. Default is 1.37 m.
 #'@param above Compute covers metrics using specified heightbreak, e.g. 2.5 m. Default is 2 m.
-#'@return Returns LiDAR-derived metrics acoording to McGaughey (2014)
+#'@return Returns LiDAR-derived vegetation height and canopy cover metrics (see \emph{cloudmetrics}, in McGaughey,2014)
 #'@author Carlos Alberto Silva
-#'@seealso McGaughey, R. 2014. FUSION/LDV: Software for lidar data analysis and visualiZation. Version 3.41. Seattle, WA: U.S. Department of Agriculture, Forest Service, Pacific Northwest Research Station. Available at \url{http://http://forsys.cfr.washington.edu/fusion/fusionlatest.html}.
+#'@seealso McGaughey, R. 2014. FUSION/LDV: Software for lidar data analysis and visualization. Version 3.41. Seattle, WA: U.S. Department of Agriculture, Forest Service, Pacific Northwest Research Station. Available at \url{http://http://forsys.cfr.washington.edu/fusion/fusionlatest.html}.
 #'@examples
 #'\dontrun{
 #'
@@ -17,7 +17,7 @@
 #'# Example 01: Computing LiDAR metrics for a single LAS file
 #'
 #'# Importing the LAS data file
-#'LASfile <- system.file("extdata", "LASexample.las", package="rLiDAR")
+#'LASfile <- system.file("extdata", "LASexample1.las", package="rLiDAR")
 #'
 #'# Set the minht and above parameters
 #'minht<-1.37 # meters or feet
@@ -30,7 +30,7 @@
 #'# Example 02: Computing LiDAR metrics for a multiple LAS files within a folder
 #'
 #'# Set a folder where there are LAS files
-#'folder="C:/lasfolder"
+#'folder=dirname(LASfile)
 #'
 #'# Get a list of LAS file in the folder
 #'LASlist <- list.files(folder, pattern="*.las", full.names=TRUE)
@@ -39,12 +39,17 @@
 #'minht<-1.37 # meters or feet
 #'above<-2.00  # meters or feet
 #'
-#'# Creatin a empty dataframe to store the LiDAR metrics
-#'LiDARmetrics<-data.frame()
+#'# Creating a empty dataframe to store the LiDAR metrics
+#'getMetrics<-data.frame()
 #'
-#'# Set a loop to computate the LiDAR metrics
+#'# Set a loop to compute the LiDAR metrics
 #'for ( i in LASlist) {
-#'  LiDARmetrics<-rbind(LiDARmetrics,LASmetrics(i,minht,above))}
+#'  getMetrics<-rbind(getMetrics,LASmetrics(i,minht,above))}
+#'
+#'# show the LiDAR metrics
+#'LiDARmetrics<-cbind(Files=c(basename(LASlist)),getMetrics)
+#'LiDARmetrics
+#'
 #'}
 #'
 #'@importFrom moments kurtosis skewness
@@ -52,7 +57,14 @@
 #'@export
 LASmetrics<-function(LASfile,minht=1.37,above=2) {
 
+  if (class(minht)!="numeric") {stop("The minht parameter is invalid. It is not a numeric input")}
+  if (class(above)!="numeric") {stop("The above parameter is invalid. It is not a numeric input")}
+  
   LASfile<-readLAS(LASfile, short=T)
+  
+  MaxZ<-max(LASfile[,"Z"])
+  
+  if (minht >= MaxZ) {stop(paste0("The minht parameter is invalid. It must to be less than ",MaxZ))}
   
   allreturn<-nrow(LASfile)
   allreturn_minht<-subset(LASfile,LASfile[,"Z"] > minht)
@@ -176,6 +188,7 @@ LASmetrics<-function(LASfile,minht=1.37,above=2) {
                        paste("(All returns above",above,"/ Total first returns)*100"),paste("First returns above",above),paste("All returns above",above),"Percentage first returns above mean",
                        "Percentage first returns above mode","Percentage.all.returns.above.mean","Percentage all returns above mode","(All returns above mean / Total first returns)*100",
                        "(All returns above mode / Total first returns)* 100","First returns above mean","First returns above mode","All returns above mean","All returns above mode")
+  rownames(metrics)<-NULL
   return(metrics)
 }
 

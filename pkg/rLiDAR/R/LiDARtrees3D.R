@@ -1,11 +1,11 @@
 #'LiDAR 3D trees stand visualization
 #'
-#'@description Draws a 3D scatterplot for LiDAR trees.   
+#'@description Draws a 3D scatterplot for indidivual trees detected from LiDAR data.   
 #'
 #'@usage LiDARtrees3D(crownshape = c("cone", "ellipsoid", "halfellipsoid",
 #'                 "paraboloid", "cylinder"), CL = 4, CW = 8, HCB = 10, 
 #'                   X = 0, Y = 0, dbh = 0.3, crowncolor = "forestgreen", 
-#'                  stemcolor = "chocolate4", resolution="high", shape=TRUE) 
+#'                  stemcolor = "chocolate4", resolution="high", plotmesh=TRUE) 
 #'
 #'@param crownshape crown shape: "cone", "ellipsoid","halfellipsoid", "paraboloid" or "cylinder". Default is "halfellipsoid".
 #'@param CL crown length
@@ -17,9 +17,9 @@
 #'@param crowncolor crown color
 #'@param stemcolor stem color
 #'@param resolution crown resolution: "low", "median" and "high"
-#'@param shape Logical, if TRUE (default) returns a tree crown mesh model, and if FALSE returns a tree crown line mode.  
-#'@return returns 3D plot with single LiDAR trees 
-#'@author Carlos Alberto Silva and Remko Duursma. Uses code by Remko Duursma (\code{Maeswrap} package,see \code{\link{Plotstand}}).
+#'@param plotmesh Logical, if TRUE (default) returns a tree crown mesh model, and if FALSE returns a tree crown line mode.  
+#'@return returns 3D scatterplot of the individual trees from LiDAR.   
+#'@author Carlos Alberto Silva and Remko Duursma. Uses code by Remko Duursma (\emph{Maeswrap} package,see \code{\link[Maeswrap]{Plotstand}}).
 #'@references \url{http://maespa.github.io/}
 #'@examples
 #'\dontrun{
@@ -27,35 +27,41 @@
 #'#---------------------------------------------------------#
 #'# EXAMPLE 01: Plotting single trees
 #'
-#'# shape cone crown 
+#'# cone crown shape
 #'open3d() 
 #'LiDARtrees3D(crownshape = "cone", CL = 10, CW =7, 
 #'            HCB = 5, X =0, Y = 0, dbh = 0.4, crowncolor = "forestgreen", 
-#'                        stemcolor = "chocolate4", resolution="high", shape=T) 
+#'                        stemcolor = "chocolate4", resolution="high", plotmesh=TRUE) 
 #'                        
 #'# elliptois crown shape 
 #'open3d()
 #'LiDARtrees3D(crownshape = "ellipsoid", CL = 10, CW =7, 
 #'            HCB = 5, X =0, Y = 0, dbh = 0.4, crowncolor = "forestgreen", 
-#'                        stemcolor = "chocolate4", resolution="high", shape=T) 
+#'                        stemcolor = "chocolate4", resolution="high", plotmesh=TRUE) 
 #'                        
 #'# halfellipsoid crown shape 
 #'open3d()
 #'LiDARtrees3D(crownshape = "halfellipsoid", CL = 10, CW =7, 
 #'            HCB = 5, X =0, Y = 0, dbh = 0.4, crowncolor = "forestgreen", 
-#'                        stemcolor = "chocolate4", resolution="high", shape=T) 
+#'                        stemcolor = "chocolate4", resolution="high", plotmesh=TRUE) 
 #'                        
 #'# paraboloid crown shape 
 #'open3d()
 #'LiDARtrees3D(crownshape = "paraboloid", CL = 10, CW =7, 
 #'            HCB = 5, X =0, Y = 0, dbh = 0.4, crowncolor = "forestgreen", 
-#'                        stemcolor = "chocolate4", resolution="high", shape=T)
+#'                        stemcolor = "chocolate4", resolution="high", plotmesh=TRUE)
 #'
+#'# cylinder crown shape 
+#'open3d()
+#'LiDARtrees3D(crownshape = "cylinder", CL = 10, CW =7, 
+#'            HCB = 5, X =0, Y = 0, dbh = 0.4, crowncolor = "forestgreen", 
+#'                        stemcolor = "chocolate4", resolution="high", plotmesh=TRUE)
+#'                        
 #'# Set the shape=FALSE 
 #'open3d()
 #'LiDARtrees3D(crownshape = "paraboloid", CL = 10, CW =7, 
 #'            HCB = 5, X =0, Y = 0, dbh = 0.4, crowncolor = "forestgreen", 
-#'                        stemcolor = "chocolate4", resolution="high", shape=FALSE)
+#'                        stemcolor = "chocolate4", resolution="high", plotmesh=FALSE)
 #' 
 #'#---------------------------------------------------------#                                           
 #'#EXAMPLE 02: Plotting a virtual forest plantation stand
@@ -89,13 +95,13 @@
 #'for( i in 1:Ntrees){
 #'  LiDARtrees3D(crownshape = "halfellipsoid", CL = CL[i], CW = CW[i], 
 #'              HCB = HCB[i], X = XYgrid[i,1], Y = XYgrid[i,2], dbh = 0.4, crowncolor = "forestgreen", 
-#'                            stemcolor = "chocolate4", resolution="high", shape=T) 
+#'                            stemcolor = "chocolate4", resolution="high", plotmesh=TRUE) 
 #'                            }
 #'                            
 #'# Adding other plot parameters
 #'axes3d(c("x-","x-", "y-","z"), col="gray") # axes
 #'title3d(xlab = "X Coord", ylab = " Y Coord", zlab = "Height", col="red") # title
-#'planes3d(a=0,b=0,c=-1,d=0.0001,color="gray",alpha=1) # set a terrain plane
+#'planes3d(0,0,-1,0.001,col="red",alpha=0.7) # set a terrain plane
 #'
 #'
 #'# Plotting a virtual Pine forest plantation stand using cone tree crown shape
@@ -112,13 +118,13 @@
 #'for( i in 1:Ntrees){
 #'  LiDARtrees3D(crownshape = "cone", CL = CL[i], CW = CW[i], 
 #'              HCB = HCB[i], X = XYgrid[i,1], Y = XYgrid[i,2], dbh = 0.4, crowncolor = "forestgreen", 
-#'                            stemcolor = "chocolate4", resolution="high", shape=T) 
+#'                            stemcolor = "chocolate4", resolution="high", plotmesh=TRUE) 
 #'                            }
 #'                            
 #'# Adding other plot parameters
 #'axes3d(c("x-","x-", "y-","z"), col="gray") # axes
 #'title3d(xlab = "X Coord", ylab = " Y Coord", zlab = "Height", col="red") # title
-#'planes3d(a=0,b=0,c=-1,d=0.0001,color="gray",alpha=1) # set a terrain plane
+#'planes3d(0,0,-1,0.001,col="red",alpha=0.7) # set a terrain plane
 #'
 #'#---------------------------------------------------------#
 #'# EXAMPLE 03: Plotting a virtual natural mixed forest stand
@@ -151,14 +157,14 @@
 #'
 #'for( i in 1:Ntrees){
 #'  LiDARtrees3D(crownshape = crownshape[i], CL = CL[i], CW = CW[i], 
-#'              HCB = HCB[i], X = XYgrid[i,1], Y = XYgrid[i,2], dbh = 0.4, crowncolor = "forestgreen", 
-#'                          stemcolor = "chocolate4", resolution="high", shape=T) 
+#'              HCB = HCB[i], X = as.numeric(XYgrid[i,1]), Y = as.numeric(XYgrid[i,2]), dbh = 0.4, crowncolor = "forestgreen", 
+#'                          stemcolor = "chocolate4", resolution="high", plotmesh=TRUE) 
 #'                          }
 #'                          
 #'# Adding other plot parameters
 #'axes3d(c("x-","x-", "y-","z"), col="gray") # axes
 #'title3d(xlab = "X Coord", ylab = " Y Coord", zlab = "Height", col="red") # title
-#'planes3d(a=0,b=0,c=-1,d=0.0001,color="gray",alpha=1) # set a terrain plane
+#'planes3d(0,0,-1,0.001,col="red",alpha=0.7) # set a terrain plane
 #'
 #'
 #'# 02. Difers trees height on the stand using diferents crown colors
@@ -200,14 +206,14 @@
 #'# Plot stand
 #'for( i in 1:Ntrees){  
 #'  LiDARtrees3D(crownshape = crownshape[i], CL = CL[i], CW = CW[i], 
-#'    HCB = HCB[i], X = XYgrid[i,1], Y = XYgrid[i,2], dbh = 0.4, crowncolor = crowncolor[i], 
-#'    stemcolor = "chocolate4", resolution="high", shape=T) 
+#'    HCB = HCB[i], X = as.numeric(XYgrid[i,1]), Y = as.numeric(XYgrid[i,2]), dbh = 0.4, crowncolas.numeric(or = crowncolor[i], 
+#'    stemcolor = "chocolate4", resolution="high", plotmesh=TRUE) 
 #'    }
 #'    
 #'# Adding other plot parameters
 #'axes3d(c("x-","x-", "y-","z"), col="gray") # axes
 #'title3d(xlab = "X Coord", ylab = " Y Coord", zlab = "Height", col="red") # title
-#'planes3d(a=0,b=0,c=-1,d=0.0001,color="gray",alpha=1) # set a terrain plane
+#'planes3d(0,0,-1,0.001,col="red",alpha=0.7) # set a terrain plane
 #'}
 #'
 #'@export
@@ -216,15 +222,23 @@
 LiDARtrees3D<-function (crownshape = c("cone", "ellipsoid",  
                                       "halfellipsoid", "paraboloid", "cylinder"), CL = 4, CW = 8, 
                        HCB = 10, X = 0, Y = 0, dbh = 0.3, crowncolor = "forestgreen", 
-                       stemcolor = "chocolate4", resolution="high",shape=TRUE) 
+                       stemcolor = "chocolate4", resolution="high",plotmesh=TRUE) 
 {
   
+  if (crownshape!="cone"& crownshape!="ellipsoid"&crownshape!="halfellipsoid"&crownshape!="paraboloid"&crownshape!="cylinder") {stop("The crownshape parameter is invalid. Please, use one of this crownshape types: 'cone','ellipsoid','halfellipsoid','paraboloid','cylinder'")}
+  if (class(HCB)!="numeric") {stop("The HCB parameter is invalid. It is not a numeric parameter")}
+  if (class(X)!="numeric") {stop("The X parameter is invalid. It is not a numeric parameter")}
+  if (class(Y)!="numeric") {stop("The Y parameter is invalid. It is not a numeric parameter")}
+  if (class(dbh)!="numeric") {stop("The HCB parameter is invalid. It is not a numeric parameter")}
+  if (resolution!="high" & resolution!="median" & resolution!="low") {stop("The resolution parameter is invalid. It must to be 'high', 'median' or 'low'")}
+  if (class(plotmesh)!="logical") {stop("The shape parameter is invalid. It must to be a TRUE or FALSE logical statement")}
+
   
   if (resolution=="low"){nz<-15;nalpha<-15}
   if (resolution=="median"){nz<-25;nalpha<-25}
   if (resolution=="high"){nz<-40;nalpha<-40}
   
-  if ( shape==TRUE) {
+  if ( plotmesh==TRUE) {
     
   shape <- match.arg(crownshape)
 
@@ -251,91 +265,3 @@ LiDARtrees3D<-function (crownshape = c("cone", "ellipsoid",
   
 }
 
-coord3dshape <- function(crownshape=c("cone","ellipsoid","halfellipsoid","paraboloid","cylinder"),
-                         nz=5, nalpha=5, CL=1, CW=1, x0=0, y0=0, z0=0
-){
-
-  crownshape <- match.arg(crownshape)
-  
-  z <- rep(seq(0,1,length=nz),each=nalpha)
-  angs <- rep(seq(0,2*pi, length=nalpha),nz)
-
-  if(crownshape == "cone")distfun <- (1-z)
-  if(crownshape == "ellipsoid")distfun <- sqrt(1 - ((z-1/2)^2)/((1/2)^2))
-  if(crownshape == "halfellipsoid")distfun <- sqrt(1 - z**2)
-  if(crownshape == "paraboloid")distfun <- sqrt(1-z)
-  if(crownshape == "cylinder")distfun <- 1
-  
-  
-  r <- CW/2
-  x <- x0 + r*distfun*cos(angs)
-  y <- y0 + r*distfun*sin(angs)
-  z <- z0 + z*CL
-  
-  keep <- !duplicated(cbind(x,y,z))
-  x <- x[keep]
-  y <- y[keep]
-  z <- z[keep]
-  return(matrix(cbind(x,y,z),ncol=3))
-}
-
-TreesModel<- function(crownshape=c("cone","ellipsoid","halfellipsoid","paraboloid","cylinder"),
-                                   nz=5, nalpha=5, CL=5, CW=5, HCB=10, x0=0, y0=0, z0=0, dbh = 0.3, crowncolor = "forestgreen", 
-                                      stemcolor = "chocolate4"
-){
-  
- crownshape <- match.arg(crownshape)
-  
-  z <- rep(seq(0,1,length=nz),each=nalpha)
-  angs <- rep(seq(0,2*pi, length=nalpha),nz)
-
-  if(crownshape == "cone")distfun <- (1-z)
-  if(crownshape == "ellipsoid")distfun <- sqrt(1 - ((z-1/2)^2)/((1/2)^2))
-  if(crownshape == "halfellipsoid")distfun <- sqrt(1 - z**2)
-  if(crownshape == "paraboloid")distfun <- sqrt(1-z)
-  if(crownshape == "cylinder")distfun <- 1
-  H <- HCB + CL
-  r <- CW/2
-  x <- x0 + r*distfun*cos(angs)
-  y <- y0 + r*distfun*sin(angs)
-  z <- z0 + HCB + z*CL
-  
-  keep <- !duplicated(cbind(x,y,z))
-  x <- x[keep]
-  y <- y[keep]
-  z <- z[keep]
-  klj=matrix(cbind(x,y,z),ncol=3)
-  
-  mMatrix<-matrix(,ncol=3)[-1,]
-  
-  for ( i in 1:nrow(klj)){
-    ln=i+nz
-    
-    if ( ln >= nrow(klj)) { ln2=nrow(klj) } else { ln2= ln}
-    
-    mMatrix<-rbind(mMatrix,rbind(klj[i,],klj[ln2,])) }
-  
-  
-  kljzbase=subset(klj,klj[,3]==z[2])
-  kljzbaseNew<-matrix(,ncol=3)[-1,]
-  
-  for ( i in 1:nrow(kljzbase)){
-    kljzbaseNew<-rbind(kljzbaseNew,rbind(kljzbase[i,],c(x0,y0,HCB)))
-    
-  }
-  
-  newList<-rbind(kljzbaseNew,mMatrix,klj)
-  plot3d(newList, type="l", col=crowncolor, add=T)
-  m2 <- coord3dshape("cone", CW = dbh, CL = H, z0 = z0, x0 = x0, 
-                     y0 = y0, nz = 50, nalpha = 50)
-  interpol(m2, col = stemcolor)
-  
-}
-
-
-interpol<- function(input,col) {
-  surf.3d <- t(convhulln(input,options = "QJ")) 
-  rgl.triangles(input[surf.3d,1],input[surf.3d,2],input[surf.3d,3],col=col,alpha = c(1.0),
-                lit = TRUE,ambient = "black",specular = "white",emission = "black",shininess = 50.0,
-                smooth = TRUE, texture = NULL,front = "fill",back ="fill",fog = F) 
-}

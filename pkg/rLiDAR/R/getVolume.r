@@ -1,20 +1,20 @@
 #'LiDAR - getVolume 3D
 #'
-#'@description This function calculates the volume of the 3D \if{latex}{\out{\alpha}}\ifelse{html}{\out{&alpha;}}{alpha}-shape of the LiDAR point cloud.
+#'@description This function calculates the volume of the 3D \eqn{\alpha}-shape of the LiDAR point cloud.
 #'
-#'@usage getVolume(xyz,id,alpha,cas)
+#'@usage getVolume(xyz,id,alpha,plotCAS)
 #'
-#'@param xyz A 3-column matrix with the x,y and z coordinates of the 3D LiDAR point cloud.
+#'@param xyz A 3-column matrix or dataframe with the x,y and z coordinates of the 3D LiDAR point cloud.
 #'@param id A vector id for the xyz observations. 
-#'@param alpha A single value or vector of values for \if{latex}{\out{\alpha}}\ifelse{html}{\out{&alpha;}}{alpha}. Its range from 0 to 1.
-#'@param cas Logical, if TRUE (default) plot the \if{latex}{\out{\alpha}}\ifelse{html}{\out{&alpha;}}{alpha}-shape 3D.
-#'@return Return dataframe of the LAS data set.
-#'@author Carlos Alberto Silva. Uses code by Beatriz Pateiro-Lopez (\code{alphashape3d} package,see \code{\link{volume_ashape3d}})
+#'@param alpha A single value or vector of values for \eqn{\alpha}. Its range from 0 to 1.
+#'@param plotCAS Logical, if TRUE (default) plot the \eqn{\alpha}-shape 3D.
+#'@return Return Volume of the 3D \eqn{\alpha}-shape of the LiDAR point cloud.
+#'@author Carlos Alberto Silva. Uses code by Beatriz Pateiro-Lopez (\emph{alphashape3d} package,see \code{\link[alphashape3d]{volume_ashape3d}})
 #'@examples
 #'\dontrun{
 #'
 #'# Importing LAS file:
-#'LASfile <- system.file("extdata", "LASexample.las", package="rLiDAR")
+#'LASfile <- system.file("extdata", "LASexample1.las", package="rLiDAR")
 #'
 #'# Reading LAS file
 #'LAS<-readLAS(LASfile,short=TRUE)
@@ -31,28 +31,28 @@
 #'# set the alpha
 #'alpha<-0.25
 #'
-#'# set the cas parameter
-#'cas=TRUE
+#'# set the plotCAS parameter
+#'plotCAS=TRUE
 #'
 #'# get the volume 
-#'volume<-getVolume(xyz=xyz,id=id,alpha=alpha,cas=cas)
-#'head(volume)
+#'volume<-getVolume(xyz=xyz,id=id,alpha=alpha,plotCAS=plotCAS)
 #'
 #'# Adding other plot parameters
 #'aspect3d(1,1,0.5)
 #'axes3d(c("x-","x-", "y-","z"), col="gray") # axes
 #'title3d(xlab = "X Coord", ylab = " Y Coord", zlab = "Height", col="red") # title
-#'planes3d(a=0,b=0,c=-1,d=0.0001,color="gray",alpha=1) # set a terrain plane
-#'
+#'planes3d(0,0,-1,0.001,col="red",alpha=0.7)
 #'}
-#'@import matlab
 #'@importFrom alphashape3d ashape3d volume_ashape3d
 #'@importFrom rgl bg3d plot3d 
 #'@export
-getVolume<-function(xyz,id,alpha,cas) {
+getVolume<-function(xyz,id,alpha,plotCAS) {
 
-if (nrow(xyz)!=length(id)) {stop("The xyz and id do not have the same length")}
-if (class(cas)!="logical") {stop("The cas parameter is invalid. Please, use logical TRUE or FALSE")}
+  if (ncol(xyz)!=3) {stop("The input xyz must to be a 3-column matrix or dataframe with the x,y and z coordinates of the 3D LiDAR point cloud")}
+  if (nrow(xyz)!=length(id)) {stop("The xyz and id do not have the same length")}
+  if ((alpha>=0 & alpha<=1) !="TRUE") {stop("The alpha parameter is invalid. Please, use a value from 0 to 1")}
+  if (class(plotCAS)!="logical") {stop("The plotCAS parameter is invalid. It must to be a TRUE or FALSE logical statement")}
+  
 
   xrange1<-range(xyz[,1])
   yrange2<-range(xyz[,2])
@@ -94,7 +94,7 @@ if (class(cas)!="logical") {stop("The cas parameter is invalid. Please, use logi
     borig<-b 
     borig$x<-borig$x*repmat(t(as.matrix(apply(all_scaled1,2,max))),len[i],1)
     borig$x<-borig$x+repmat(t(as.matrix(apply(allc,2,min))),len[i],1)
-    if (cas==TRUE) {
+    if (plotCAS==TRUE) {
       bg3d("white")
       plot(borig,indexAlpha = "all",clear=FALSE,col=rep(i,N),transparency = 1)}
     v[i]=volume_ashape3d(b)
@@ -106,8 +106,11 @@ if (class(cas)!="logical") {stop("The cas parameter is invalid. Please, use logi
     volume3d.trees[i]<-(volume_final[i]) 
   }
   volume3d.trees<-cbind(id=as.numeric(levels(factor(id))),V=round(volume3d.trees, digits=2))
-  colnames(volume3d.trees)<-c("id","V")
+  colnames(volume3d.trees)<-c("id","Volume")
+ 
+  print(volume3d.trees)
   
- return(volume3d.trees)
+  return(volume3d.trees)
+ 
  }
 

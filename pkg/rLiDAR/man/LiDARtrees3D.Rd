@@ -7,7 +7,7 @@
 LiDARtrees3D(crownshape = c("cone", "ellipsoid", "halfellipsoid",
                 "paraboloid", "cylinder"), CL = 4, CW = 8, HCB = 10,
                   X = 0, Y = 0, dbh = 0.3, crowncolor = "forestgreen",
-                 stemcolor = "chocolate4", resolution="high", shape=TRUE)
+                 stemcolor = "chocolate4", resolution="high", plotmesh=TRUE)
 }
 \arguments{
 \item{crownshape}{crown shape: "cone", "ellipsoid","halfellipsoid", "paraboloid" or "cylinder". Default is "halfellipsoid".}
@@ -30,13 +30,13 @@ LiDARtrees3D(crownshape = c("cone", "ellipsoid", "halfellipsoid",
 
 \item{resolution}{crown resolution: "low", "median" and "high"}
 
-\item{shape}{Logical, if TRUE (default) returns a tree crown mesh model, and if FALSE returns a tree crown line mode.}
+\item{plotmesh}{Logical, if TRUE (default) returns a tree crown mesh model, and if FALSE returns a tree crown line mode.}
 }
 \value{
-returns 3D plot with single LiDAR trees
+returns 3D scatterplot of the individual trees from LiDAR.
 }
 \description{
-Draws a 3D scatterplot for LiDAR trees.
+Draws a 3D scatterplot for indidivual trees detected from LiDAR data.
 }
 \examples{
 \dontrun{
@@ -44,35 +44,41 @@ Draws a 3D scatterplot for LiDAR trees.
 #---------------------------------------------------------#
 # EXAMPLE 01: Plotting single trees
 
-# shape cone crown
+# cone crown shape
 open3d()
 LiDARtrees3D(crownshape = "cone", CL = 10, CW =7,
            HCB = 5, X =0, Y = 0, dbh = 0.4, crowncolor = "forestgreen",
-                       stemcolor = "chocolate4", resolution="high", shape=T)
+                       stemcolor = "chocolate4", resolution="high", plotmesh=TRUE)
 
 # elliptois crown shape
 open3d()
 LiDARtrees3D(crownshape = "ellipsoid", CL = 10, CW =7,
            HCB = 5, X =0, Y = 0, dbh = 0.4, crowncolor = "forestgreen",
-                       stemcolor = "chocolate4", resolution="high", shape=T)
+                       stemcolor = "chocolate4", resolution="high", plotmesh=TRUE)
 
 # halfellipsoid crown shape
 open3d()
 LiDARtrees3D(crownshape = "halfellipsoid", CL = 10, CW =7,
            HCB = 5, X =0, Y = 0, dbh = 0.4, crowncolor = "forestgreen",
-                       stemcolor = "chocolate4", resolution="high", shape=T)
+                       stemcolor = "chocolate4", resolution="high", plotmesh=TRUE)
 
 # paraboloid crown shape
 open3d()
 LiDARtrees3D(crownshape = "paraboloid", CL = 10, CW =7,
            HCB = 5, X =0, Y = 0, dbh = 0.4, crowncolor = "forestgreen",
-                       stemcolor = "chocolate4", resolution="high", shape=T)
+                       stemcolor = "chocolate4", resolution="high", plotmesh=TRUE)
+
+# cylinder crown shape
+open3d()
+LiDARtrees3D(crownshape = "cylinder", CL = 10, CW =7,
+           HCB = 5, X =0, Y = 0, dbh = 0.4, crowncolor = "forestgreen",
+                       stemcolor = "chocolate4", resolution="high", plotmesh=TRUE)
 
 # Set the shape=FALSE
 open3d()
 LiDARtrees3D(crownshape = "paraboloid", CL = 10, CW =7,
            HCB = 5, X =0, Y = 0, dbh = 0.4, crowncolor = "forestgreen",
-                       stemcolor = "chocolate4", resolution="high", shape=FALSE)
+                       stemcolor = "chocolate4", resolution="high", plotmesh=FALSE)
 
 #---------------------------------------------------------#
 #EXAMPLE 02: Plotting a virtual forest plantation stand
@@ -106,13 +112,13 @@ open3d() # open a rgl window
 for( i in 1:Ntrees){
  LiDARtrees3D(crownshape = "halfellipsoid", CL = CL[i], CW = CW[i],
              HCB = HCB[i], X = XYgrid[i,1], Y = XYgrid[i,2], dbh = 0.4, crowncolor = "forestgreen",
-                           stemcolor = "chocolate4", resolution="high", shape=T)
+                           stemcolor = "chocolate4", resolution="high", plotmesh=TRUE)
                            }
 
 # Adding other plot parameters
 axes3d(c("x-","x-", "y-","z"), col="gray") # axes
 title3d(xlab = "X Coord", ylab = " Y Coord", zlab = "Height", col="red") # title
-planes3d(a=0,b=0,c=-1,d=0.0001,color="gray",alpha=1) # set a terrain plane
+planes3d(0,0,-1,0.001,col="red",alpha=0.7) # set a terrain plane
 
 
 # Plotting a virtual Pine forest plantation stand using cone tree crown shape
@@ -129,13 +135,13 @@ open3d() # open a rgl window
 for( i in 1:Ntrees){
  LiDARtrees3D(crownshape = "cone", CL = CL[i], CW = CW[i],
              HCB = HCB[i], X = XYgrid[i,1], Y = XYgrid[i,2], dbh = 0.4, crowncolor = "forestgreen",
-                           stemcolor = "chocolate4", resolution="high", shape=T)
+                           stemcolor = "chocolate4", resolution="high", plotmesh=TRUE)
                            }
 
 # Adding other plot parameters
 axes3d(c("x-","x-", "y-","z"), col="gray") # axes
 title3d(xlab = "X Coord", ylab = " Y Coord", zlab = "Height", col="red") # title
-planes3d(a=0,b=0,c=-1,d=0.0001,color="gray",alpha=1) # set a terrain plane
+planes3d(0,0,-1,0.001,col="red",alpha=0.7) # set a terrain plane
 
 #---------------------------------------------------------#
 # EXAMPLE 03: Plotting a virtual natural mixed forest stand
@@ -168,14 +174,14 @@ open3d() # open a rgl window
 
 for( i in 1:Ntrees){
  LiDARtrees3D(crownshape = crownshape[i], CL = CL[i], CW = CW[i],
-             HCB = HCB[i], X = XYgrid[i,1], Y = XYgrid[i,2], dbh = 0.4, crowncolor = "forestgreen",
-                         stemcolor = "chocolate4", resolution="high", shape=T)
+             HCB = HCB[i], X = as.numeric(XYgrid[i,1]), Y = as.numeric(XYgrid[i,2]), dbh = 0.4, crowncolor = "forestgreen",
+                         stemcolor = "chocolate4", resolution="high", plotmesh=TRUE)
                          }
 
 # Adding other plot parameters
 axes3d(c("x-","x-", "y-","z"), col="gray") # axes
 title3d(xlab = "X Coord", ylab = " Y Coord", zlab = "Height", col="red") # title
-planes3d(a=0,b=0,c=-1,d=0.0001,color="gray",alpha=1) # set a terrain plane
+planes3d(0,0,-1,0.001,col="red",alpha=0.7) # set a terrain plane
 
 
 # 02. Difers trees height on the stand using diferents crown colors
@@ -217,18 +223,18 @@ for (i in 1:Ntrees){
 # Plot stand
 for( i in 1:Ntrees){
  LiDARtrees3D(crownshape = crownshape[i], CL = CL[i], CW = CW[i],
-   HCB = HCB[i], X = XYgrid[i,1], Y = XYgrid[i,2], dbh = 0.4, crowncolor = crowncolor[i],
-   stemcolor = "chocolate4", resolution="high", shape=T)
+   HCB = HCB[i], X = as.numeric(XYgrid[i,1]), Y = as.numeric(XYgrid[i,2]), dbh = 0.4, crowncolas.numeric(or = crowncolor[i],
+   stemcolor = "chocolate4", resolution="high", plotmesh=TRUE)
    }
 
 # Adding other plot parameters
 axes3d(c("x-","x-", "y-","z"), col="gray") # axes
 title3d(xlab = "X Coord", ylab = " Y Coord", zlab = "Height", col="red") # title
-planes3d(a=0,b=0,c=-1,d=0.0001,color="gray",alpha=1) # set a terrain plane
+planes3d(0,0,-1,0.001,col="red",alpha=0.7) # set a terrain plane
 }
 }
 \author{
-Carlos Alberto Silva and Remko Duursma. Uses code by Remko Duursma (\code{Maeswrap} package,see \code{\link{Plotstand}}).
+Carlos Alberto Silva and Remko Duursma. Uses code by Remko Duursma (\emph{Maeswrap} package,see \code{\link[Maeswrap]{Plotstand}}).
 }
 \references{
 \url{http://maespa.github.io/}

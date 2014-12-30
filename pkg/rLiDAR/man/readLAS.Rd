@@ -19,8 +19,10 @@ Read LAS file format. The LAS file is a public file format for the interchange o
 }
 \examples{
 \dontrun{
+
+#-----------------------------------------------------------------------------#
 # Importing LAS file:
-LASfile <- system.file("extdata", "LASexample.las", package="rLiDAR")
+LASfile <- system.file("extdata", "LASexample1.las", package="rLiDAR")
 
 # Reading LAS file
 rLAS<-readLAS(LASfile,short=TRUE)
@@ -28,13 +30,41 @@ rLAS<-readLAS(LASfile,short=TRUE)
 # Summary of the LAS file
 summary(rLAS)
 
+#-----------------------------------------------------------------------------#
+# LAS file visualization:
+# Set a sigle color
+col<-"forestgreen"
+
 # plot 2D
-plot(rLAS[,1],rLAS[,2], xlab="X coord", ylab="Y coord")
+plot(rLAS[,1],rLAS[,2], col=col,xlab="UTM.Easting", ylab="UTM.Northing", main="LAS example file")
 
 # plot 3D
 require(rgl)
-plot3d(rLAS[,1:3], col="forestgreen",xlab="X coord", ylab="Y coord")
+plot3d(rLAS[,1:3], col=col, axes=F,xlab="", ylab="", zlab="")
+axes3d(c("x-", "y-", "z-"))
+title3d(xlab = "UTM.Easting", ylab = "UTM.Northing",zlab = "Height(m)", col="red")
+planes3d(0,0,-1,0.001,col="red",alpha=0.7)
+
+# Set a color by Height
+# color ramp
+myColorRamp <- function(colors, values) {
+v <- (values - min(values))/diff(range(values))
+x <- colorRamp(colors)(v)
+rgb(x[,1], x[,2], x[,3], maxColorValue = 255)
 }
+
+# Color by height
+col <- myColorRamp(c("blue","green","yellow","red"),rLAS[,3])
+
+# plot 2D
+plot(rLAS[,1],rLAS[,2], col=col,xlab="UTM.Easting", ylab="UTM.Northing",main="LAS file")
+
+# plot 3D
+plot3d(rLAS[,1:3], col=col, axes=F,xlab="", ylab="", zlab="")
+axes3d(c("x-", "y-", "z-"))
+title3d(xlab = "UTM.Easting", ylab = "UTM.Northing",zlab = "Height(m)", col="red")
+planes3d(0,0,-1,0.001,col="red",alpha=0.7)
+#'}
 }
 \author{
 Michael Sumner and Carlos Alberto Silva.

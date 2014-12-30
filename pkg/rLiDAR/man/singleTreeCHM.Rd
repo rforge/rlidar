@@ -4,20 +4,20 @@
 \alias{singleTreeCHM}
 \title{Individual tree detection on the LiDAR-derived Canopy Height Model (CHM)}
 \usage{
-singleTreeCHM(chm,fws,htd)
+singleTreeCHM(chm,fws,minht)
 }
 \arguments{
 \item{chm}{A LiDAR-derived Canopy Height Model (CHM) raster  file}
 
 \item{fws}{A single dimension of fixed square window size, e.g. 3, 5, 7 and so on. Default is 5}
 
-\item{htd}{Detection individual tree above specified heightbreak, e.g. 1.37, 2.0, 3.5 m and so on. Default is 1.37 m}
+\item{minht}{Detect individual tree above specified heightbreak, e.g. 1.37, 2.0, 3.5 m and so on. Default is 1.37 m}
 }
 \value{
-returns A 3-column matrix of the individual tree dectection information(x,y,and height)
+returns A 3-column matrix of the location and height for the individual trees dectected
 }
 \description{
-Getting the individual tree location and hieght from the the LiDAR-derived Canopy Height Model (CHM)
+Detect and compute individual individual tree location and height on the LiDAR-derived Canopy Height Model (CHM)
 }
 \examples{
 \dontrun{
@@ -36,10 +36,10 @@ plot(schm)
 fws<-5 # dimention 5x5
 
 # Set the specified heightbreak
-htd<-8.0
+minht<-8.0
 
 # Getting the individual tree detection list
-treeList<-singleTreeCHM(schm, fws, htd)
+treeList<-singleTreeCHM(schm, fws, minht)
 summary(treeList)
 
 # Plotting the individual tree location on the CHM
