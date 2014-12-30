@@ -41,8 +41,9 @@ Draws a 3D scatterplot for indidivual trees detected from LiDAR data.
 \examples{
 \dontrun{
 
-#---------------------------------------------------------#
+#=======================================================================#
 # EXAMPLE 01: Plotting single trees
+#=======================================================================#
 
 # cone crown shape
 open3d()
@@ -80,8 +81,9 @@ LiDARtrees3D(crownshape = "paraboloid", CL = 10, CW =7,
            HCB = 5, X =0, Y = 0, dbh = 0.4, crowncolor = "forestgreen",
                        stemcolor = "chocolate4", resolution="high", plotmesh=FALSE)
 
-#---------------------------------------------------------#
+#=======================================================================#
 #EXAMPLE 02: Plotting a virtual forest plantation stand
+#=======================================================================#
 
 # Set the lenght of the stand
 xlenght<-30 # x lenght
@@ -144,8 +146,9 @@ axes3d(c("x-","x-", "y-","z"), col="gray") # axes
 title3d(xlab = "X Coord", ylab = " Y Coord", zlab = "Height", col="red") # title
 planes3d(0,0,-1,0.001,col="red",alpha=0.7) # set a terrain plane
 
-#---------------------------------------------------------#
+#=======================================================================#
 # EXAMPLE 03: Plotting a virtual natural mixed forest stand
+#=======================================================================#
 
 # 01. Difers trees species on the stand using diferents crown shapes
 

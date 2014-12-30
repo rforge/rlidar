@@ -22,9 +22,9 @@ Compute statistics metrics that describe the LiDAR dataset
 \examples{
 \dontrun{
 
-#---------------------------------------------------------#
+#=======================================================================#
 # Example 01: Computing LiDAR metrics for a single LAS file
-
+#=======================================================================#
 # Importing the LAS data file
 LASfile <- system.file("extdata", "LASexample1.las", package="rLiDAR")
 
@@ -35,9 +35,9 @@ above<-2.00  # meters or feet
 # LiDAR metrics computation
 LiDARmetrics<-LASmetrics(LASfile,minht,above)
 
-#---------------------------------------------------------#
+#=======================================================================#
 # Example 02: Computing LiDAR metrics for a multiple LAS files within a folder
-
+#=======================================================================#
 # Set a folder where there are LAS files
 folder=dirname(LASfile)
 

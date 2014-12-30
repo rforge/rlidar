@@ -23,6 +23,7 @@ Detect and compute individual individual tree location and height on the LiDAR-d
 \dontrun{
 
 # Importing the LiDAR-derived CHM raster file
+
 library(raster)
 data(chm) # or set a CHM. e.g. chm<-raster("CHM_stand.asc")
 

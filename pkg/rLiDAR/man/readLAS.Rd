@@ -20,8 +20,9 @@ Read LAS file format. The LAS file is a public file format for the interchange o
 \examples{
 \dontrun{
 
-#-----------------------------------------------------------------------------#
+#=======================================================================#
 # Importing LAS file:
+#=======================================================================#
 LASfile <- system.file("extdata", "LASexample1.las", package="rLiDAR")
 
 # Reading LAS file
@@ -30,9 +31,12 @@ rLAS<-readLAS(LASfile,short=TRUE)
 # Summary of the LAS file
 summary(rLAS)
 
-#-----------------------------------------------------------------------------#
+#=======================================================================#
 # LAS file visualization:
+#=======================================================================#
+#_______________________________________________________________________#
 # Set a sigle color
+#_______________________________________________________________________#
 col<-"forestgreen"
 
 # plot 2D
@@ -45,7 +49,9 @@ axes3d(c("x-", "y-", "z-"))
 title3d(xlab = "UTM.Easting", ylab = "UTM.Northing",zlab = "Height(m)", col="red")
 planes3d(0,0,-1,0.001,col="red",alpha=0.7)
 
+#_______________________________________________________________________#
 # Set a color by Height
+#_______________________________________________________________________#
 # color ramp
 myColorRamp <- function(colors, values) {
 v <- (values - min(values))/diff(range(values))

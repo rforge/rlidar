@@ -13,6 +13,7 @@
 #'\dontrun{
 #'
 #'# Importing the LiDAR-derived CHM raster file
+#'
 #'library(raster)
 #'data(chm) # or set a CHM. e.g. chm<-raster("CHM_stand.asc") 
 #'
@@ -38,8 +39,8 @@
 #'plot(SpatialPoints(treeList[,1:2]), add=T, col="red") # plotthing tree location
 #'}
 #'
-#'@importFrom raster raster focal xyFromCell projection Which
-#'@importFrom sp SpatialPoints over SpatialGridDataFrame
+#'@importFrom raster raster focal xyFromCell Which projection
+#'@importFrom sp SpatialPoints over SpatialGridDataFrame 
 #'@export
 singleTreeCHM<-function(chm, fws=5,minht=1.37) {
   

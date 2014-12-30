@@ -29,21 +29,26 @@
 #'# Compute individual tree detection canopy area
 #'canopy<-forestCAS(chm,loc,maxcrown,exclusion)
 #'
+#'#=======================================================================#
 #'# Getting the individual tree detection canopy area boundary
+#'#=======================================================================#
 #'boundaryTrees<-canopy[[1]]
 #
 #'# Plotting the individual tree canopy boundary over the CHM
 #'plot(chm) # plotting CHM
 #'plot(boundaryTrees, add=T, border='red', bg='transparent') # adding tree canopy boundary
 #'
+#'#=======================================================================#
 #'# Getting the individual tree detection canopy area list
+#'#=======================================================================#
 #'canopyList<-canopy[[2]]
 #'summary(canopyList)
 #'plot(SpatialPoints(canopyList[,1:2]),col="black", add=T, pch="*") # adding tree location to the plot
 #'} 
 #'@importFrom spatstat disc
-#'@importFrom sp Polygon Polygons SpatialPolygons over SpatialPoints SpatialPolygonsDataFrame SpatialGridDataFrame coordinates gridded
-#'@importFrom deldir tile.list 
+#'@importFrom sp coordinates gridded Polygon Polygons SpatialPolygons over
+#'@importFrom sp over SpatialPoints SpatialPolygonsDataFrame SpatialGridDataFrame
+#'@importFrom deldir tile.list deldir 
 #'@importFrom plyr ddply
 #'@importFrom raster raster rasterToPolygons boundaries
 #'@export

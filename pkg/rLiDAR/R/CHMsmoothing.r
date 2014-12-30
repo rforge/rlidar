@@ -14,12 +14,13 @@
 #'@examples
 #'\dontrun{
 #'
+#'#=======================================================================#
 #'# Importing the LiDAR-derived CHM file
 #'data(chm) # or set a CHM. e.g. chm<-raster("CHM_stand.asc") 
 #'
-#'#------------------------------------------------#
+#'#=======================================================================#
 #'# Example 01: Smoothing CHM using gaussian filter
-#'
+#'#=======================================================================#
 #'# Set the ws:
 #'ws<-3 # dimention 3x3
 #'
@@ -35,9 +36,9 @@
 #'# Plotting CHM smoothed
 #'plot(sCHM, main=paste(filter,"filter and windows size", paste0(ws,"x",ws)))
 #'
-#'#------------------------------------------------# 
+#'#=======================================================================# 
 #'# Example 02: Smoothing CHM using mean filter
-#'
+#'#=======================================================================#
 #'# Set the ws:
 #'ws<-5 # dimention 5x5
 #'
