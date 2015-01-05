@@ -28,7 +28,7 @@ library(raster)
 data(chm) # or set a CHM. e.g. chm<-raster("CHM_stand.asc")
 
 # Smoothing CHM
-schm<-CHMsmoothing(chm, "mean", 5, sigma=NULL)
+schm<-CHMsmoothing(chm, "mean", 5)
 
 # Plotting smothed CHM
 plot(schm)
