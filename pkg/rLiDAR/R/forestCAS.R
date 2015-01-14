@@ -42,7 +42,7 @@
 #'# Retrieving the list of individual trees detected for canopy area calculation
 #'#============================================================================#
 #'canopyList<-canopy[[2]] # list of ground-projected areas of individual tree canopies
-#'summary(canopyList)     #summary 
+#'summary(canopyList)     # summary 
 #'
 #'# Spatial location of the trees
 #'XY<-SpatialPoints(canopyList[,1:2])    # Spatial points
