@@ -1,13 +1,13 @@
-#'Individual tree detection on the LiDAR-derived Canopy Height Model (CHM) 
+#'Individual tree detection whitin the LiDAR-derived Canopy Height Model (CHM) 
 #'
-#'@description Detect and compute individual individual tree location and height on the LiDAR-derived Canopy Height Model (CHM) 
+#'@description Detects and computes the location and height of individual trees within the LiDAR-derived Canopy Height Model (CHM). The algorithm implemented in this function is local maximum with a fixed window size. 
 #'
 #'@usage singleTreeCHM(chm,fws,minht)
 #'
 #'@param chm A LiDAR-derived Canopy Height Model (CHM) raster  file
-#'@param fws A single dimension of fixed square window size, e.g. 3, 5, 7 and so on. Default is 5 
-#'@param minht Detect individual tree above specified heightbreak, e.g. 1.37, 2.0, 3.5 m and so on. Default is 1.37 m
-#'@return returns A 3-column matrix of the location and height for the individual trees dectected
+#'@param fws A single dimension (in raster grid cell units) of fixed square window size, e.g. 3, 5, 7 and so on. Default is 5 
+#'@param minht Detect individual trees above specified height break, e.g. 1.37, 2.0, 3.5 m and so on. Default is 1.37 m.
+#'@return Returns a 3-column matrix of the tree number, location, and height for each individual trees detected.
 #'@author Carlos Alberto Silva
 #'@examples
 #'\dontrun{
@@ -23,10 +23,10 @@
 #'# Plotting smothed CHM
 #'plot(schm) 
 #'
-#'# Set the fws:
+#'# Setting the fws:
 #'fws<-5 # dimention 5x5
 #'
-#'# Set the specified heightbreak
+#'# Setting the specified height above ground for detectionbreak
 #'minht<-8.0
 #'
 #'# Getting the individual tree detection list
@@ -34,8 +34,7 @@
 #'summary(treeList)
 #'
 #'# Plotting the individual tree location on the CHM
-#'library(sp)
-#'plot(chm) # plotting CHM
+#'plot(chm, main="LiDAR-derived CHM") 
 #'plot(SpatialPoints(treeList[,1:2]), add=T, col="red") # plotthing tree location
 #'}
 #'

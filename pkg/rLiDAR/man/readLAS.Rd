@@ -9,13 +9,13 @@ readLAS(LASfile, short=TRUE)
 \arguments{
 \item{LASfile}{A standard LAS data file (ASPRS)}
 
-\item{short}{Logical, if TRUE it will return only a 3-column matrix with the x, y, z, intensity and return number information}
+\item{short}{Logical, if TRUE it will return only a 5-column matrix with information on the returned point x, y, z locations, point intensity and the number of return within an individual discrete-return system laser pulse.}
 }
 \value{
-Return a matrix of the information stored in the LAS file
+Returns a matrix listing the information stored in the LAS file
 }
 \description{
-Read LAS file format. The LAS file is a public file format for the interchange of LiDAR 3-dimensional point cloud data (American Society of Photogrammetry and Remote Sensing - ASPRS)
+This function reads and returns values associated with the LAS file format. The LAS file is a public file format for the interchange of LiDAR 3-dimensional point cloud data (American Society of Photogrammetry and Remote Sensing - ASPRS)
 }
 \examples{
 \dontrun{
@@ -34,9 +34,9 @@ summary(rLAS)
 #=======================================================================#
 # LAS file visualization:
 #=======================================================================#
-#_______________________________________________________________________#
-# Set a sigle color
-#_______________________________________________________________________#
+
+# 01 Set a single color
+
 col<-"forestgreen"
 
 # plot 2D
@@ -45,13 +45,13 @@ plot(rLAS[,1],rLAS[,2], col=col,xlab="UTM.Easting", ylab="UTM.Northing", main="L
 # plot 3D
 require(rgl)
 plot3d(rLAS[,1:3], col=col, axes=F,xlab="", ylab="", zlab="")
-axes3d(c("x-", "y-", "z-"))
-title3d(xlab = "UTM.Easting", ylab = "UTM.Northing",zlab = "Height(m)", col="red")
-planes3d(0,0,-1,0.001,col="red",alpha=0.7)
+axes3d(c("x-", "y-", "z-")) # axes
+title3d(xlab = "UTM.Easting", ylab = "UTM.Northing",zlab = "Height(m)", col="red") # title
+planes3d(0, 0, -1, 0.001, col="gray", alpha=0.7)   # set a terrain plane
 
-#_______________________________________________________________________#
-# Set a color by Height
-#_______________________________________________________________________#
+
+# 02 Set a color by height
+
 # color ramp
 myColorRamp <- function(colors, values) {
 v <- (values - min(values))/diff(range(values))
@@ -63,14 +63,14 @@ rgb(x[,1], x[,2], x[,3], maxColorValue = 255)
 col <- myColorRamp(c("blue","green","yellow","red"),rLAS[,3])
 
 # plot 2D
-plot(rLAS[,1],rLAS[,2], col=col,xlab="UTM.Easting", ylab="UTM.Northing",main="LAS file")
+plot(rLAS[,1], rLAS[,2], col=col, xlab="UTM.Easting", ylab="UTM.Northing", main="LAS file")
 
 # plot 3D
-plot3d(rLAS[,1:3], col=col, axes=F,xlab="", ylab="", zlab="")
-axes3d(c("x-", "y-", "z-"))
-title3d(xlab = "UTM.Easting", ylab = "UTM.Northing",zlab = "Height(m)", col="red")
-planes3d(0,0,-1,0.001,col="red",alpha=0.7)
-#'}
+plot3d(rLAS[,1:3], col=col, axes=F, xlab="", ylab="", zlab="")
+axes3d(c("x-", "y-", "z-")) # axes
+title3d(xlab = "UTM.Easting", ylab = "UTM.Northing",zlab = "Height(m)", col="red") # title
+planes3d(0, 0, -1, 0.001, col="red",alpha=0.7) # terrain
+}
 }
 \author{
 Michael Sumner and Carlos Alberto Silva.

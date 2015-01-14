@@ -2,34 +2,34 @@
 % Please edit documentation in R/forestCAS.R
 \name{forestCAS}
 \alias{forestCAS}
-\title{LiDAR-derived individual tree canopy area}
+\title{9.  Deriving the ground-projected canopy area of individual trees using LiDAR}
 \usage{
-forestCAS(chm,loc,maxcrown,exclusion)
+forestCAS(chm, loc, maxcrown, exclusion)
 }
 \arguments{
 \item{chm}{A LiDAR-derived Canopy Height Model (CHM) RasterLayer or SpatialGridDataFrame file.}
 
-\item{loc}{A 3-column matrix or dataframe with the x,y coordinates and heights of the individual trees.}
+\item{loc}{A 3-column matrix or dataframe with the x, y coordinates and heights of the individual trees.}
 
 \item{maxcrown}{A single value of the maximum individual tree crown radius expected. Default 10.0 m.}
 
-\item{exclusion}{A single value from 0 to 1 that represent the \out{\%} of pixel exclusion. e.g. 0.5: It will exclude all the pixels for a single tree that has height value less 50\out{\%} of the maximum height from the same tree. Default is 0.3.}
+\item{exclusion}{A single value from 0 to 1 that represents the \out{\%} of pixel exclusion. E.g. a value of 0.5 will exclude all of the pixels for a single tree that has a height value of less than 50\out{\%} of the maximum height from the same tree. Default value is 0.3.}
 }
 \value{
-returns A list that contains the individual tree canopy boundary polygons and the 3-column matrix with the x,y coordinates, heights and the canopy area (square meter).
+Returns a list that contains the individual tree canopy boundary polygons and the 4-column matrix with the x,y coordinates, heights and ground-projected area of the canopy (with units of square meters).
 }
 \description{
-Compute and export individual tree canopy area detected on the LiDAR-derived Canopy Height Model (CHM)
+Compute and export the ground-projected areas of individual tree canopies detected within the LiDAR-derived Canopy Height Model (CHM)
 }
 \examples{
 \dontrun{
 
-# Importing the LiDAR-derived CHM file
+# Import the LiDAR-derived CHM file
 data(chm) # or set a CHM. e.g. chm<-raster("CHM_stand.asc")
 
 # Set the loc parameter
 sCHM<-CHMsmoothing(chm, filter="mean", ws=5) # smoothing CHM
-loc<-singleTreeCHM(sCHM, fws=5,minht=8) # or import a tree list
+loc<-singleTreeCHM(sCHM, fws=5, minht=8) # or import a tree list
 
 # Set the maxcrown parameter
 maxcrown=10.0
@@ -38,22 +38,22 @@ maxcrown=10.0
 exclusion=0.3 # 30
 
 # Compute individual tree detection canopy area
-canopy<-forestCAS(chm,loc,maxcrown,exclusion)
+canopy<-forestCAS(chm, loc, maxcrown, exclusion)
 
-#=======================================================================#
-# Getting the individual tree detection canopy area boundary
-#=======================================================================#
+#==================================================================================#
+# Retrieving the boundary for individual tree detection and canopy area calculation
+#==================================================================================#
 boundaryTrees<-canopy[[1]]
 # Plotting the individual tree canopy boundary over the CHM
-plot(chm) # plotting CHM
+plot(chm, main="LiDAR-derived CHM")
 plot(boundaryTrees, add=T, border='red', bg='transparent') # adding tree canopy boundary
 
 #=======================================================================#
-# Getting the individual tree detection canopy area list
+# Retrieving the list of individual trees detected for canopy area calculation
 #=======================================================================#
 canopyList<-canopy[[2]]
 summary(canopyList)
-plot(SpatialPoints(canopyList[,1:2]),col="black", add=T, pch="*") # adding tree location to the plot
+plot(SpatialPoints(canopyList[,1:2]), col="black", add=T, pch="*") # adding tree location to the plot
 }
 }
 \author{

@@ -9,17 +9,17 @@ CHMsmoothing(chm, filter, ws, sigma)
 \arguments{
 \item{chm}{A LiDAR-derived Canopy Height Model (CHM) RasterLayer or SpatialGridDataFrame file.}
 
-\item{filter}{A filter type: mean, median, maximum or gaussian. Default is "mean".}
+\item{filter}{Filter type: mean, median, maximum or Gaussian. Default is mean.}
 
-\item{ws}{A single square matrix of weights dimension, e.g. 3,5, 7 and so on. Default is 5.}
+\item{ws}{The dimension of a window size, e.g. 3,5, 7 and so on. Default is 5.}
 
-\item{sigma}{Used only when filter parameter is equal to gaussian, e.g. 0.5, 1.0, 1.5 and so on. Default is 0.6.}
+\item{sigma}{Used only when filter parameter is equal to gaussian, e.g. 0.5, 1.0, 1.5 and so on. Default is 0.67.}
 }
 \value{
-returns A CHM smoothed raster.
+Returns a CHM-smoothed raster.
 }
 \description{
-LiDAR-derived Canopy Height Model (CHM) smoothing to eliminate spurious local maxima caused by branches.
+LiDAR-derived Canopy Height Model (CHM) smoothing is used to eliminate spurious local maxima caused by tree branches.
 }
 \examples{
 \dontrun{
@@ -29,13 +29,13 @@ LiDAR-derived Canopy Height Model (CHM) smoothing to eliminate spurious local ma
 data(chm) # or set a CHM. e.g. chm<-raster("CHM_stand.asc")
 
 #=======================================================================#
-# Example 01: Smoothing CHM using gaussian filter
+# Example 01: Smoothing the CHM using a Gaussian filter
 #=======================================================================#
 # Set the ws:
-ws<-3 # dimention 3x3
+ws<-3 # dimension 3x3
 
 # Set the filter type
-filter<-"gaussian"
+filter<-"Gaussian"
 
 # Set the sigma value
 sigma<-0.6
@@ -43,19 +43,16 @@ sigma<-0.6
 # Smoothing CHM
 sCHM<-CHMsmoothing(chm, filter, ws, sigma)
 
-# Plotting CHM smoothed
-plot(sCHM, main=paste(filter,"filter and windows size", paste0(ws,"x",ws)))
-
 #=======================================================================#
-# Example 02: Smoothing CHM using mean filter
+# Example 02: Smoothing the CHM using a mean filter
 #=======================================================================#
 # Set the ws:
-ws<-5 # dimention 5x5
+ws<-5 # dimension 5x5
 
 # Set the filter type
 filter<-"mean"
 
-# Smoothing and Plotting LiDAR-derived CHM
+# Smoothing and plotting LiDAR-derived CHM
 sCHM<-CHMsmoothing(chm, filter, ws)
 
 }

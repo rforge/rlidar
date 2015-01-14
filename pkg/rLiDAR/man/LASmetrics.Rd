@@ -4,20 +4,20 @@
 \alias{LASmetrics}
 \title{LiDAR metrics computation}
 \usage{
-LASmetrics(LASfile,minht,above)
+LASmetrics(LASfile, minht, above)
 }
 \arguments{
 \item{LASfile}{A LAS standard LiDAR data file}
 
-\item{minht}{Use only returns above specified heightbreak, e.g. 1.30 m. Default is 1.37 m.}
+\item{minht}{Use only returns above specified height break, e.g. 1.30 m. Default is 1.37 m.}
 
-\item{above}{Compute covers metrics using specified heightbreak, e.g. 2.5 m. Default is 2 m.}
+\item{above}{Compute covers metrics using specified height break, e.g. 2.5 m. Default is 2 m.}
 }
 \value{
-Returns LiDAR-derived vegetation height and canopy cover metrics (see \emph{cloudmetrics}, in McGaughey,2014)
+Returns LiDAR-derived vegetation height and canopy cover metrics (see \emph{cloudmetrics}, in McGaughey, 2014)
 }
 \description{
-Compute statistics metrics that describe the LiDAR dataset
+Compute statistically based metrics that describe the LiDAR dataset
 }
 \examples{
 \dontrun{
@@ -25,38 +25,38 @@ Compute statistics metrics that describe the LiDAR dataset
 #=======================================================================#
 # Example 01: Computing LiDAR metrics for a single LAS file
 #=======================================================================#
-# Importing the LAS data file
+# Import the LAS data file
 LASfile <- system.file("extdata", "LASexample1.las", package="rLiDAR")
 
 # Set the minht and above parameters
-minht<-1.37 # meters or feet
+minht<-1.37  # meters or feet
 above<-2.00  # meters or feet
 
 # LiDAR metrics computation
-LiDARmetrics<-LASmetrics(LASfile,minht,above)
+LiDARmetrics<-LASmetrics(LASfile, minht, above)
 
 #=======================================================================#
-# Example 02: Computing LiDAR metrics for a multiple LAS files within a folder
+# Example 02: Computing LiDAR metrics for multiple LAS files within a folder
 #=======================================================================#
-# Set a folder where there are LAS files
+# Set folder where LAS source files reside
 folder=dirname(LASfile)
 
-# Get a list of LAS file in the folder
+# Get list of LAS files residing in the folder
 LASlist <- list.files(folder, pattern="*.las", full.names=TRUE)
 
-# Set the minht and above parameters
-minht<-1.37 # meters or feet
+# Set the "minht" and "above" parameters
+minht<-1.37  # meters or feet
 above<-2.00  # meters or feet
 
-# Creating a empty dataframe to store the LiDAR metrics
+# Creat an empty dataframe in whic to store the LiDAR metrics
 getMetrics<-data.frame()
 
 # Set a loop to compute the LiDAR metrics
 for ( i in LASlist) {
- getMetrics<-rbind(getMetrics,LASmetrics(i,minht,above))}
+ getMetrics<-rbind(getMetrics, LASmetrics(i, minht, above))}
 
-# show the LiDAR metrics
-LiDARmetrics<-cbind(Files=c(basename(LASlist)),getMetrics)
+# Dsplay the LiDAR metrics
+LiDARmetrics<-cbind(Files=c(basename(LASlist)), getMetrics)
 LiDARmetrics
 
 }

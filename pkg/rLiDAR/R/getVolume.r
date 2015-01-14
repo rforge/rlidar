@@ -2,15 +2,17 @@
 #'
 #'@description This function calculates the volume of the 3D \eqn{\alpha}-shape of the LiDAR point cloud.
 #'
-#'@usage getVolume(xyz,id,alpha,plotCAS)
+#'@usage getVolume(xyz, id, alpha, plotCAS)
 #'
-#'@param xyz A 3-column matrix or dataframe with the x,y and z coordinates of the 3D LiDAR point cloud.
-#'@param id A vector id for the xyz observations. 
+#'@param xyz A 3-column matrix or dataframe with the x, y and z coordinates of the 3D LiDAR point cloud.
+#'@param id A vector id for the x, y, z 3-column matrix. 
 #'@param alpha A single value or vector of values for \eqn{\alpha}. Its range from 0 to 1.
 #'@param plotCAS Logical, if TRUE (default) plot the \eqn{\alpha}-shape 3D.
-#'@return Return Volume of the 3D \eqn{\alpha}-shape of the LiDAR point cloud.
+#'@return Return volume of the 3D \eqn{\alpha}-shape of the LiDAR point cloud in units of cubic meters.
 #'@author Carlos Alberto Silva. Uses code by Beatriz Pateiro-Lopez (\emph{alphashape3d} package,see \code{\link[alphashape3d]{volume_ashape3d}})
+#'@references Lafarge, T.; Pateiro-Lopez, B.; Possolo, A. and Dunkers, J.P. (2014). R Implementation of a Polyhedral Approximation to a 3D Set of Points Using the alpha-Shape Journal of Statistical Software Vol. 56(4), pp. 1-18.
 #'@examples
+#'
 #'\dontrun{
 #'
 #'# Importing LAS file:
@@ -19,7 +21,7 @@
 #'# Reading LAS file
 #'LAS<-readLAS(LASfile,short=TRUE)
 #'
-#'# set the xyz coordenates and subset the data
+#'# Setring the xyz coordinates and subsetting the data
 #'xyz<-subset(LAS[,1:3],LAS[,3] >= 1.37)
 #'
 #'# Finding clusters
@@ -35,13 +37,13 @@
 #'plotCAS=TRUE
 #'
 #'# get the volume 
-#'volume<-getVolume(xyz=xyz,id=id,alpha=alpha,plotCAS=plotCAS)
+#'volume<-getVolume(xyz=xyz, id=id, alpha=alpha, plotCAS=plotCAS)
 #'
-#'# Adding other plot parameters
+#'# Add other plot parameters
 #'aspect3d(1,1,0.5)
-#'axes3d(c("x-","x-", "y-","z"), col="gray") # axes
+#'axes3d(c("x-", "x-", "y-", "z"), col="gray") # axes
 #'title3d(xlab = "X Coord", ylab = " Y Coord", zlab = "Height", col="red") # title
-#'planes3d(0,0,-1,0.001,col="red",alpha=0.7)
+#'
 #'}
 #'@importFrom alphashape3d ashape3d volume_ashape3d
 #'@importFrom rgl bg3d plot3d 
