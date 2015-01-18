@@ -55,7 +55,7 @@
 #'@importFrom plyr ddply
 #'@importFrom raster raster rasterToPolygons boundaries
 #'@export
-forestCAS<-function(chm,loc,maxcrown,exclusion) {
+forestCAS<-function(chm,loc,maxcrown=10,exclusion=0.3) {
 
   if (class(chm)!="RasterLayer" & class(chm)!="SpatialGridDataFrame") {stop("The chm is invalid. It must to be a RasterLayer or SpatialGridDataFrame'")}
   if (ncol(loc)!=3) {stop("The input loc is invalid. It must to be 3-column matrix or dataframe with the x,y coordinates and heights of the individual trees")}
