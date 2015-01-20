@@ -51,12 +51,14 @@ plot(boundaryTrees, add=T, border='red', bg='transparent') # adding tree canopy 
 #=======================================================================#
 # Retrieving the list of individual trees detected for canopy area calculation
 #=======================================================================#
-canopyList<-canopy[[2]]
-summary(canopyList)
-plot(SpatialPoints(canopyList[,1:2]), col="black", add=T, pch="*") # adding tree location to the plot
+canopyList<-canopy[[2]]  # list of ground-projected areas of individual tree canopies
+summary(canopyList)      # summary 
+
+# Spatial location of the trees
+XY<-SpatialPoints(canopyList[,1:2])    # Spatial points
+plot(XY), col="black", add=T, pch="*") # adding tree location to the plot
 }
 }
 \author{
 Carlos Alberto Silva
 }
-
