@@ -1,11 +1,11 @@
-#'LiDAR 3D trees stand visualization
+	#'LiDAR 3D trees stand visualization
 #'
 #'@description Draws a 3D scatterplot for individual trees detected from LiDAR data.   
 #'
 #'@usage LiDARtrees3D(crownshape = c("cone", "ellipsoid", "halfellipsoid",
 #'                 "paraboloid", "cylinder"), CL = 4, CW = 8, HCB = 10, 
 #'                   X = 0, Y = 0, dbh = 0.3, crowncolor = "forestgreen", 
-#'                  stemcolor = "chocolate4", resolution="high", plotmesh=TRUE) 
+#'                  stemcolor = "chocolate4", resolution="high", mesh=TRUE) 
 #'
 #'@param crownshape shape of individual tree crown: "cone", "ellipsoid","halfellipsoid", "paraboloid" or "cylinder". Default is "halfellipsoid".
 #'@param CL crown length
@@ -17,7 +17,7 @@
 #'@param crowncolor crown color
 #'@param stemcolor stem color
 #'@param resolution crown resolution: "low", "medium" and "high"
-#'@param plotmesh Logical, if TRUE (default) returns a tree crown mesh model, and if FALSE returns a tree crown line mode.  
+#'@param mesh Logical, if TRUE (default) returns a tree crown mesh model, and if FALSE returns a tree crown line mode.  
 #'@return Returns a 3-D scatterplot of the individual trees as identified automatically from the LiDAR.   
 #'@author Carlos Alberto Silva and Remko Duursma. Uses code by Remko Duursma (\emph{Maeswrap} package,see \code{\link[Maeswrap]{Plotstand}}).
 #'@references \url{http://maespa.github.io/}
@@ -32,37 +32,37 @@
 #'open3d() 
 #'LiDARtrees3D(crownshape = "cone", CL = 10, CW =7, 
 #'            HCB = 5, X =0, Y = 0, dbh = 0.4, crowncolor = "forestgreen", 
-#'            stemcolor = "chocolate4", resolution="high", plotmesh=TRUE) 
+#'            stemcolor = "chocolate4", resolution="high", mesh=TRUE) 
 #'                        
 #'# ellipsoid crown shape 
 #'open3d()
 #'LiDARtrees3D(crownshape = "ellipsoid", CL = 10, CW =7, 
 #'            HCB = 5, X =0, Y = 0, dbh = 0.4, crowncolor = "forestgreen", 
-#'            stemcolor = "chocolate4", resolution="high", plotmesh=TRUE) 
+#'            stemcolor = "chocolate4", resolution="high", mesh=TRUE) 
 #'                        
 #'# halfellipsoid crown shape 
 #'open3d()
 #'LiDARtrees3D(crownshape = "halfellipsoid", CL = 10, CW =7, 
 #'            HCB = 5, X =0, Y = 0, dbh = 0.4, crowncolor = "forestgreen", 
-#'            stemcolor = "chocolate4", resolution="high", plotmesh=TRUE) 
+#'            stemcolor = "chocolate4", resolution="high", mesh=TRUE) 
 #'                        
 #'# paraboloid crown shape 
 #'open3d()
 #'LiDARtrees3D(crownshape = "paraboloid", CL = 10, CW =7, 
 #'            HCB = 5, X =0, Y = 0, dbh = 0.4, crowncolor = "forestgreen", 
-#'            stemcolor = "chocolate4", resolution="high", plotmesh=TRUE)
+#'            stemcolor = "chocolate4", resolution="high", mesh=TRUE)
 #'
 #'# cylinder crown shape 
 #'open3d()
 #'LiDARtrees3D(crownshape = "cylinder", CL = 10, CW =7, 
 #'            HCB = 5, X =0, Y = 0, dbh = 0.4, crowncolor = "forestgreen", 
-#'            stemcolor = "chocolate4", resolution="high", plotmesh=TRUE)
+#'            stemcolor = "chocolate4", resolution="high", mesh=TRUE)
 #'                        
 #'# Set the shape=FALSE 
 #'open3d()
 #'LiDARtrees3D(crownshape = "paraboloid", CL = 10, CW =7, 
 #'            HCB = 5, X =0, Y = 0, dbh = 0.4, crowncolor = "forestgreen", 
-#'            stemcolor = "chocolate4", resolution="high", plotmesh=FALSE)
+#'            stemcolor = "chocolate4", resolution="high", mesh=FALSE)
 #' 
 #'#=======================================================================#                                           
 #'#EXAMPLE 02: Plotting a forest plantation stand in virtual 3-D space
@@ -98,7 +98,7 @@
 #'  LiDARtrees3D(crownshape = "halfellipsoid", CL = CL[i], CW = CW[i], 
 #'              HCB = HCB[i], X = XYgrid[i,1], Y = XYgrid[i,2], dbh = 0.4, 
 #'              crowncolor = "forestgreen", stemcolor = "chocolate4", 
-#'              resolution="high", plotmesh=TRUE) 
+#'              resolution="high", mesh=TRUE) 
 #'}
 #'                            
 #'# Add other plot parameters
@@ -122,7 +122,7 @@
 #'  LiDARtrees3D(crownshape = "cone", CL = CL[i], CW = CW[i], 
 #'              HCB = HCB[i], X = XYgrid[i,1], Y = XYgrid[i,2], dbh = 0.4, 
 #'              crowncolor = "forestgreen", stemcolor = "chocolate4", 
-#'              resolution="high", plotmesh=TRUE) 
+#'              resolution="high", mesh=TRUE) 
 #'}
 #'                            
 #'# Add other plot parameters
@@ -164,7 +164,7 @@
 #'  LiDARtrees3D(crownshape = crownshape[i], CL = CL[i], CW = CW[i], 
 #'              HCB = HCB[i], X = as.numeric(XYgrid[i,1]), Y = as.numeric(XYgrid[i,2]), 
 #'              dbh = 0.4, crowncolor = "forestgreen", stemcolor = "chocolate4", 
-#'              resolution="high", plotmesh=TRUE)
+#'              resolution="high", mesh=TRUE)
 #'}
 #'                          
 #'# Add other plot parameters
@@ -215,7 +215,7 @@
 #'  LiDARtrees3D(crownshape = crownshape[i], CL = CL[i], CW = CW[i], 
 #'    HCB = HCB[i], X = as.numeric(XYgrid[i,1]), Y = as.numeric(XYgrid[i,2]), 
 #'    dbh = 0.4, crowncolor = crowncolor[i],stemcolor = "chocolate4", 
-#'    resolution="high", plotmesh=TRUE) 
+#'    resolution="high", mesh=TRUE) 
 #'}
 #'    
 #'# Add other plot parameters
@@ -228,10 +228,9 @@
 #'@export
 #'@importFrom geometry convhulln
 #'@importFrom rgl plot3d open3d bg3d rgl.triangles 
-LiDARtrees3D<-function (crownshape = c("cone", "ellipsoid",  
-                                      "halfellipsoid", "paraboloid", "cylinder"), CL = 4, CW = 8, 
-                       HCB = 10, X = 0, Y = 0, dbh = 0.3, crowncolor = "forestgreen", 
-                       stemcolor = "chocolate4", resolution="high",plotmesh=TRUE) 
+LiDARtrees3D<-function(crownshape = c("cone", "ellipsoid","halfellipsoid", "paraboloid", "cylinder"), 
+                        CL = 4, CW = 8,HCB = 10, X = 0, Y = 0, dbh = 0.3, crowncolor = "forestgreen", 
+                       stemcolor = "chocolate4", resolution="high",mesh=TRUE) 
 {
   
   if (crownshape!="cone"& crownshape!="ellipsoid"&crownshape!="halfellipsoid"&crownshape!="paraboloid"&crownshape!="cylinder") {stop("The crownshape parameter is invalid. Please, use one of this crownshape types: 'cone','ellipsoid','halfellipsoid','paraboloid','cylinder'")}
@@ -240,14 +239,14 @@ LiDARtrees3D<-function (crownshape = c("cone", "ellipsoid",
   if (class(Y)!="numeric") {stop("The Y parameter is invalid. It is not a numeric parameter")}
   if (class(dbh)!="numeric") {stop("The HCB parameter is invalid. It is not a numeric parameter")}
   if (resolution!="high" & resolution!="medium" & resolution!="low") {stop("The resolution parameter is invalid. It must to be 'high', 'median' or 'low'")}
-  if (class(plotmesh)!="logical") {stop("The shape parameter is invalid. It must to be a TRUE or FALSE logical statement")}
+  if (class(mesh)!="logical") {stop("The shape parameter is invalid. It must to be a TRUE or FALSE logical statement")}
 
   
   if (resolution=="low"){nz<-15;nalpha<-15}
   if (resolution=="medium"){nz<-25;nalpha<-25}
   if (resolution=="high"){nz<-40;nalpha<-40}
   
-  if ( plotmesh==TRUE) {
+  if (mesh==TRUE) {
     
   shape <- match.arg(crownshape)
 
@@ -266,6 +265,7 @@ LiDARtrees3D<-function (crownshape = c("cone", "ellipsoid",
   interpol(m2, col = stemcolor)
   
   } else {
+    
     TreesModel(crownshape=crownshape, CW = CW, CL = CL, z0 = 0,HCB=HCB, x0 = X, 
                      y0 = Y, nz = nz, nalpha = nalpha, dbh = dbh,crowncolor = crowncolor, 
                stemcolor = stemcolor)

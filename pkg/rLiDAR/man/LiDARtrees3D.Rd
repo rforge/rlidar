@@ -7,7 +7,7 @@
 LiDARtrees3D(crownshape = c("cone", "ellipsoid", "halfellipsoid",
                 "paraboloid", "cylinder"), CL = 4, CW = 8, HCB = 10,
                   X = 0, Y = 0, dbh = 0.3, crowncolor = "forestgreen",
-                 stemcolor = "chocolate4", resolution="high", plotmesh=TRUE)
+                 stemcolor = "chocolate4", resolution="high", mesh=TRUE)
 }
 \arguments{
 \item{crownshape}{shape of individual tree crown: "cone", "ellipsoid","halfellipsoid", "paraboloid" or "cylinder". Default is "halfellipsoid".}
@@ -30,7 +30,7 @@ LiDARtrees3D(crownshape = c("cone", "ellipsoid", "halfellipsoid",
 
 \item{resolution}{crown resolution: "low", "medium" and "high"}
 
-\item{plotmesh}{Logical, if TRUE (default) returns a tree crown mesh model, and if FALSE returns a tree crown line mode.}
+\item{mesh}{Logical, if TRUE (default) returns a tree crown mesh model, and if FALSE returns a tree crown line mode.}
 }
 \value{
 Returns a 3-D scatterplot of the individual trees as identified automatically from the LiDAR.
@@ -49,37 +49,37 @@ Draws a 3D scatterplot for individual trees detected from LiDAR data.
 open3d()
 LiDARtrees3D(crownshape = "cone", CL = 10, CW =7,
            HCB = 5, X =0, Y = 0, dbh = 0.4, crowncolor = "forestgreen",
-           stemcolor = "chocolate4", resolution="high", plotmesh=TRUE)
+           stemcolor = "chocolate4", resolution="high", mesh=TRUE)
 
 # ellipsoid crown shape
 open3d()
 LiDARtrees3D(crownshape = "ellipsoid", CL = 10, CW =7,
            HCB = 5, X =0, Y = 0, dbh = 0.4, crowncolor = "forestgreen",
-           stemcolor = "chocolate4", resolution="high", plotmesh=TRUE)
+           stemcolor = "chocolate4", resolution="high", mesh=TRUE)
 
 # halfellipsoid crown shape
 open3d()
 LiDARtrees3D(crownshape = "halfellipsoid", CL = 10, CW =7,
            HCB = 5, X =0, Y = 0, dbh = 0.4, crowncolor = "forestgreen",
-           stemcolor = "chocolate4", resolution="high", plotmesh=TRUE)
+           stemcolor = "chocolate4", resolution="high", mesh=TRUE)
 
 # paraboloid crown shape
 open3d()
 LiDARtrees3D(crownshape = "paraboloid", CL = 10, CW =7,
            HCB = 5, X =0, Y = 0, dbh = 0.4, crowncolor = "forestgreen",
-           stemcolor = "chocolate4", resolution="high", plotmesh=TRUE)
+           stemcolor = "chocolate4", resolution="high", mesh=TRUE)
 
 # cylinder crown shape
 open3d()
 LiDARtrees3D(crownshape = "cylinder", CL = 10, CW =7,
            HCB = 5, X =0, Y = 0, dbh = 0.4, crowncolor = "forestgreen",
-           stemcolor = "chocolate4", resolution="high", plotmesh=TRUE)
+           stemcolor = "chocolate4", resolution="high", mesh=TRUE)
 
 # Set the shape=FALSE
 open3d()
 LiDARtrees3D(crownshape = "paraboloid", CL = 10, CW =7,
            HCB = 5, X =0, Y = 0, dbh = 0.4, crowncolor = "forestgreen",
-           stemcolor = "chocolate4", resolution="high", plotmesh=FALSE)
+           stemcolor = "chocolate4", resolution="high", mesh=FALSE)
 
 #=======================================================================#
 #EXAMPLE 02: Plotting a forest plantation stand in virtual 3-D space
@@ -115,7 +115,7 @@ for( i in 1:Ntrees){
  LiDARtrees3D(crownshape = "halfellipsoid", CL = CL[i], CW = CW[i],
              HCB = HCB[i], X = XYgrid[i,1], Y = XYgrid[i,2], dbh = 0.4,
              crowncolor = "forestgreen", stemcolor = "chocolate4",
-             resolution="high", plotmesh=TRUE)
+             resolution="high", mesh=TRUE)
 }
 
 # Add other plot parameters
@@ -139,7 +139,7 @@ for( i in 1:Ntrees){
  LiDARtrees3D(crownshape = "cone", CL = CL[i], CW = CW[i],
              HCB = HCB[i], X = XYgrid[i,1], Y = XYgrid[i,2], dbh = 0.4,
              crowncolor = "forestgreen", stemcolor = "chocolate4",
-             resolution="high", plotmesh=TRUE)
+             resolution="high", mesh=TRUE)
 }
 
 # Add other plot parameters
@@ -181,7 +181,7 @@ for( i in 1:Ntrees){
  LiDARtrees3D(crownshape = crownshape[i], CL = CL[i], CW = CW[i],
              HCB = HCB[i], X = as.numeric(XYgrid[i,1]), Y = as.numeric(XYgrid[i,2]),
              dbh = 0.4, crowncolor = "forestgreen", stemcolor = "chocolate4",
-             resolution="high", plotmesh=TRUE)
+             resolution="high", mesh=TRUE)
 }
 
 # Add other plot parameters
@@ -232,7 +232,7 @@ for(i in 1:Ntrees){
  LiDARtrees3D(crownshape = crownshape[i], CL = CL[i], CW = CW[i],
    HCB = HCB[i], X = as.numeric(XYgrid[i,1]), Y = as.numeric(XYgrid[i,2]),
    dbh = 0.4, crowncolor = crowncolor[i],stemcolor = "chocolate4",
-   resolution="high", plotmesh=TRUE)
+   resolution="high", mesh=TRUE)
 }
 
 # Add other plot parameters
