@@ -2,7 +2,7 @@
 % Please edit documentation in R/forestCAS.R
 \name{forestCAS}
 \alias{forestCAS}
-\title{9.  Deriving the ground-projected canopy area of individual trees using LiDAR}
+\title{Deriving the ground-projected canopy area of individual trees using LiDAR}
 \usage{
 forestCAS(chm, loc, maxcrown, exclusion)
 }
@@ -56,7 +56,7 @@ summary(canopyList)     # summary
 
 # Spatial location of the trees
 XY<-SpatialPoints(canopyList[,1:2])    # Spatial points
-plot(XY), col="black", add=T, pch="*") # adding tree location to the plot
+plot(XY, col="black", add=T, pch="*") # adding tree location to the plot
 }
 }
 \author{

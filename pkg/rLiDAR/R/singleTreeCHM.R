@@ -35,7 +35,8 @@
 #'
 #'# Plotting the individual tree location on the CHM
 #'plot(chm, main="LiDAR-derived CHM") 
-#'plot(SpatialPoints(treeList[,1:2]), add=T, col="red") # plotthing tree location
+#'XY<-SpatialPoints(treeList[,1:2]) # Spatial points
+#'plot(XY, add=T, col="red")        # plotthing tree location
 #'}
 #'
 #'@importFrom raster raster focal xyFromCell Which projection
@@ -58,7 +59,8 @@ singleTreeCHM<-function(chm, fws=5,minht=1.37) {
   setNull<- chm==rlocalmax
   XYmax <- SpatialPoints(xyFromCell(setNull, Which(setNull==1, cells=TRUE)))
   
-  projection(XYmax)<-projection(chm)
+  #proj<-projection(chm)
+  #projection(XYmax)=proj
   htExtract<-over(XYmax,as(chm, "SpatialGridDataFrame"))
   treeList<-cbind(XYmax,htExtract)
   

@@ -45,7 +45,8 @@ summary(treeList)
 
 # Plotting the individual tree location on the CHM
 plot(chm, main="LiDAR-derived CHM")
-plot(SpatialPoints(treeList[,1:2]), add=T, col="red") # plotthing tree location
+XY<-SpatialPoints(treeList[,1:2]) # Spatial points
+plot(XY, add=T, col="red")        # plotthing tree location
 }
 }
 \author{

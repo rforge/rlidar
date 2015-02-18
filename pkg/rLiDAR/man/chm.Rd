@@ -10,16 +10,16 @@ LiDAR-derived Canopy Height Model - (CHM)
   The format is:'RasterLayer'
 }
 \details{
-%%  ~~ If necessary, more details than the __description__ above ~~
+The LiDAR-derived-CHM provided as an example dataset is from a longleaf pine forest at Eglin AFB, USA. 
 }
 \source{
-The LiDAR-derived-CHM provided as an example dataset is from a longleaf pine forest at Eglin AFB. It's collection was funded by a grant (11-2-1-11) from the Joint Fire Science Program: Data set for fuels, fire behavior, smoke, and fire effects model development and evaluation-the RxCADRE project. R. Ottmar, PI; multiple Co-Is."
+The CHM was generated using Lastools software. The LiDAR data collection was funded by a grant (11-2-1-11) from the Joint Fire Science Program: Data set for fuels, fire behavior, smoke, and fire effects model development and evaluation-the RxCADRE project. R. Ottmar, PI; multiple Co-Is."
 }
 \references{
-%%  ~~ possibly secondary sources and usages ~~
+USDA Forest Service. Rocky Mountain Research Station - RMRS - Moscow, Idaho, USA.
 }
 \examples{
 data(chm)
 ## plot(chm)
 }
-\keyword{file}
+\keyword{chm}

@@ -1,4 +1,4 @@
-#'9.  Deriving the ground-projected canopy area of individual trees using LiDAR 
+#'Deriving the ground-projected canopy area of individual trees using LiDAR 
 #'
 #'@description Compute and export the ground-projected areas of individual tree canopies detected within the LiDAR-derived Canopy Height Model (CHM) 
 #'
@@ -46,7 +46,7 @@
 #'
 #'# Spatial location of the trees
 #'XY<-SpatialPoints(canopyList[,1:2])    # Spatial points
-#'plot(XY), col="black", add=T, pch="*") # adding tree location to the plot
+#'plot(XY, col="black", add=T, pch="*") # adding tree location to the plot
 #'} 
 #'@importFrom spatstat disc
 #'@importFrom sp coordinates gridded Polygon Polygons SpatialPolygons over

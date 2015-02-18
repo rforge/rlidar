@@ -54,6 +54,7 @@ axes3d(c("x-", "x-", "y-", "z"), col="gray") # axes
 title3d(xlab = "X Coord", ylab = " Y Coord", zlab = "Height", col="red") # title
 
 }
+#
 }
 \author{
 Carlos Alberto Silva. Uses code by Beatriz Pateiro-Lopez (\emph{alphashape3d} package,see \code{\link[alphashape3d]{volume_ashape3d}})

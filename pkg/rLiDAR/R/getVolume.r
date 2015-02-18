@@ -45,7 +45,7 @@
 #'title3d(xlab = "X Coord", ylab = " Y Coord", zlab = "Height", col="red") # title
 #'
 #'}
-#'@importFrom alphashape3d ashape3d volume_ashape3d
+#'#@importFrom alphashape3d ashape3d volume_ashape3d
 #'@importFrom rgl bg3d plot3d 
 #'@export
 getVolume<-function(xyz,id,alpha,plotCAS) {
