@@ -1,0 +1,17 @@
+{
+    "contents" : "require(shiny)\n\nlibrary(shinyRGL)\nlibrary(shinyGridster)\nlibrary(ShinyDash)\nlibrary(shinyIncubator)\nrunApp(\"C:\\\\00_ForestCAS\\\\00_ForestCAS\\\\05_LiDARplot3d\")\n\nrunApp(\"C:\\\\Users\\\\Carlos\\\\Documents\\\\LiDARTreeShape\")\n\nrunApp(\"C:\\\\Web-LiDAR\\\\LiDARpine3D\")\n\n\nrunApp(\"C:\\\\Web-LiDAR\\\\LiDARtreesModel3D\")\n\n\nrunApp(\"C:\\\\Web-LiDAR\\\\LiDARcanopyTree\")\n\n\ndata<-read.table(\"C:\\\\Web-LiDAR\\\\LiDARcanopyTree\\\\Trees2.csv\",sep=\",\", head=T)\n\nchm<-readGDAL('C:\\\\Web-LiDAR\\\\LiDARcanopyTree\\\\Plot_pit-freeCHM08.asc')\n\n\n\nplot(raster(chm))\nplot(SpatialPoints(data[,1:2]), add=T)\nplot(TreeCanopyList[[1]],add=T)\nrequire(plyr)\n\nCanpy<-TreeCanopy(chm,data,8,0.3)\n\nplot(raster(chm))\nplot(Canpy[[1]],add=T)\n\ncrown=10\nHthreshold=8\noff=0.3\nlocation=data\n",
+    "created" : 1414872954139.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2456091609",
+    "id" : "EEC923AD",
+    "lastKnownWriteTime" : 1415387867,
+    "path" : "C:/Web-LiDAR/run.r",
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled11"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

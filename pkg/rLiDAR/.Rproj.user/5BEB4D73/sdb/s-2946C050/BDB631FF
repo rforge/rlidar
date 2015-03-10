@@ -1,0 +1,17 @@
+{
+    "contents" : "untar(download.packages(pkgs = \"yaImpute\", \n                        destdir = \".\",\n                        type = \"source\")[,2])\n",
+    "created" : 1424279948107.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "2978954515",
+    "id" : "BDB631FF",
+    "lastKnownWriteTime" : 1424251732,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled32"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

@@ -1,0 +1,17 @@
+{
+    "contents" : "# Importing LAS file:\nLASfile <- system.file(\"extdata\", \"LASexample.las\", package=\"rLiDAR\")\n\nrequire(rLiDAR)\n# Reading LAS file\nLAS<-readLAS(LASfile,short=TRUE)\n\n# set the xyz coordenates and subset the data\nxyz<-subset(LAS[,1:3],LAS[,3] >= 1.37)\n\n# Finding clusters\nclLAS<-kmeans(xyz, 25)\n\n# set the id vector\nid<-as.factor(clLAS$cluster)\n\n# set the alpha\nalpha<-0.25\n\n# set the cas parameter\ncas=TRUE\nclass(cas)\n# get the volume\nvolume<-getVolume(xyz=xyz,id=id,alpha=alpha,cas=cas)\nhead(volume)\n\n# Adding other plot parameters\naspect3d(1,1,0.5)\naxes3d(c(\"x-\",\"x-\", \"y-\",\"z\"), col=\"gray\") # axes\ntitle3d(xlab = \"X Coord\", ylab = \" Y Coord\", zlab = \"Height\", col=\"red\") # title\nplanes3d(a=0,b=0,c=-1,d=0.0001,color=\"gray\",alpha=1) # set a terrain plane\n",
+    "created" : 1419761326890.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "1847026765",
+    "id" : "9FF463B8",
+    "lastKnownWriteTime" : 1419761101,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled19"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

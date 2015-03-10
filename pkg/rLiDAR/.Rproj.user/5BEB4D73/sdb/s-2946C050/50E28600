@@ -1,0 +1,17 @@
+{
+    "contents" : "if (!require(\"devtools\"))\n  install.packages(\"devtools\")\ndevtools::install_github(\"rstudio/shiny\")\n\ndevtools::install_github(\"ShinyDash\", \"trestletech\")\ndevtools::install_github(\"shiny-gridster\", \"wch\")\ndevtools::install_github(\"shiny-incubator\", \"rstudio\")\ninstall_github(\"shinyRGL\", \"trestletech\")\ninstall.packages(\"RColorBrewer\")\ninstall.packages(\"maptools\")\ninstall.packages(\"plotrix\")\ninstall.packages(\"rgdal\")\ninstall.packages(\"rasterVis\")\n\nrequire(shiny)\nrunApp(\"C:\\\\Web-LiDAR\\\\LiDARstandModel3D\")\n",
+    "created" : 1419295224627.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "3563570108",
+    "id" : "50E28600",
+    "lastKnownWriteTime" : 1419293985,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled18"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

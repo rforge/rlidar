@@ -1,0 +1,17 @@
+{
+    "contents" : "library (nlme)\ndata(Oats)\n\nstr(Oats)\nplot(Oats)\n\nmodel1=lm(yield~Variety*nitro,data=Oats)\nsummary(model1)\n\nmodel2=lme(yield~Variety*nitro,data=Oats, random=~1|Block/Variety)\nsummary(model2)\n\ncoef(model1)\ncoef(model2)\n\nplot(ranef(model2))\nplot(model2)",
+    "created" : 1419807255590.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "2321494617",
+    "id" : "91E4A031",
+    "lastKnownWriteTime" : 13229740524830817,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled21"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

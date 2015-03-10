@@ -1,0 +1,17 @@
+{
+    "contents" : "plotDTM(dtm,col=\"gray\", alpha=0.7, aspect=c(1,1,0.01))\ncol<-sample(c(\"red\",\"darkolivegreen\",\"forestgreen\"),70,T)\n\nfor (i in 1:nrow(data)) {\n  PlotSTrees(\"cone\",col=col[i], nz=10, nalpha=10,data[i,4]*0.8,data[i,5],data[i,2],data[i,3],data[i,7],data[i,4]*0.2,data[i,4])\n}\naxes3d(c(\"x-\", \"y-\",\"z-\"), col=\"gray\")\ntitle3d(xlab = \"UTM.Easting\", ylab = \"UTM.Northing\", col=\"black\")\n\nplanes3d(a=0,b=0,c=-1,d=0.0001,color=\"gray\",alpha=1)\naspect3d(1,1,0.5)\n\nwrite.table()\n\n\nPlotSTrees<- function(crownshape=c(\"cone\",\"ellipsoid\",\"halfellipsoid\",\"paraboloid\",\"cylinder\"),col=\"dark green\",\n                   nz=5, nalpha=5, CL=1, CW=1, x0=0, y0=0,z0=0, CBH=0,Ht=10\n){\n  \n#nz=10; nalpha=10; CL=5; CW=15; x0=0; y0=0; z0=0;CBH=0\n\ncrownshape <- match.arg(crownshape)\n\nz <- rep(seq(0,1,length=nz),each=nalpha)\nangs <- rep(seq(0,2*pi, length=nalpha),nz)\n\n# Taken from SURFACE subroutine in MAESTRA.\nif(crownshape == \"cone\")distfun <- (1-z)\nif(crownshape == \"ellipsoid\")distfun <- sqrt(1 - ((z-1/2)^2)/((1/2)^2))\nif(crownshape == \"halfellipsoid\")distfun <- sqrt(1 - z**2)\nif(crownshape == \"paraboloid\")distfun <- sqrt(1-z)\nif(crownshape == \"cylinder\")distfun <- 1\n\nr <- CW/2\nx <- x0 + r*distfun*cos(angs) \ny <- y0 + r*distfun*sin(angs)\nz <- z0 + CBH + z*CL\n\nkeep <- !duplicated(cbind(x,y,z))\nx <- x[keep]\ny <- y[keep]\nz <- z[keep]\nklj=matrix(cbind(x,y,z),ncol=3)\n\nmMatrix<-matrix(,ncol=3)[-1,]\n\nfor ( i in 1:nrow(klj)){\n  ln=i+nz\n  \nif ( ln >= nrow(klj)) { ln2=nrow(klj) } else { ln2= ln}\n\nmMatrix<-rbind(mMatrix,rbind(klj[i,],klj[ln2,])) }\n\n\nkljzbase=subset(klj,klj[,3]==z[2])\nkljzbaseNew<-matrix(,ncol=3)[-1,]\n\nfor ( i in 1:nrow(kljzbase)){\n  kljzbaseNew<-rbind(kljzbaseNew,rbind(kljzbase[i,],c(x0,y0,z0)))\n  \n}\n\nbg3d(\"white\")\n\nnewList<-rbind(kljzbaseNew,mMatrix,klj)\n\nplot3d(newList, type=\"l\", col=col, add=T)\nsegments3d(c(x0,x0),c(y0,y0),c(z0,z0 + Ht),col=\"chocolate4\",lwd=2)\n\n}",
+    "created" : 1414867816292.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "992965750",
+    "id" : "7A155A6F",
+    "lastKnownWriteTime" : 13229740517228544,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled10"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

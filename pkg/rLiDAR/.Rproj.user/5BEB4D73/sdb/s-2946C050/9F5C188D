@@ -1,0 +1,17 @@
+{
+    "contents" : "## from rgl demo \n\neuler <- function(alpha=0, beta=0, gamma=0){ \n  \n  Ra <- matrix(c(cos(alpha), sin(alpha), 0, -sin(alpha), cos(alpha), \n                 0, 0, 0, 1), ncol=3, byrow=T) \n  Rb <- matrix(c(1, 0, 0, 0, cos(beta), sin(beta), 0, -sin(beta), \n                 cos(beta)), ncol=3, byrow=T) \n  Rc <- matrix(c(cos(gamma), sin(gamma), 0, -sin(gamma), cos(gamma), \n                 0, 0, 0, 1), ncol=3, byrow=T) \n  \n  return(Rc%*%Rb%*%Ra) \n  \n} \n\nellipsoid3d <- function(rx=1,ry=1,rz=1,n=30,ctr=c(0,0,0), \n                        qmesh=FALSE, \n                        trans = par3d(\"userMatrix\"),...) { \n  if (missing(trans) && !rgl.cur()) trans <- diag(4) \n  degvec <- seq(0,2*pi,length=n) \n  ecoord2 <- function(p) { \n    c(rx*cos(p[1])*sin(p[2]),ry*sin(p[1])*sin(p[2]),rz*cos(p[2])) } \n  v <- apply(expand.grid(degvec,degvec),1,ecoord2) \n  if (qmesh) v <- rbind(v,rep(1,ncol(v))) ## homogeneous \n  e <- expand.grid(1:(n-1),1:n) \n  i1 <- apply(e,1,function(z)z[1]+n*(z[2]-1)) \n  i2 <- i1+1 \n  i3 <- (i1+n-1) %% n^2 + 1 \n  i4 <- (i2+n-1) %% n^2 + 1 \n  i <- rbind(i1,i2,i4,i3) \n  if (!qmesh) \n    quads3d(v[1,i],v[2,i],v[3,i],...) \n  else return(rotate3d(qmesh3d(v,i,material=...),matrix=trans)) \n} \n\n## the unit sphere \n.sphere <- ellipsoid3d(qmesh=TRUE,trans=diag(4)) \n\n## apply transformations to the unit sphere \nrgl.ellipsoid2 <- function (x=0,y=0,z=0, a = 1,b=1,c=1, phi=0,theta=0,psi=0, \n                            subdivide = 3, smooth = TRUE, ...) \n{ \n  x=0;y=0;z=0; a = 1;b=1;c=1; phi=10;theta=0;psi=0; \n  subdivide = 3; smooth = TRUE\n  \n  result <- scale3d(.sphere, a,b,c) \n  \n  \n  rotM <- euler(phi,theta,psi) \n  result <- rotate3d(klj,matrix=rotM) \n  result <- translate3d(result, x,y,z) \n  \n  invisible(result) \n  plot3d(result, col=c(\"red\",\"blue\",\"green\"))\n  \n} \n\n## loop over the specification of a cluster \nrgl.ellipsoids2 <- function(positions, sizes, angles,...){ \n  \n  N <- NROW(positions) \n  ll <- lapply(seq(1,N), function(ii) \n    rgl.ellipsoid2(positions[ii,1],positions[ii,2],positions[ii,3], \n                   sizes[ii,1],sizes[ii,2],sizes[ii,3], \n                   angles[ii,1],angles[ii,2],angles[ii,3], ...)) \n  \n  shapelist3d(ll,...) \n  \n} \n\nN <- 100 \nset.seed(123) \npositions <- matrix(rnorm(3*N), ncol=3) \nsizes <- matrix(runif(3*N, 1, 10), ncol=3) \nangles <- matrix(runif(3*N, 0, 2*pi), ncol=3) \n\nsystem.time(rgl.ellipsoids2(positions, sizes, angles, col= 1:N)) \n",
+    "created" : 1414629474773.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "2141827995",
+    "id" : "9F5C188D",
+    "lastKnownWriteTime" : 29555198979604527,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled9"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
