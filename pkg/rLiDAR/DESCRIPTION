@@ -24,7 +24,7 @@ Collate:
     'TreesModel.r'
     'LASmetrics.r'
     'rMetrics.r'
-    'forestCAS.R'
+    'ForestCAS.R'
     'LiDARForestStand.R'
     'FindTreesCHM.R'
 
