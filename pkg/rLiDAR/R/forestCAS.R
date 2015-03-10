@@ -2,13 +2,13 @@
 #'
 #'@description Compute and export the ground-projected areas of individual tree canopies detected within the LiDAR-derived Canopy Height Model (CHM) 
 #'
-#'@usage forestCAS(chm, loc, maxcrown, exclusion)
+#'@usage ForestCAS(chm, loc, maxcrown, exclusion)
 #'
 #'@param chm A LiDAR-derived Canopy Height Model (CHM) RasterLayer or SpatialGridDataFrame file.
-#'@param loc A 3-column matrix or dataframe with the x, y coordinates and heights of the individual trees.
+#'@param loc A matrix or dataframe with three columns (tree xy coordinates and height).
 #'@param maxcrown A single value of the maximum individual tree crown radius expected. Default 10.0 m.
 #'@param exclusion A single value from 0 to 1 that represents the \out{\%} of pixel exclusion. E.g. a value of 0.5 will exclude all of the pixels for a single tree that has a height value of less than 50\out{\%} of the maximum height from the same tree. Default value is 0.3. 
-#'@return Returns a list that contains the individual tree canopy boundary polygons and the 4-column matrix with the x,y coordinates, heights and ground-projected area of the canopy (with units of square meters).  
+#'@return Returns a list that contains the individual tree canopy boundary polygons and the 4-column matrix with the tree xy coordinates, heights and ground-projected canopy area (with units of square meters).  
 #'@author Carlos Alberto Silva
 #'@examples
 #'\dontrun{
@@ -18,7 +18,7 @@
 #'
 #'# Set the loc parameter
 #'sCHM<-CHMsmoothing(chm, filter="mean", ws=5) # smoothing CHM
-#'loc<-singleTreeCHM(sCHM, fws=5, minht=8) # or import a tree list
+#'loc<-FindTreesCHM(sCHM, fws=5, minht=8) # or import a tree list
 #'
 #'# Set the maxcrown parameter
 #'maxcrown=10.0 
@@ -27,7 +27,7 @@
 #'exclusion=0.3 # 30
 #'
 #'# Compute individual tree detection canopy area
-#'canopy<-forestCAS(chm, loc, maxcrown, exclusion)
+#'canopy<-ForestCAS(chm, loc, maxcrown, exclusion)
 #'
 #'#==================================================================================#
 #'# Retrieving the boundary for individual tree detection and canopy area calculation
@@ -55,7 +55,7 @@
 #'@importFrom plyr ddply
 #'@importFrom raster raster rasterToPolygons boundaries
 #'@export
-forestCAS<-function(chm,loc,maxcrown=10,exclusion=0.3) {
+ForestCAS<-function(chm,loc,maxcrown=10,exclusion=0.3) {
 
   if (class(chm)!="RasterLayer" & class(chm)!="SpatialGridDataFrame") {stop("The chm is invalid. It must to be a RasterLayer or SpatialGridDataFrame'")}
   if (ncol(loc)!=3) {stop("The input loc is invalid. It must to be 3-column matrix or dataframe with the x,y coordinates and heights of the individual trees")}
@@ -113,7 +113,7 @@ forestCAS<-function(chm,loc,maxcrown=10,exclusion=0.3) {
    
   for ( j in 1:nlevels(factor(h.mH[,4]))){
     assign(paste0("SP.polys", j), DF2raster(h.mH,j))
-    print(paste("computting ground-projected area of the canopy: Tree",j))}
+    cat (".");flush.console()}
   
   polygons <- slot(get("SP.polys1"), "polygons")
   

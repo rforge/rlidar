@@ -14,7 +14,7 @@ LASmetrics(LASfile, minht, above)
 \item{above}{Compute covers metrics using specified height break, e.g. 2.5 m. Default is 2 m.}
 }
 \value{
-Returns LiDAR-derived vegetation height and canopy cover metrics (see \emph{cloudmetrics}, in McGaughey, 2014)
+Returns A matrix with the LiDAR-derived vegetation height and canopy cover metrics (see \emph{cloudmetrics}, in McGaughey, 2014)
 }
 \description{
 Compute statistically based metrics that describe the LiDAR dataset
@@ -55,7 +55,7 @@ getMetrics<-data.frame()
 for ( i in LASlist) {
  getMetrics<-rbind(getMetrics, LASmetrics(i, minht, above))}
 
-# Dsplay the LiDAR metrics
+# Table of the LiDAR metrics
 LiDARmetrics<-cbind(Files=c(basename(LASlist)), getMetrics)
 LiDARmetrics
 

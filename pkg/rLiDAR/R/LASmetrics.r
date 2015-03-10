@@ -7,7 +7,7 @@
 #'@param LASfile A LAS standard LiDAR data file
 #'@param minht Use only returns above specified height break, e.g. 1.30 m. Default is 1.37 m.
 #'@param above Compute covers metrics using specified height break, e.g. 2.5 m. Default is 2 m.
-#'@return Returns LiDAR-derived vegetation height and canopy cover metrics (see \emph{cloudmetrics}, in McGaughey, 2014)
+#'@return Returns A matrix with the LiDAR-derived vegetation height and canopy cover metrics (see \emph{cloudmetrics}, in McGaughey, 2014)
 #'@author Carlos Alberto Silva
 #'@seealso McGaughey, R. 2014. FUSION/LDV: Software for lidar data analysis and visualization. Version 3.41. Seattle, WA: U.S. Department of Agriculture, Forest Service, Pacific Northwest Research Station. Available at \url{http://http://forsys.cfr.washington.edu/fusion/fusionlatest.html}.
 #'@examples
@@ -46,7 +46,7 @@
 #'for ( i in LASlist) {
 #'  getMetrics<-rbind(getMetrics, LASmetrics(i, minht, above))}
 #'
-#'# Dsplay the LiDAR metrics
+#'# Table of the LiDAR metrics
 #'LiDARmetrics<-cbind(Files=c(basename(LASlist)), getMetrics)
 #'LiDARmetrics
 #'
@@ -219,6 +219,6 @@ LASmetrics<-function(LASfile,minht=1.37,above=2) {
                        "Percentage first returns above mode","Percentage.all.returns.above.mean","Percentage all returns above mode","(All returns above mean / Total first returns)*100",
                        "(All returns above mode / Total first returns)* 100","First returns above mean","First returns above mode","All returns above mean","All returns above mode")
   rownames(metrics)<-NULL
-  return(metrics)
+  return(data.frame(metrics))
 }
 
