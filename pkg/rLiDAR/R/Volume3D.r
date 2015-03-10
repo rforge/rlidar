@@ -4,7 +4,7 @@
 #' of the individual tree LiDAR 3D point could.The convex hull is calculated with 
 #' the qhull algorithm (\emph{geometry} package,see \code{\link[geometry]{convhulln}}).
 #'
-#'@usage Volume3D(xyzid,plotit=TRUE,col="forestgreen",alpha=0.8)
+#'@usage Volume3D(xyzid, plotit=TRUE, col="forestgreen", alpha=0.8)
 #'
 #'@param xyzid A matrix with four columns (xyz coordinates and tree id).
 #'@param plotit Logical. If FALSE, returns only volume and surface area.
