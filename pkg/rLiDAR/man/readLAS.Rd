@@ -43,7 +43,7 @@ col<-"forestgreen"
 plot(rLAS[,1],rLAS[,2], col=col,xlab="UTM.Easting", ylab="UTM.Northing", main="LAS example file")
 
 # plot 3D
-require(rgl)
+library(rgl)
 plot3d(rLAS[,1:3], col=col, axes=F,xlab="", ylab="", zlab="")
 axes3d(c("x-", "y-", "z-")) # axes
 title3d(xlab = "UTM.Easting", ylab = "UTM.Northing",zlab = "Height(m)", col="red") # title

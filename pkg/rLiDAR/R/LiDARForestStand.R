@@ -29,6 +29,7 @@
 #'#=======================================================================#
 #'
 #'# cone crown shape
+#'library(rgl)
 #'open3d() 
 #'LiDARForestStand(crownshape = "cone", CL = 10, CW =7, 
 #'            HCB = 5, X =0, Y = 0, dbh = 0.4, crowncolor = "forestgreen", 

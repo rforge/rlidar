@@ -58,12 +58,13 @@ col="forestgreen"
 xyzid<-cbind(xyz,id)
 
 # Get the volume and surface area
+library(rgl)
 open3d()
 volumeList<-Volume3D(xyzid=xyzid, plotit=plotit, col=col,alpha=alpha)
 summary(volumeList)
 
 axes3d(c("x+", "y-","z"), col="black")        # axes
-grid3d(side=c('x+', 'y-', 'z'), col="gray")   # grid
+grid3d(side=c('x+', 'y+', 'z'), col="gray")   # grid
 title3d(xlab = "UTM Easthing", ylab = "UTM Northing",zlab = "Height", col="red")
 aspect3d(1,1,0.7) # scale
 
@@ -89,7 +90,7 @@ summary(volumeList)
 
 # Add other plot parameters
 axes3d(c("x+", "y-","z"), col="black")        # axes
-grid3d(side=c('x+', 'y-', 'z'), col="gray")   # grid
+grid3d(side=c('x+', 'y+', 'z'), col="gray")   # grid
 title3d(xlab = "UTM Easthing", ylab = "UTM Northing",zlab = "Height", col="red")
 aspect3d(1,1,0.7) # scale
 

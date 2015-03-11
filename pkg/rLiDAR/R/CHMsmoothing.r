@@ -7,7 +7,7 @@
 #'@param chm A LiDAR-derived Canopy Height Model (CHM) RasterLayer or SpatialGridDataFrame file.
 #'@param ws The dimension of a window size, e.g. 3,5, 7 and so on. Default is 5.
 #'@param filter Filter type: mean, median, maximum or Gaussian. Default is mean.
-#'@param sigma Used only when filter parameter is equal to gaussian, e.g. 0.5, 1.0, 1.5 and so on. Default is 0.67. 
+#'@param sigma Used only when filter parameter is equal to Gaussian, e.g. 0.5, 1.0, 1.5 and so on. Default is 0.67. 
 #'@return Returns a CHM-smoothed raster.
 #'@author Carlos Alberto Silva. 
 #'@seealso \code{\link[raster]{focal}} in the \emph{raster} package.

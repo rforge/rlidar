@@ -13,7 +13,7 @@ CHMsmoothing(chm, filter, ws, sigma)
 
 \item{ws}{The dimension of a window size, e.g. 3,5, 7 and so on. Default is 5.}
 
-\item{sigma}{Used only when filter parameter is equal to gaussian, e.g. 0.5, 1.0, 1.5 and so on. Default is 0.67.}
+\item{sigma}{Used only when filter parameter is equal to Gaussian, e.g. 0.5, 1.0, 1.5 and so on. Default is 0.67.}
 }
 \value{
 Returns a CHM-smoothed raster.

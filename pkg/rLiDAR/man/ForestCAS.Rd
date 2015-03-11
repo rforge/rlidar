@@ -55,6 +55,7 @@ canopyList<-canopy[[2]] # list of ground-projected areas of individual tree cano
 summary(canopyList)     # summary
 
 # Spatial location of the trees
+library(sp)
 XY<-SpatialPoints(canopyList[,1:2])    # Spatial points
 plot(XY, col="black", add=T, pch="*") # adding tree location to the plot
 }
