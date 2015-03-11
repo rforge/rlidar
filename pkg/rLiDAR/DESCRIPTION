@@ -1,6 +1,6 @@
 Package: rLiDAR
 Type: Package
-Title: LiDAR data processing and visualization
+Title: LiDAR Data Processing and Visualization
 Version: 0.1
 Date: 2015-02-18
 Author: Carlos Alberto Silva, Nicholas L. Crookston,
@@ -15,8 +15,8 @@ Imports:
     geometry,
     rgl,
     bitops
-Description: rLiDAR is a library to reading, processing and visualizing small
-    set of LiDAR data in forest inventory applications.
+Description: The rLiDAR is a library to reading, processing and visualizing small set 
+of LiDAR data in forest inventory applications.
 License: GPL-2
 Collate:
     'Volume3D.r'
