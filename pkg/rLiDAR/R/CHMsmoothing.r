@@ -1,4 +1,4 @@
-#'LiDAR-derived Canopy Height Model (CHM) smoothing
+#'LiDAR-derived Canopy Height Model (CHM) smoothing 
 #'
 #'@description LiDAR-derived Canopy Height Model (CHM) smoothing is used to eliminate spurious local maxima caused by tree branches.
 #'
