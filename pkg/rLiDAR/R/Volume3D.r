@@ -4,7 +4,7 @@
 #' of the individual tree LiDAR 3D point could.The convex hull is calculated with 
 #' the qhull algorithm (\emph{geometry} package,see \code{\link[geometry]{convhulln}}).
 #'
-#'@usage Volume3D(xyzid, plotit=TRUE, col="forestgreen", alpha=0.8)
+#'@usage Volume3D(xyzid,plotit=TRUE,col="forestgreen",alpha=0.8)
 #'
 #'@param xyzid A matrix with four columns (xyz coordinates and tree id).
 #'@param plotit Logical. If FALSE, returns only volume and surface area.
@@ -12,7 +12,7 @@
 #'@param alpha A vector or a caracter of the convex hull transparency (0-1).
 #'@return A list with components 'crownvolume' and 'crownsurface', giving the
 #'volume and surface of the convex hull.
-#'@author Carlos Alberto Silva. Uses code by Remko Duursma (\emph{YplantQMC} package,see \code{\link[YplantQMC]{crownhull}}). 
+#'@author Carlos Alberto Silva. Uses code by Remko Duursma (\emph{YplantQMC} package,see "crownhull"). 
 #'@references \url{www.qhull.org}
 #'
 #'@examples

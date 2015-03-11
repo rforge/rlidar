@@ -96,7 +96,7 @@ aspect3d(1,1,0.7) # scale
 }
 }
 \author{
-Carlos Alberto Silva. Uses code by Remko Duursma (\emph{YplantQMC} package,see \code{\link[YplantQMC]{crownhull}}).
+Carlos Alberto Silva. Uses code by Remko Duursma (\emph{YplantQMC} package,see "crownhull").
 }
 \references{
 \url{www.qhull.org}

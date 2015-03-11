@@ -9,7 +9,8 @@ DF2raster<-function(h.mH, i){
   colnames(spP)<-c("x","y","z","y")
   #coordinates(spP)<- c("x", "y")
   #suppressWarnings(gridded(spP) <- TRUE)
-  m = suppressWarnings(SpatialPixelsDataFrame(points=spP[c("x", "y")], data = spP))
+  m <- suppressWarnings(SpatialPixelsDataFrame(spP[c("x", "y")], data = spP))
+  #m <- suppressWarnings(SpatialPixelsDataFrame(points=spP[c("x", "y")], data = spP))
   
   rasterDF <- raster(m)
   hhg<- boundaries(rasterDF, type='outer') 
