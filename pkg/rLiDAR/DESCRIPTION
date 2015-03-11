@@ -26,7 +26,6 @@ Collate:
     'CHMsmoothing.r'
     'coord3dshape.r'
     'chullLiDAR.r'
-    'DF2raster.r'
     'interpol.r'
     'TreesModel.r'
     'LASmetrics.r'

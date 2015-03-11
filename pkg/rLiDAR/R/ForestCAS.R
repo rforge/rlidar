@@ -50,7 +50,7 @@
 #'} 
 #'@importFrom spatstat disc
 #'@importFrom sp coordinates gridded Polygon Polygons SpatialPolygons over
-#'@importFrom sp over SpatialPoints SpatialPolygonsDataFrame SpatialGridDataFrame
+#'@importFrom sp over SpatialPoints SpatialPolygonsDataFrame SpatialGridDataFrame SpatialPixelsDataFrame
 #'@importFrom deldir tile.list deldir 
 #'@importFrom plyr ddply
 #'@importFrom raster raster rasterToPolygons boundaries
@@ -68,6 +68,26 @@ ForestCAS<-function(chm,loc,maxcrown=10,exclusion=0.3) {
   Hthreshold<-min(loc[,3])*exclusion
   polys<-list() 
   width<-numeric()  
+  
+  DF2raster<-function(h.mH, i){
+    
+    h.mHkl<-subset(h.mH,h.mH[,4]==levels(factor(h.mH[,4]))[i])
+    
+    if (nrow(h.mHkl==1)==TRUE) {
+      h.mHkl<-rbind(h.mHkl,c(h.mHkl[,1],h.mHkl[,2]+0.005,h.mHkl[,3]+0.005,h.mHkl[,4]))}
+    
+    spP <- cbind(h.mHkl[,2:3],h.mHkl[,1],h.mHkl[,4])
+    colnames(spP)<-c("x","y","z","id")
+    #coordinates(spP)<- c("x", "y")
+    #suppressWarnings(gridded(spP) <- TRUE)
+    m <- suppressWarnings(SpatialPixelsDataFrame(points=spP[c("x", "y")], data = spP))
+    
+    rasterDF <- raster(m)
+    hhg<- boundaries(rasterDF, type='outer') 
+    p <- rasterToPolygons(hhg, dissolve=TRUE)
+    sp.polys <- p[1,]
+    return(sp.polys)
+  }
   
   for(i in 1:nrow(loc)) { 
     width[i]=maxcrown
