@@ -17,7 +17,7 @@ Imports:
     rgl,
     bitops
 Description: The rLiDAR is a library to reading, processing and visualizing small set 
-	of LiDAR data in forest inventory applications.
+	of LiDAR data for forest inventory applications.
 License: GPL-2
 Collate:
     'Volume3D.r'
