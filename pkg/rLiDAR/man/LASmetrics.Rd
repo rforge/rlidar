@@ -65,7 +65,6 @@ LiDARmetrics
 Carlos Alberto Silva
 }
 \seealso{
-McGaughey, R. 2014. FUSION/LDV: Software for lidar data analysis and visualization. 
-Version 3.41. Seattle, WA: U.S. Department of Agriculture, Forest Service, Pacific Northwest Research Station.
+McGaughey, R. 2014. FUSION/LDV: Software for lidar data analysis and visualization. Version 3.41. Seattle, WA: U.S. Department of Agriculture, Forest Service, Pacific Northwest Research Station.
 }
 

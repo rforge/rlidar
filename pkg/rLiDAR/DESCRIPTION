@@ -3,20 +3,14 @@ Type: Package
 Title: rLiDAR: An R Package for LiDAR Data Processing and Visualization
 Version: 0.1
 Date: 2015-02-18
-Author: Carlos A. Silva, Nicholas L. Crookston, 
-	Andrew T. Hudak and Lee A. Vierling.
+Author: Carlos A. Silva <carlos_engflorestal@outlook.com>, 
+  Nicholas L. Crookston <ncrookston.fs@gmail.com>, 
+	Andrew T. Hudak <ahudak@fs.fe.us>,
+  Lee A. Vierling <leev@uidaho.edu>
 Maintainer: Carlos A. Silva <carlos_engflorestal@outlook.com>
-Depends: R (>= 2.11.0)
-Imports:
-    spatstat,
-    sp,
-    deldir,
-    plyr,
-    raster,
-    geometry,
-    rgl,
-    bitops
-Description: The rLiDAR is a library to reading, processing and visualizing small set 
+Depends: R (>= 3.1.2),
+Imports: spatstat,sp,deldir,plyr,raster,geometry,rgl,bitops
+Description: The rLiDAR is a R package to reading, processing and visualizing small set 
 	of LiDAR data for forest inventory applications.
 License: GPL (>=2)
 Collate:
