@@ -7,8 +7,9 @@ Author: Carlos A. Silva <carlos_engflorestal@outlook.com>,
 	Andrew T. Hudak <ahudak@fs.fe.us>,
   Lee A. Vierling <leev@uidaho.edu>
 Maintainer: Carlos A. Silva <carlos_engflorestal@outlook.com>
+Depends: R (>= 3.1.2) 
 Imports: spatstat,sp,deldir,plyr,raster,geometry,rgl,bitops
-Description: The rLiDAR is a R package to reading, processing and visualizing small set 
+Description: The rLiDAR is a R package for reading, processing and visualizing small set 
 	of LiDAR data for forest inventory applications.
 License: GPL (>=2)
 Collate:
