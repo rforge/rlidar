@@ -8,57 +8,56 @@
 #'@return Returns A matrix of the LiDAR-based metrics for the individual tree detected.
 #'@author Carlos Alberto Silva
 #'@details
-#' List of the individual tree LiDAR metrics
-#'==========================================================
-#' Acronym and Metrics description
-#'==========================================================
-#'TotalReturns-> Total number of returns;   
-#'Etop-> UTM Easting coordinate of the tree top;
-#'Ntop-> UTM Northing coordinate of the tree top;
-#'Emin-> Minimum UTM Easting coordinate;
-#'Nmin-> Minimum UTM Northing coordinate;
-#'Emax-> Maximum UTM Easting coordinate;
-#'Nmax-> Maxmium UTM Northing coordinate;
-#'Ewidth-> Tree crown width 01;
-#'Nwidth-> Tree crown width 02;
-#'hmax-> Maximum Height;
-#'hmean-> Mean height; 
-#'hsd-> Standard deviation of height;
-#'hcv-> Coefficient of variation of height;
-#'hmod-> Mode of height;	
-#'h5-> 5th percentile of height;	
-#'h10-> 10th percentile of height;	
-#'h20-> 20th percentile of height;	
-#'h25-> 25th percentile of height;	
-#'h30-> 30th percentile of height;	
-#'h40-> 40th percentile of height;	
-#'h50-> 50th percentile of height;	
-#'h60-> 60th percentile of height;	
-#'h70-> 70th percentile of height;	
-#'h75-> 75th percentile of height;	
-#'h80-> 80th percentile of height;	
-#'h90-> 90th percentile of height;	
-#'h95-> 95th percentile of height;	
-#'h99-> 99th percentile of height;	
-#'imax->  Maximum intensity;
-#'imean-> Mean intensity;
-#'isd-> Standard deviation of intensity;
-#'icv-> Coefficient of variation of intensity;
-#'imod-> Mode of intensity;
-#'i5-> 5th percentile of intensity;
-#'i10-> 10th percentile of intensity;
-#'i20-> 20th percentile of intensity;
-#'i25-> 25th percentile of intensity;
-#'i30-> 30th percentile of intensity;
-#'i40-> 40th percentile of intensity;
-#'i50-> 50th percentile of intensity;
-#'i60-> 60th percentile of intensity;
-#'i70-> 70th percentile of intensity;
-#'i75-> 75th percentile of intensity;
-#'i80-> 80th percentile of intensity;
-#'i90-> 90th percentile of intensity;
-#'i95-> 95th percentile of intensity;
-#'i99-> 99th percentile of intensity.
+#' 
+#'# List of the individual tree LiDAR metrics:
+#'
+#'# Total number of returns (TotalReturns);   
+#'# UTM Easting coordinate of the tree top (Etop);
+#'# UTM Northing coordinate of the tree top (Ntop);
+#'# Minimum UTM Easting coordinate (Emin);
+#'# Minimum UTM Northing coordinate (Nmin);
+#'# Maximum UTM Easting coordinate (Emax);
+#'# Maxmium UTM Northing coordinate (Nmax);
+#'# Tree crown width 01 (Ewidth);
+#'# Tree crown width 02 (Nwidth);
+#'# Maximum Height (hmax);
+#'# Mean height (hmean);
+#'# Standard deviation of height (hsd);
+#'# Coefficient of variation of height (hcv);
+#'# Mode of height (hmod);
+#'# 5th percentile of height (h5);	
+#'# 10th percentile of height (h10);	
+#'# 20th percentile of height (h20);
+#'# 25th percentile of height (h25);	
+#'# 30th percentile of height (h30);	
+#'# 40th percentile of height (h40);	
+#'# 50th percentile of height (h50);	
+#'# 60th percentile of height (h60);
+#'# 70th percentile of height (h70);
+#'# 75th percentile of height (h75);
+#'# 80th percentile of height (h80);
+#'# 90th percentile of height (h90);
+#'# 95th percentile of height (h95);
+#'# 99th percentile of height (h99);
+#'# Maximum intensity (imax);
+#'# Mean intensity (imean);
+#'# Standard deviation of intensity (isd);
+#'# Coefficient of variation of intensity (icv);
+#'# Mode of intensity (imod);
+#'# 5th percentile of intensity (i5);
+#'# 10th percentile of intensity (i10);
+#'# 20th percentile of intensity (i20);
+#'# 25th percentile of intensity (i25);
+#'# 30th percentile of intensity (i30);
+#'# 40th percentile of intensity (i40);
+#'# 50th percentile of intensity (i50);
+#'# 60th percentile of intensity (i60);
+#'# 70th percentile of intensity (i70);
+#'# 75th percentile of intensity (i75);
+#'# 80th percentile of intensity (i80);
+#'# 90th percentile of intensity (i90);
+#'# 95th percentile of intensity (i95);
+#'# 99th percentile of intensity (i99).
 #'
 #'@examples
 #'\dontrun{
