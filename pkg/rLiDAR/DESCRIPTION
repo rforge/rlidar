@@ -1,6 +1,6 @@
 Package: rLiDAR
 Type: Package
-Title: rLiDAR: An R Package for LiDAR Data Processing and Visualization
+Title: An R Package for LiDAR Data Processing and Visualization
 Version: 0.1
 Author: Carlos A. Silva <carlos_engflorestal@outlook.com>, 
   Nicholas L. Crookston <ncrookston.fs@gmail.com>, 
