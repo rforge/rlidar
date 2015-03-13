@@ -1,6 +1,6 @@
-#'Compute 2D convex hull of LiDAR point cloud 
+#'Compute 2D convex hull of individual tree LiDAR point cloud 
 #'
-#'@description Compute and export the ground-projected convex hull of LiDAR point cloud 
+#'@description Compute and export the ground-projected 2D convex hull of individual tree LiDAR point cloud 
 #'
 #'@usage chullLiDAR(xyid)
 #'

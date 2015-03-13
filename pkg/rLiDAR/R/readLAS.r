@@ -1,4 +1,4 @@
-#'LiDAR - Read LiDAR data 
+#'Reading LiDAR data 
 #'
 #'@description This function reads and returns values associated with the LAS file format. The LAS file is a public file format for the interchange of LiDAR 3-dimensional point cloud data (American Society of Photogrammetry and Remote Sensing - ASPRS)
 #'

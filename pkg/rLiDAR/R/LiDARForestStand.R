@@ -1,4 +1,4 @@
-	#'LiDAR 3D trees stand visualization
+#'3D stand visualization of LiDAR-derived individual trees
 #'
 #'@description Draws a 3D scatterplot for individual trees detected from LiDAR data.   
 #'

@@ -2,7 +2,7 @@
 % Please edit documentation in R/ForestCAS.R
 \name{ForestCAS}
 \alias{ForestCAS}
-\title{Deriving the ground-projected canopy area of individual trees using LiDAR}
+\title{Deriving the ground-projected canopy area of individual trees using LiDAR-derived derived Canopy Height Model (CHM)}
 \usage{
 ForestCAS(chm, loc, maxcrown, exclusion)
 }

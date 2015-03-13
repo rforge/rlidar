@@ -12,18 +12,3 @@ Imports: spatstat,sp,deldir,plyr,raster,geometry,rgl,bitops
 Description: The rLiDAR is a R package for reading, processing and visualizing small set 
 	of LiDAR data for forest inventory applications.
 License: GPL (>=2)
-Collate:
-    'Volume3D.r'
-    'crownhull.r'
-    'readLAS.r'
-    'publicHeaderDescription.R'
-    'CHMsmoothing.r'
-    'coord3dshape.r'
-    'chullLiDAR.r'
-    'interpol.r'
-    'TreesModel.r'
-    'LASmetrics.r'
-    'rMetrics.r'
-    'ForestCAS.R'
-    'LiDARForestStand.R'
-    'FindTreesCHM.R'

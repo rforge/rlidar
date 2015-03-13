@@ -2,7 +2,7 @@
 % Please edit documentation in R/rMetrics.r
 \name{rMetrics}
 \alias{rMetrics}
-\title{Individual tree LiDAR metrics computation}
+\title{Individual tree LiDAR metrics}
 \usage{
 rMetrics(xyziId)
 }

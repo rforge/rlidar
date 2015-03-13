@@ -1,4 +1,4 @@
-#'Deriving the ground-projected canopy area of individual trees using LiDAR 
+#'Deriving the ground-projected canopy area of individual trees using LiDAR-derived derived Canopy Height Model (CHM) 
 #'
 #'@description Compute and export the ground-projected areas of individual tree canopies detected within the LiDAR-derived Canopy Height Model (CHM) 
 #'

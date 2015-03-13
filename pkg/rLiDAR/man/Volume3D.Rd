@@ -2,7 +2,7 @@
 % Please edit documentation in R/Volume3D.r
 \name{Volume3D}
 \alias{Volume3D}
-\title{Individual tree LiDAR 3D canopy volume and surface area}
+\title{LiDAR-derived individual tree canopy volume and surface area}
 \usage{
 Volume3D(xyzid,plotit=TRUE,col="forestgreen",alpha=0.8)
 }
@@ -21,7 +21,7 @@ volume and surface of the convex hull.
 }
 \description{
 Compute and plot the convex hull (and its surface area and volume)
-of the individual tree LiDAR 3D point could.The convex hull is calculated with
+of the individual tree detected from LiDAR 3D point could.The convex hull is calculated with
 the qhull algorithm (\emph{geometry} package,see \code{\link[geometry]{convhulln}}).
 }
 \examples{

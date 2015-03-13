@@ -1,4 +1,4 @@
-#'Individual tree LiDAR metrics computation
+#'Individual tree LiDAR metrics
 #'
 #'@description This funtion computes LiDAR-based statistic metrics for individual trees detected from the 3D LiDAR point cloud. 
 #'

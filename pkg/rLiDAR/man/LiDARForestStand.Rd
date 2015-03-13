@@ -2,7 +2,7 @@
 % Please edit documentation in R/LiDARForestStand.R
 \name{LiDARForestStand}
 \alias{LiDARForestStand}
-\title{LiDAR 3D trees stand visualization}
+\title{3D stand visualization of LiDAR-derived individual trees}
 \usage{
 LiDARForestStand(crownshape = c("cone", "ellipsoid", "halfellipsoid",
                 "paraboloid", "cylinder"), CL = 4, CW = 8, HCB = 10,

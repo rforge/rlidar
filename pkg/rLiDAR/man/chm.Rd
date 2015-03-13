@@ -1,7 +1,7 @@
 \name{chm}
 \alias{chm}
 \docType{data}
-\title{chm}
+\title{LiDAR-derived Canopy Height Model - (CHM)}
 \description{
 LiDAR-derived Canopy Height Model - (CHM)
 }

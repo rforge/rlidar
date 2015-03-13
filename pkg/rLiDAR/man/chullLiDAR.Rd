@@ -2,7 +2,7 @@
 % Please edit documentation in R/chullLiDAR.r
 \name{chullLiDAR}
 \alias{chullLiDAR}
-\title{Compute 2D convex hull of LiDAR point cloud}
+\title{Compute 2D convex hull of individual tree LiDAR point cloud}
 \usage{
 chullLiDAR(xyid)
 }
@@ -13,7 +13,7 @@ chullLiDAR(xyid)
 Returns A list with components "chullPolygon" and "chullArea", giving the polygon and area  of the convex hull.
 }
 \description{
-Compute and export the ground-projected convex hull of LiDAR point cloud
+Compute and export the ground-projected 2D convex hull of individual tree LiDAR point cloud
 }
 \examples{
 \dontrun{

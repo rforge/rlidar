@@ -2,7 +2,7 @@
 % Please edit documentation in R/readLAS.r
 \name{readLAS}
 \alias{readLAS}
-\title{LiDAR - Read LiDAR data}
+\title{Reading LiDAR data}
 \usage{
 readLAS(LASfile, short=TRUE)
 }
