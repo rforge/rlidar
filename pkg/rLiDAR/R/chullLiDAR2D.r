@@ -1,6 +1,6 @@
 #'2D Convex hull of individual tree LiDAR-derived point cloud 
 #'
-#'@description Compute and export the ground-projected 2D convex hull of individual tree LiDAR point cloud 
+#'@description Compute and plot the 2D convex hull of individual tree LiDAR-derived point cloud 
 #'
 #'@usage chullLiDAR2D(xyid)
 #'

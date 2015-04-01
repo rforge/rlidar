@@ -13,7 +13,7 @@ chullLiDAR2D(xyid)
 Returns A list with components "chullPolygon" and "chullArea", giving the polygon and area  of the convex hull.
 }
 \description{
-Compute and export the ground-projected 2D convex hull of individual tree LiDAR point cloud
+Compute and plot the 2D convex hull of individual tree LiDAR-derived point cloud
 }
 \examples{
 \dontrun{

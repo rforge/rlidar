@@ -1,7 +1,7 @@
 #'3D convex hull of the individual tree LiDAR-derived point cloud 
 #'
-#'@description Compute and plot the convex hull (and its surface area and volume) of the individual tree LiDAR-derived 
-#'3D point cloud using the qhull algorithm from \emph{geometry} package. See \code{\link[geometry]{convhulln}}.
+#'@description Compute and plot the 3D convex hull (and its surface area and volume) of the individual tree LiDAR-derived 
+#'point cloud.
 #'
 #'@usage chullLiDAR3D(xyzid,plotit=TRUE,col="forestgreen",alpha=0.8)
 #'
@@ -12,7 +12,7 @@
 #'@return A list with components 'crownvolume' and 'crownsurface', giving the
 #'volume and surface of the convex hull.
 #'@author Carlos Alberto Silva. Uses code by Remko Duursma (\emph{YplantQMC} package,see "crownhull"). 
-#'@references \url{www.qhull.org}
+#'@references \url{www.qhull.org} and \emph{geometry} package (see \code{\link[geometry]{convhulln}}).
 #'
 #'@examples
 #'
