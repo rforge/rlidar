@@ -53,7 +53,7 @@ chullLiDAR2D<-function(xyid) {
     coords <- dat[c(ch, ch[1]), ]  
     sp_poly <- SpatialPolygons(list(Polygons(list(Polygon(coords)), ID=i)))
     spdfList[i]<-SpatialPolygonsDataFrame(sp_poly, data=data.frame(subSet[1,1], row.names=row.names(sp_poly)))
-    
+    cat (".");flush.console()
   } 
     
   polygons <- slot(spdfList[[1]], "polygons")
@@ -65,7 +65,7 @@ chullLiDAR2D<-function(xyid) {
   
   for (i in 1:length(polygons)) {
     slot(polygons[[i]], "ID") <- paste(i)
-    cat (".");flush.console()
+    
   }
   
   spatialPolygons <- SpatialPolygons(polygons)
