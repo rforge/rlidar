@@ -1,10 +1,9 @@
-#'LiDAR-derived individual tree canopy volume and surface area 
+#'3D convex hull of the individual tree LiDAR-derived point cloud 
 #'
-#'@description Compute and plot the convex hull (and its surface area and volume)
-#' of the individual tree detected from LiDAR 3D point could.The convex hull is calculated with 
-#' the qhull algorithm (\emph{geometry} package,see \code{\link[geometry]{convhulln}}).
+#'@description Compute and plot the convex hull (and its surface area and volume) of the individual tree LiDAR-derived 
+#'3D point cloud using the qhull algorithm from \emph{geometry} package. See \code{\link[geometry]{convhulln}}.
 #'
-#'@usage Volume3D(xyzid,plotit=TRUE,col="forestgreen",alpha=0.8)
+#'@usage chullLiDAR3D(xyzid,plotit=TRUE,col="forestgreen",alpha=0.8)
 #'
 #'@param xyzid A matrix with four columns (xyz coordinates and tree id).
 #'@param plotit Logical. If FALSE, returns only volume and surface area.
@@ -52,7 +51,7 @@
 #'# Get the volume and surface area
 #'library(rgl)
 #'open3d() 
-#'volumeList<-Volume3D(xyzid=xyzid, plotit=plotit, col=col,alpha=alpha)
+#'volumeList<-chullLiDAR3D(xyzid=xyzid, plotit=plotit, col=col,alpha=alpha)
 #'summary(volumeList)
 #'
 #'axes3d(c("x+", "y-","z"), col="black")        # axes
@@ -77,7 +76,7 @@
 #' 
 #'# Get the volume and surface area
 #'open3d() 
-#'volumeList<-Volume3D(xyzid=xyzid, plotit=plotit, col=col,alpha=alpha)
+#'volumeList<-chullLiDAR3D(xyzid=xyzid, plotit=plotit, col=col,alpha=alpha)
 #'summary(volumeList)
 #'
 #'# Add other plot parameters
@@ -90,7 +89,7 @@
 #'@importFrom rgl triangles3d
 #'@importFrom geometry convhulln
 #'@export
-Volume3D<-function(xyzid,plotit=TRUE,col="forestgreen", alpha=0.8) {
+chullLiDAR3D<-function(xyzid,plotit=TRUE,col="forestgreen", alpha=0.8) {
 
   VolumeList<-matrix(,ncol=3)[-1,]
   nlevels<-as.numeric(levels(factor(xyzid[,4])))

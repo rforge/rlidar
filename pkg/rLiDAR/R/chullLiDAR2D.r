@@ -1,8 +1,8 @@
-#'Compute 2D convex hull of individual tree LiDAR point cloud 
+#'2D Convex hull of individual tree LiDAR-derived point cloud 
 #'
 #'@description Compute and export the ground-projected 2D convex hull of individual tree LiDAR point cloud 
 #'
-#'@usage chullLiDAR(xyid)
+#'@usage chullLiDAR2D(xyid)
 #'
 #'@param xyid A 3-column matrix with the x, y coordinates and points id of the LiDAR point cloud.
 #'@return Returns A list with components "chullPolygon" and "chullArea", giving the polygon and area  of the convex hull.  
@@ -31,7 +31,7 @@
 #'xyid<-cbind(xyz[,1:2],id)
 #'
 #'# Compute the LiDAR convex hull of the clusters 
-#'chullTrees<-chullLiDAR(xyid)
+#'chullTrees<-chullLiDAR2D(xyid)
 #'
 #'# Plotting the LiDAR convex hull
 #'plot(SpatialPoints(xyid[,1:2]),cex=0.5,col=xyid[,3])
@@ -42,7 +42,7 @@
 #'summary(chullList)     # summary 
 #'} 
 #'@export
-chullLiDAR<-function(xyid) {
+chullLiDAR2D<-function(xyid) {
   
   spdfList<-list()
   for ( i in levels(factor(xyid[,3]))) {
