@@ -1,4 +1,4 @@
-# Author: Carlos a. Silva. Uses code by Remko Duursma in Maeswrap package, see Plotstand.
+# Author: Carlos A. Silva. Uses code by Remko Duursma from Maeswrap package, see Plotstand.
 TreesModel<- function(crownshape=c("cone","ellipsoid","halfellipsoid","paraboloid","cylinder"),
                       nz=5, nalpha=5, CL=5, CW=5, HCB=10, x0=0, y0=0, z0=0, dbh = 0.3, crowncolor = "forestgreen", 
                       stemcolor = "chocolate4"
