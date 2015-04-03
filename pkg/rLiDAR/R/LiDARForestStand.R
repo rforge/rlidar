@@ -22,7 +22,6 @@
 #'@author Carlos Alberto Silva and Remko Duursma. Uses code by Remko Duursma (\emph{Maeswrap} package,see "Plotstand").
 #'@references \url{http://maespa.github.io/}
 #'@examples
-#'\dontrun{
 #'
 #'#=======================================================================#
 #'# EXAMPLE 01: Plotting single trees
@@ -154,7 +153,7 @@
 #'sdHCB<-3   # standard deviation of height at canopy base
 #'HCB<-rnorm(Ntrees, mean=meanHCB, sd=sdHCB) # height at canopy base
 #'crownshape<-sample(c("cone", "ellipsoid","halfellipsoid", 
-#'                   "paraboloid"), Ntrees, replace=T) # tree crown shape 
+#'                   "paraboloid"), Ntrees, replace=TRUE) # tree crown shape 
 #'CL<-HCB*1.3 # tree crown height
 #'CW<-HCB     # tree crown diameter
 #'
@@ -193,7 +192,7 @@
 #'sdHCB<-3   # standard deviation of the height at canopy base
 #'HCB<-rnorm(Ntrees, mean=meanHCB, sd=sdHCB) # height at canopy base
 #'crownshape<-sample(c("cone", "ellipsoid","halfellipsoid", "paraboloid"), 
-#'                   Ntrees, replace=T) # tree crown shape 
+#'                   Ntrees, replace=TRUE) # tree crown shape 
 #'CL<-HCB*1.3 # tree crown height
 #'CW<-HCB     # tree crown diameter
 #'
@@ -223,8 +222,6 @@
 #'axes3d(c("x-", "x-", "y-", "z"), col="gray")       # axes
 #'title3d(xlab = "X Coord", ylab = " Y Coord", zlab = "Height", col="red") # title
 #'planes3d(0, 0, -1, 0.001, col="gray", alpha=0.7)   # set a terrain plane
-#'
-#'}
 #'
 #'@export
 #'@importFrom geometry convhulln

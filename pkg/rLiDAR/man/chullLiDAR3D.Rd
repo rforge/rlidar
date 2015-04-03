@@ -24,8 +24,6 @@ Compute and plot the 3D convex hull (and its surface area and volume) of the ind
 point cloud.
 }
 \examples{
-\dontrun{
-
 # Importing LAS file:
 LASfile <- system.file("extdata", "LASexample1.las", package="rLiDAR")
 
@@ -92,8 +90,6 @@ axes3d(c("x+", "y-","z"), col="black")        # axes
 grid3d(side=c('x+', 'y+', 'z'), col="gray")   # grid
 title3d(xlab = "UTM Easthing", ylab = "UTM Northing",zlab = "Height", col="red")
 aspect3d(1,1,0.7) # scale
-
-}
 }
 \author{
 Carlos Alberto Silva. Uses code by Remko Duursma (\emph{YplantQMC} package,see "crownhull").

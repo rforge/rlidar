@@ -18,8 +18,6 @@ Returns a matrix listing the information stored in the LAS file
 This function reads and returns values associated with the LAS file format. The LAS file is a public file format for the interchange of LiDAR 3-dimensional point cloud data (American Society of Photogrammetry and Remote Sensing - ASPRS)
 }
 \examples{
-\dontrun{
-
 #=======================================================================#
 # Importing LAS file:
 #=======================================================================#
@@ -44,7 +42,7 @@ plot(rLAS[,1],rLAS[,2], col=col,xlab="UTM.Easting", ylab="UTM.Northing", main="L
 
 # plot 3D
 library(rgl)
-plot3d(rLAS[,1:3], col=col, axes=F,xlab="", ylab="", zlab="")
+plot3d(rLAS[,1:3], col=col, axes=FALSE,xlab="", ylab="", zlab="")
 axes3d(c("x-", "y-", "z-")) # axes
 title3d(xlab = "UTM.Easting", ylab = "UTM.Northing",zlab = "Height(m)", col="red") # title
 planes3d(0, 0, -1, 0.001, col="gray", alpha=0.7)   # set a terrain plane
@@ -66,11 +64,10 @@ col <- myColorRamp(c("blue","green","yellow","red"),rLAS[,3])
 plot(rLAS[,1], rLAS[,2], col=col, xlab="UTM.Easting", ylab="UTM.Northing", main="LAS file")
 
 # plot 3D
-plot3d(rLAS[,1:3], col=col, axes=F, xlab="", ylab="", zlab="")
+plot3d(rLAS[,1:3], col=col, axes=FALSE, xlab="", ylab="", zlab="")
 axes3d(c("x-", "y-", "z-")) # axes
 title3d(xlab = "UTM.Easting", ylab = "UTM.Northing",zlab = "Height(m)", col="red") # title
-planes3d(0, 0, -1, 0.001, col="red",alpha=0.7) # terrain
-}
+planes3d(0, 0, -1, 0.001, col="gray",alpha=0.7) # terrain
 }
 \author{
 Michael Sumner and Carlos Alberto Silva.

@@ -11,7 +11,6 @@
 #'@author Carlos Alberto Silva
 #'@seealso McGaughey, R. 2014. FUSION/LDV: Software for lidar data analysis and visualization. Version 3.41. Seattle, WA: U.S. Department of Agriculture, Forest Service, Pacific Northwest Research Station.
 #'@examples
-#'\dontrun{
 #'
 #'#=======================================================================#
 #'# Example 01: Computing LiDAR metrics for a single LAS file
@@ -49,8 +48,6 @@
 #'# Table of the LiDAR metrics
 #'LiDARmetrics<-cbind(Files=c(basename(LASlist)), getMetrics)
 #'LiDARmetrics
-#'
-#'}
 #'
 #'@importFrom bitops bitAnd bitShiftR
 #'@export

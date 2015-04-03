@@ -67,8 +67,6 @@ This funtion computes LiDAR-based statistic metrics for individual trees detecte
 # 99th percentile of intensity (i99).
 }
 \examples{
-\dontrun{
-
 #=======================================================================#
 # Individual tree detection using K-means cluster
 #=======================================================================#
@@ -95,8 +93,7 @@ xyziId<-cbind(xyzi,Id)
 #=======================================================================#
 
 TreesMetrics<-rMetrics(xyziId)
-
-}
+head(TreesMetrics)
 }
 \author{
 Carlos Alberto Silva

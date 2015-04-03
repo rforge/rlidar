@@ -60,7 +60,6 @@
 #'# 99th percentile of intensity (i99).
 #'
 #'@examples
-#'\dontrun{
 #'
 #'#=======================================================================#
 #'# Individual tree detection using K-means cluster
@@ -88,8 +87,8 @@
 #'#=======================================================================#
 #'
 #'TreesMetrics<-rMetrics(xyziId)
+#'head(TreesMetrics)
 #'
-#'}
 #'@export
 rMetrics<-function(xyziId) {  
   

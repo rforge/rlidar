@@ -10,7 +10,6 @@
 #'@return Returns A matrix with four columns (tree id, xy coordinates, and height).
 #'@author Carlos Alberto Silva
 #'@examples
-#'\dontrun{
 #'
 #'# Importing the LiDAR-derived CHM raster file
 #'data(chm) # or set a CHM. e.g. chm<-raster("CHM_stand.asc") 
@@ -29,10 +28,11 @@
 #'summary(treeList)
 #'
 #'# Plotting the individual tree location on the CHM
-#'plot(chm, main="LiDAR-derived CHM") 
+#'library(raster)
+#'plot(chm, main="LiDAR-derived CHM")
+#'library(sp) 
 #'XY<-SpatialPoints(treeList[,1:2]) # Spatial points
-#'plot(XY, add=T, col="red")        # plotthing tree location
-#'}
+#'plot(XY, add=TRUE, col="red")        # plotthing tree location
 #'
 #'@importFrom raster raster focal xyFromCell Which projection
 #'@importFrom sp SpatialPoints over SpatialGridDataFrame 
@@ -62,5 +62,5 @@ FindTreesCHM<-function(chm, fws=5,minht=1.37) {
   colnames(treeList)<-c("x","y","height")
     
   return(treeList)
-  print(treeList)
+ 
 }

@@ -20,8 +20,6 @@ Returns A matrix with the LiDAR-derived vegetation height and canopy cover metri
 Compute statistically based metrics that describe the LiDAR dataset
 }
 \examples{
-\dontrun{
-
 #=======================================================================#
 # Example 01: Computing LiDAR metrics for a single LAS file
 #=======================================================================#
@@ -58,8 +56,6 @@ for ( i in LASlist) {
 # Table of the LiDAR metrics
 LiDARmetrics<-cbind(Files=c(basename(LASlist)), getMetrics)
 LiDARmetrics
-
-}
 }
 \author{
 Carlos Alberto Silva

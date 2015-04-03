@@ -16,8 +16,6 @@
 #'
 #'@examples
 #'
-#'\dontrun{
-#'
 #'# Importing LAS file:
 #'LASfile <- system.file("extdata", "LASexample1.las", package="rLiDAR")
 #'
@@ -85,7 +83,6 @@
 #'title3d(xlab = "UTM Easthing", ylab = "UTM Northing",zlab = "Height", col="red")
 #'aspect3d(1,1,0.7) # scale
 #'
-#'}
 #'@importFrom rgl triangles3d
 #'@importFrom geometry convhulln
 #'@export

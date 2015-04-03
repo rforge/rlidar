@@ -20,8 +20,6 @@ Returns A matrix with four columns (tree id, xy coordinates, and height).
 Detects and computes the location and height of individual trees within the LiDAR-derived Canopy Height Model (CHM). The algorithm implemented in this function is local maximum with a fixed window size.
 }
 \examples{
-\dontrun{
-
 # Importing the LiDAR-derived CHM raster file
 data(chm) # or set a CHM. e.g. chm<-raster("CHM_stand.asc")
 
@@ -39,10 +37,11 @@ treeList<-FindTreesCHM(schm, fws, minht)
 summary(treeList)
 
 # Plotting the individual tree location on the CHM
+library(raster)
 plot(chm, main="LiDAR-derived CHM")
+library(sp)
 XY<-SpatialPoints(treeList[,1:2]) # Spatial points
-plot(XY, add=T, col="red")        # plotthing tree location
-}
+plot(XY, add=TRUE, col="red")        # plotthing tree location
 }
 \author{
 Carlos Alberto Silva

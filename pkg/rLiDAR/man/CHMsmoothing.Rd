@@ -22,8 +22,6 @@ Returns a CHM-smoothed raster.
 LiDAR-derived Canopy Height Model (CHM) smoothing is used to eliminate spurious local maxima caused by tree branches.
 }
 \examples{
-\dontrun{
-
 #=======================================================================#
 # Importing the LiDAR-derived CHM file
 data(chm) # or set a CHM. e.g. chm<-raster("CHM_stand.asc")
@@ -54,8 +52,6 @@ filter<-"mean"
 
 # Smoothing and plotting LiDAR-derived CHM
 sCHM<-CHMsmoothing(chm, filter, ws)
-
-}
 }
 \author{
 Carlos Alberto Silva.

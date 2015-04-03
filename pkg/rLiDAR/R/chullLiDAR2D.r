@@ -9,7 +9,6 @@
 #'@author Carlos Alberto Silva
 #'@references \emph{grDevices} package,see \code{\link[grDevices]{chull}}.
 #'@examples
-#'\dontrun{
 #'
 #'# Importing LAS file:
 #'LASfile <- system.file("extdata", "LASexample1.las", package="rLiDAR")
@@ -34,13 +33,14 @@
 #'chullTrees<-chullLiDAR2D(xyid)
 #'
 #'# Plotting the LiDAR convex hull
+#'library(sp)
 #'plot(SpatialPoints(xyid[,1:2]),cex=0.5,col=xyid[,3])
-#'plot(chullTrees$chullPolygon,add=T, border='green')
+#'plot(chullTrees$chullPolygon,add=TRUE, border='green')
 #'
 #'# Get the ground-projected area of LiDAR convex hull
 #'chullList<-chullTrees$chullArea 
 #'summary(chullList)     # summary 
-#'} 
+#'
 #'@export
 chullLiDAR2D<-function(xyid) {
   

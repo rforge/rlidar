@@ -12,7 +12,6 @@
 #'@author Carlos Alberto Silva. 
 #'@seealso \code{\link[raster]{focal}} in the \emph{raster} package.
 #'@examples
-#'\dontrun{
 #'
 #'#=======================================================================#
 #'# Importing the LiDAR-derived CHM file
@@ -45,14 +44,12 @@
 #'# Smoothing and plotting LiDAR-derived CHM 
 #'sCHM<-CHMsmoothing(chm, filter, ws)
 #'
-#'}
-#'
 #'@importFrom raster raster focal
 #'@export CHMsmoothing
 CHMsmoothing<-function(chm, filter="mean", ws=5, sigma=0.6) {
 
   if (class(chm)[1]!='RasterLayer') {
-      chmInput<-raster(chm)
+      chmInput<-as(chm,'RasterLayer')
       } else {chmInput<-chm
   }
   
@@ -88,8 +85,6 @@ CHMsmoothing<-function(chm, filter="mean", ws=5, sigma=0.6) {
    
     chmR <- focal(chmInput, w=gf)
   }
-  plot(chmR, main=paste("LiDAR-derived CHM smoothed \n",
-          "filter:",filter," ws:", paste0(ws,"x",ws)))
   
   return(chmR)
   
