@@ -6,7 +6,7 @@
 #'
 #'@param LASfile A standard LAS data file (ASPRS) 
 #'@param short Logical, if TRUE it will return only a 5-column matrix with information on the returned point x, y, z locations, point intensity and the number of return within an individual discrete-return system laser pulse.
-#'@return Returns a matrix listing the information stored in the LAS file
+#'@return Returns a matrix listing the information stored in the LAS file.
 #'@author Michael Sumner and Carlos Alberto Silva. 
 #'@examples
 #'
@@ -30,14 +30,15 @@
 #'col<-"forestgreen"
 #'
 #'# plot 2D
-#'plot(rLAS[,1],rLAS[,2], col=col,xlab="UTM.Easting", ylab="UTM.Northing", main="LAS example file")
+#'plot(rLAS[,1],rLAS[,2], col=col,xlab="UTM.Easting", ylab="UTM.Northing", main="Single color")
 #'
 #'# plot 3D
 #'library(rgl)
 #'plot3d(rLAS[,1:3], col=col, axes=FALSE,xlab="", ylab="", zlab="")
-#'axes3d(c("x-", "y-", "z-")) # axes
+#'axes3d(c("x+", "y-", "z-"))                 # axes
+#'grid3d(side=c('x+', 'y-', 'z'), col="gray") # grid
 #'title3d(xlab = "UTM.Easting", ylab = "UTM.Northing",zlab = "Height(m)", col="red") # title
-#'planes3d(0, 0, -1, 0.001, col="gray", alpha=0.7)   # set a terrain plane
+#'planes3d(0, 0, -1, 0.001, col="gray", alpha=0.7)   # terrain
 #'
 #'
 #'# 02 Set a color by height 
@@ -53,11 +54,12 @@
 #'col <- myColorRamp(c("blue","green","yellow","red"),rLAS[,3])
 #'
 #'# plot 2D
-#'plot(rLAS[,1], rLAS[,2], col=col, xlab="UTM.Easting", ylab="UTM.Northing", main="LAS file")
+#'plot(rLAS[,1], rLAS[,2], col=col, xlab="UTM.Easting", ylab="UTM.Northing", main="Color by height")
 #'
 #'# plot 3D
 #'plot3d(rLAS[,1:3], col=col, axes=FALSE, xlab="", ylab="", zlab="")
-#'axes3d(c("x-", "y-", "z-")) # axes
+#'axes3d(c("x+", "y-", "z-"))                     # axes
+#'grid3d(side=c('x+', 'y-', 'z'), col="gray")     # grid
 #'title3d(xlab = "UTM.Easting", ylab = "UTM.Northing",zlab = "Height(m)", col="red") # title
 #'planes3d(0, 0, -1, 0.001, col="gray",alpha=0.7) # terrain
 #'

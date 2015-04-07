@@ -8,15 +8,15 @@
 #'                  stemcolor = "chocolate4", resolution="high", mesh=TRUE) 
 #'
 #'@param crownshape shape of individual tree crown: "cone", "ellipsoid","halfellipsoid", "paraboloid" or "cylinder". Default is "halfellipsoid".
-#'@param CL crown length
-#'@param CW crown diameter
-#'@param HCB height at canopy base
-#'@param X x-coordinate
+#'@param CL crown length.
+#'@param CW crown diameter.
+#'@param HCB height at canopy base.
+#'@param X x-coordinate.
 #'@param Y y-coordinate.
-#'@param dbh diameter at breast height (1.73 m)
-#'@param crowncolor crown color
-#'@param stemcolor stem color
-#'@param resolution crown resolution: "low", "medium" and "high"
+#'@param dbh diameter at breast height (1.73 m).
+#'@param crowncolor crown color.
+#'@param stemcolor stem color.
+#'@param resolution crown resolution: "low", "medium" and "high".
 #'@param mesh Logical, if TRUE (default) returns a tree crown mesh model, and if FALSE returns a tree crown line mode.  
 #'@return Returns a 3-D scatterplot of the individual trees as identified automatically from the LiDAR.   
 #'@author Carlos Alberto Silva and Remko Duursma. Uses code by Remko Duursma (\emph{Maeswrap} package,see "Plotstand").

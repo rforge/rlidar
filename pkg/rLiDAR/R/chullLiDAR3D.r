@@ -50,10 +50,11 @@
 #'library(rgl)
 #'open3d() 
 #'volumeList<-chullLiDAR3D(xyzid=xyzid, plotit=plotit, col=col,alpha=alpha)
-#'summary(volumeList)
+#'summary(volumeList) # summary
 #'
-#'axes3d(c("x+", "y-","z"), col="black")        # axes
-#'grid3d(side=c('x+', 'y+', 'z'), col="gray")   # grid
+#'plot3d(xyzid[,1:3], add=TRUE)   # add the 3D point cloud
+#'axes3d(c("x+", "y-", "z-"))                 # axes
+#'grid3d(side=c('x+', 'y-', 'z'), col="gray") # grid
 #'title3d(xlab = "UTM Easthing", ylab = "UTM Northing",zlab = "Height", col="red")
 #'aspect3d(1,1,0.7) # scale
 #'
@@ -78,8 +79,9 @@
 #'summary(volumeList)
 #'
 #'# Add other plot parameters
-#'axes3d(c("x+", "y-","z"), col="black")        # axes
-#'grid3d(side=c('x+', 'y+', 'z'), col="gray")   # grid
+#'plot3d(xyzid[,1:3], col=xyzid[,4], add=TRUE)   # add the 3D point cloud
+#'axes3d(c("x+", "y-", "z-"))                 # axes
+#'grid3d(side=c('x+', 'y-', 'z'), col="gray") # grid
 #'title3d(xlab = "UTM Easthing", ylab = "UTM Northing",zlab = "Height", col="red")
 #'aspect3d(1,1,0.7) # scale
 #'

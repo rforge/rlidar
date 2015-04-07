@@ -45,7 +45,7 @@ plot(chullTrees$chullPolygon,add=TRUE, border='green')
 
 # Get the ground-projected area of LiDAR convex hull
 chullList<-chullTrees$chullArea
-summary(chullList)     # summary
+summary(chullList) # summary
 }
 \author{
 Carlos Alberto Silva

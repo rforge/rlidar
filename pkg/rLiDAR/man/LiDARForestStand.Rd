@@ -12,23 +12,23 @@ LiDARForestStand(crownshape = c("cone", "ellipsoid", "halfellipsoid",
 \arguments{
 \item{crownshape}{shape of individual tree crown: "cone", "ellipsoid","halfellipsoid", "paraboloid" or "cylinder". Default is "halfellipsoid".}
 
-\item{CL}{crown length}
+\item{CL}{crown length.}
 
-\item{CW}{crown diameter}
+\item{CW}{crown diameter.}
 
-\item{HCB}{height at canopy base}
+\item{HCB}{height at canopy base.}
 
-\item{X}{x-coordinate}
+\item{X}{x-coordinate.}
 
 \item{Y}{y-coordinate.}
 
-\item{dbh}{diameter at breast height (1.73 m)}
+\item{dbh}{diameter at breast height (1.73 m).}
 
-\item{crowncolor}{crown color}
+\item{crowncolor}{crown color.}
 
-\item{stemcolor}{stem color}
+\item{stemcolor}{stem color.}
 
-\item{resolution}{crown resolution: "low", "medium" and "high"}
+\item{resolution}{crown resolution: "low", "medium" and "high".}
 
 \item{mesh}{Logical, if TRUE (default) returns a tree crown mesh model, and if FALSE returns a tree crown line mode.}
 }

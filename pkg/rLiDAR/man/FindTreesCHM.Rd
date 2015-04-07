@@ -7,9 +7,9 @@
 FindTreesCHM(chm,fws,minht)
 }
 \arguments{
-\item{chm}{A LiDAR-derived Canopy Height Model (CHM) raster  file}
+\item{chm}{A LiDAR-derived Canopy Height Model (CHM) raster  file.}
 
-\item{fws}{A single dimension (in raster grid cell units) of fixed square window size, e.g. 3, 5, 7 and so on. Default is 5}
+\item{fws}{A single dimension (in raster grid cell units) of fixed square window size, e.g. 3, 5, 7 and so on. Default is 5.}
 
 \item{minht}{Height threshold. Detect individual trees above specified height threshold, e.g. 1.37, 2.0, 3.5 m and so on. Default is 1.37 m.}
 }

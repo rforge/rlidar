@@ -33,9 +33,9 @@ above<-2.00  # meters or feet
 # LiDAR metrics computation
 LiDARmetrics<-LASmetrics(LASfile, minht, above)
 
-#=======================================================================#
+#==========================================================================#
 # Example 02: Computing LiDAR metrics for multiple LAS files within a folder
-#=======================================================================#
+#==========================================================================#
 # Set folder where LAS source files reside
 folder=dirname(LASfile)
 
@@ -55,7 +55,7 @@ for ( i in LASlist) {
 
 # Table of the LiDAR metrics
 LiDARmetrics<-cbind(Files=c(basename(LASlist)), getMetrics)
-LiDARmetrics
+head(LiDARmetrics)
 }
 \author{
 Carlos Alberto Silva

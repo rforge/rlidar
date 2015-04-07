@@ -39,7 +39,7 @@
 #'
 #'# Get the ground-projected area of LiDAR convex hull
 #'chullList<-chullTrees$chullArea 
-#'summary(chullList)     # summary 
+#'summary(chullList) # summary 
 #'
 #'@export
 chullLiDAR2D<-function(xyid) {

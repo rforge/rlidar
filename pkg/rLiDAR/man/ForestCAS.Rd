@@ -29,7 +29,7 @@ data(chm) # or set a CHM. e.g. chm<-raster("CHM_stand.asc")
 
 # Set the loc parameter
 sCHM<-CHMsmoothing(chm, filter="mean", ws=5) # smoothing CHM
-loc<-FindTreesCHM(sCHM, fws=5, minht=8) # or import a tree list
+loc<-FindTreesCHM(sCHM, fws=5, minht=8)      # or import a tree list
 
 # Set the maxcrown parameter
 maxcrown=10.0
@@ -57,7 +57,7 @@ summary(canopyList)     # summary
 # Spatial location of the trees
 library(sp)
 XY<-SpatialPoints(canopyList[,1:2])    # Spatial points
-plot(XY, col="black", add=T, pch="*") # adding tree location to the plot
+plot(XY, col="black", add=T, pch="*")  # adding tree location to the plot
 }
 }
 \author{
