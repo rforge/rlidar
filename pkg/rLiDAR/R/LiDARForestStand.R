@@ -23,6 +23,7 @@
 #'@references \url{http://maespa.github.io/}
 #'@examples
 #'
+#'\dontrun{
 #'#=======================================================================#
 #'# EXAMPLE 01: Plotting single trees
 #'#=======================================================================#
@@ -223,6 +224,7 @@
 #'title3d(xlab = "X Coord", ylab = " Y Coord", zlab = "Height", col="red") # title
 #'planes3d(0, 0, -1, 0.001, col="gray", alpha=0.7)   # set a terrain plane
 #'
+#'}
 #'@export
 #'@importFrom geometry convhulln
 #'@importFrom rgl plot3d open3d bg3d rgl.triangles 

@@ -39,6 +39,7 @@ Returns a 3-D scatterplot of the individual trees as identified automatically fr
 Draws a 3D scatterplot for individual trees detected from LiDAR data.
 }
 \examples{
+\dontrun{
 #=======================================================================#
 # EXAMPLE 01: Plotting single trees
 #=======================================================================#
@@ -238,6 +239,8 @@ for(i in 1:Ntrees){
 axes3d(c("x-", "x-", "y-", "z"), col="gray")       # axes
 title3d(xlab = "X Coord", ylab = " Y Coord", zlab = "Height", col="red") # title
 planes3d(0, 0, -1, 0.001, col="gray", alpha=0.7)   # set a terrain plane
+
+}
 }
 \author{
 Carlos Alberto Silva and Remko Duursma. Uses code by Remko Duursma (\emph{Maeswrap} package,see "Plotstand").
