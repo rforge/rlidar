@@ -70,12 +70,14 @@ chullLiDAR2D<-function(xyid) {
   
   spatialPolygons <- SpatialPolygons(polygons)
   spdf <- SpatialPolygonsDataFrame(spatialPolygons, 
-                                   data.frame(Trees=1:length(polygons)))
+                                   data.frame(TreeID=1:length(polygons)))
   
   options(scipen=4)
   spdf<-spdf[spdf@data[-length(polygons),],]
   areaList<-as.numeric(sapply(slot(spdf, "polygons"), slot, "area"))
-  canopyTable<-data.frame(cbind(as.numeric(levels(factor(xyid[,3]))),areaList))
+  canopyTable<-data.frame(cbind(as.numeric(levels(factor(xyid[,3]))),rev(areaList)))
+  spdf@data$TreeID<-canopyTable[,1]
+  spdf@data$GPA<-canopyTable[,2]
   colnames(canopyTable)<-c("TreeID","GPA")
   return(list(chullPolygon=spdf,chullArea=canopyTable)) 
       
