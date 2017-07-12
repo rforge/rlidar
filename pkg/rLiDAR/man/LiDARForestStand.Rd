@@ -41,9 +41,9 @@ Draws a 3D scatterplot for individual trees detected from Lidar data.
 \examples{
 
 \dontrun{
-#===========================================================#
+#=======================================================================#
 # EXAMPLE 01: Plotting single trees
-#===========================================================#
+#=======================================================================#
 
 # cone crown shape
 library(rgl)
@@ -82,9 +82,9 @@ LiDARForestStand(crownshape = "paraboloid", CL = 10, CW =7,
            HCB = 5, X =0, Y = 0, dbh = 0.4, crowncolor = "forestgreen", 
            stemcolor = "chocolate4", resolution="high", mesh=FALSE)
 
-#====================================================================#                                           
+#=======================================================================#
 #EXAMPLE 02: Plotting a forest plantation stand in virtual 3-D space
-#====================================================================#
+#=======================================================================#
 
 # Set the dimensions of the displayed forest stand
 xlength<-30 # x length
@@ -148,9 +148,9 @@ axes3d(c("x-", "x-", "y-", "z"), col="gray")       # axes
 title3d(xlab = "X Coord", ylab = " Y Coord", zlab = "Height", col="red") # title
 planes3d(0, 0, -1, 0.001, col="gray", alpha=0.7)   # set a terrain plane
 
-#===========================================================#
+#=======================================================================#
 # EXAMPLE 03: Plotting a virtual mixed forest stand
-#===========================================================#
+#=======================================================================#
 
 # 01. Plot different trees species in the stand with different crown shapes 
 
