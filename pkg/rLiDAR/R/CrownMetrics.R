@@ -1,15 +1,15 @@
-#'Lidar-derived individual tree crown statistics
+#'LiDAR-derived individual tree crown metrics
 #'
-#'@description This funtion computes individual tree crown statistics from lidar point cloud. 
+#'@description Compute individual tree crown metrics from lidar data
 #'
-#'@usage CrownStats(xyziId)
+#'@usage CrownMetrics(xyziId)
 #'
 #'@param xyziId A 5-column matrix with the x, y, z coordinates, intensity and the tree id classification for the LiDAR point cloud.
 #'@return Returns A matrix of the LiDAR-based metrics for the individual tree detected.
 #'@author Carlos Alberto Silva
 #'@details
 #' 
-#'# List of the individual tree LiDAR metrics:
+#'# List of the individual tree crown metrics:
 #'\itemize{ 
 #'\item TotalReturns: Total number of returns   
 #'\item ETOP - UTM Easting coordinate of the tree top
@@ -87,11 +87,11 @@
 #'#  Computing individual tree LiDAR metrics 
 #'#=======================================================================#
 #'
-#'TreesMetrics<-CrownStats(xyziId)
+#'TreesMetrics<-CrownMetrics(xyziId)
 #'head(TreesMetrics)
-#'
+#'@importFrom stats median na.omit quantile sd var
 #'@export
-CrownStats<-function(xyziId) {  
+CrownMetrics<-function(xyziId) {  
   
   # ----from moments package: Lukasz Komsta et al.(2015) ---#
   "skewness" <-
@@ -124,12 +124,12 @@ CrownStats<-function(xyziId) {
       else kurtosis(as.vector(x), na.rm = na.rm)
     }
   #-----------------------------------------------------------#
-  MetricsList<-matrix(,ncol=68)[-1,]
+  MetricsList<-matrix(ncol=68)[-1,]
   nlevels<-as.numeric(levels(factor(xyziId[,5])))
   
   for ( i in nlevels){
     #print(i)
-    cat (".");flush.console()
+    cat (".");utils::flush.console()
     
     xyz.c<-subset(xyziId[,1:4],xyziId[,5]==i)
     
@@ -236,10 +236,10 @@ CrownStats<-function(xyziId) {
     }
   }
   
-  colnames(MetricsList)<-c("Tree","TotalReturns","Etop","Ntop","Emin","Nmin","Emax","Nmax","Ewidth","Nwidth","hmax","hmin","hmean","hmedian","hmode",
-                           "hvar","hsd","hcv","hkurtosis","hskewness","h5","h10","h15","h20","h25","h30","h35","h40",
-                           "h45","h50","h55","h60","h65","h70","h75","h80","h90","h95","h99","imax","imin","imean","imedian","imode",
-                           "ivar","isd","icv","ikurtosis","iskewness","i5","i10","i15","i20","i25","i30","i35","i40",
-                           "i45","i50","i55","i60","i65","i70","i75","i80","i90","i95","i99")
+  colnames(MetricsList)<-c("Tree","TotalReturns","ETOP","NTOP","EMIN","NMIN","EMAX","NMAX","EWIDTH","NWIDTH","HMAX","HMIN","HMEAN","HMEDIAN","HMODE",
+                           "HVAR","HSD","HCV","HKUR","HSKE","H05TH","H10TH","H15TH","H20TH","H25TH","H30TH","H35TH","H40TH",
+                           "H45TH","H50TH","H55TH","H60TH","H65TH","H70TH","H75TH","H80TH","H90TH","H95TH","H99TH","IMAX","IMIN","IMEAN","IMEDIAN","IMODE",
+                           "IVAR","ISD","ICV","IKUR","ISKE","I05TH","I10TH","I15TH","I20TH","I25TH","I30TH","I35TH","I40TH",
+                           "I45TH","I50TH","I55TH","I60TH","I65TH","I70TH","I75TH","I80TH","I90TH","I95TH","I99TH")
   return(data.frame(MetricsList))
 }

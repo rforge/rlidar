@@ -1,6 +1,6 @@
 #'3D stand visualization of LiDAR-derived individual trees
 #'
-#'@description Draws a 3D scatterplot for individual trees detected from LiDAR data.   
+#'@description Draws a 3D scatterplot for individual trees detected from Lidar data.   
 #'
 #'@usage LiDARForestStand(crownshape = c("cone", "ellipsoid", "halfellipsoid",
 #'                 "paraboloid", "cylinder"), CL = 4, CW = 8, HCB = 10, 
