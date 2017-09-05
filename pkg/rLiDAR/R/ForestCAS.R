@@ -57,7 +57,7 @@
 #'@importFrom raster raster rasterToPolygons boundaries
 #'@export
 ForestCAS<-function(chm,loc,maxcrown=10,exclusion=0.3) {
-  require(deldir)
+  
   if (class(chm)!="RasterLayer" & class(chm)!="SpatialGridDataFrame") {stop("The chm is invalid. It must to be a RasterLayer or SpatialGridDataFrame'")}
   if (ncol(loc)!=3) {stop("The input loc is invalid. It must to be 3-column matrix or dataframe with the x,y coordinates and heights of the individual trees")}
   if (class(maxcrown)!="numeric") {stop("The maxcrown parameter is invalid. It is not a numeric input")}
@@ -104,7 +104,7 @@ ForestCAS<-function(chm,loc,maxcrown=10,exclusion=0.3) {
     #sp.polys<-p[1,]
     #loc<<-loc
     #plot(loc[,1:2])
-    sp.polys <<- disaggregate(p[1,])
+    sp.polys <- raster::disaggregate(p[1,])
     #plot(sp.polys)
     #plot(SpatialPoints(loc[i,]), add=T)
     
@@ -146,8 +146,8 @@ ForestCAS<-function(chm,loc,maxcrown=10,exclusion=0.3) {
   Points.Ply<-over(SpatialPoints(chmdf[,2:3]),polybuffs) 
   Points.PlyD<-cbind(chmdf,Points.Ply) 
   Points.PlyD<-na.omit(Points.PlyD) 
-  vor =  deldir(loc[,1], loc[,2], z=loc[,3],suppressMsge=T)
-  tile = tile.list(vor)
+  vor =  deldir::deldir(loc[,1], loc[,2], z=loc[,3],suppressMsge=T)
+  tile = deldir::tile.list(vor)
   polys = vector(mode='list', length=length(tile))
   
   for (i in seq(along=polys)) {

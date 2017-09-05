@@ -13,7 +13,7 @@ ForestCAS(chm, loc, maxcrown, exclusion)
 
 \item{maxcrown}{A single value of the maximum individual tree crown radius expected. Default 10.0 m.}
 
-\item{exclusion}{A single value from 0 to 1 that represents the \out{\%} of pixel exclusion. E.g. a value of 0.5 will exclude all of the pixels for a single tree that has a height value of less than 50\out{\%} of the maximum height from the same tree. Default value is 0.3.}
+\item{exclusion}{A single value from 0 to 1 that represents the percentage of pixel exclusion. E.g. a value of 0.5 will exclude all of the pixels for a single tree that has a height value of less than 50 percent of the maximum height from the same tree. Default value is 0.3.}
 }
 \value{
 Returns a list that contains the individual tree canopy boundary polygons and the 4-column matrix with the tree xy coordinates, heights and ground-projected canopy area (with units of square meters).

@@ -2,7 +2,7 @@
 #'
 #'@description Detects and computes the location and height of individual trees within the LiDAR-derived Canopy Height Model (CHM). The algorithm implemented in this function is local maximum with a fixed window size. 
 #'
-#'@usage FindTreesCHM(chm,fws,minht)
+#'@usage FindTreesCHM(chm,schm,fws,minht)
 #'
 #'@param chm A LiDAR-derived Canopy Height Model (CHM) raster file.
 #'@param schm A LiDAR-derived Smoothed Canopy Height Model (CHM) raster file. If not null, the smoothed chm will be used for ITD, but tree top heights will be extracted from the unsmoothed chm.
