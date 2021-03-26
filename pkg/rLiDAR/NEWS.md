@@ -1,0 +1,10 @@
+<!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
+
+# rLiDAR 0.1.2
+
+* UPDATE FIX: change spatstat to spatstat.geom
+
+
+# rLiDAR 0.1.1
+
+* Added a `NEWS.md` file to track changes to the package.

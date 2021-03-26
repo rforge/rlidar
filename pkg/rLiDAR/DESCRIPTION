@@ -1,15 +1,33 @@
 Package: rLiDAR
 Type: Package
 Title: LiDAR Data Processing and Visualization
-Version: 0.1.1
-Author: Carlos A. Silva, Nicholas L. Crookston,
-    Andrew T. Hudak, Lee A. Vierling, Carine Klauberg, Adrián Cardil
+Version: 0.1.2
+Author: 
+    Carlos A. Silva, 
+    Nicholas L. Crookston,
+    Andrew T. Hudak, 
+    Lee A. Vierling, 
+    Carine Klauberg, 
+    Adrian Cardil,
+    Caio Hamamura
 Maintainer: Carlos A. Silva <carlos_engflorestal@outlook.com>
-Depends:
-    R (>= 3.3.2)
-Imports:
-    spatstat,sp,deldir,plyr,raster,geometry,rgl,bitops, methods
+Depends: R (>= 3.3.2)
+Imports: 
+    bitops, 
+    deldir,
+    geometry,
+    methods,
+    plyr,
+    raster,
+    rgl,
+    sp,
+    spatstat.geom
 Description: Set of tools for reading, processing and visualizing small set of
     LiDAR (Light Detection and Ranging) data for forest inventory applications.
-License: GPL (>=2)
-RoxygenNote: 6.0.1
+License: GPL (>= 2)
+RoxygenNote: 7.1.1
+Repository: CRAN
+Repository/R-Forge/Project: rlidar
+NeedsCompilation: no
+Packaged: 2017-07-12 09:45:10 UTC; rforge
+URL: https://github.com/carlos-alberto-silva/rLiDAR

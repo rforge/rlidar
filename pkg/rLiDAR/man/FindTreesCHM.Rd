@@ -2,14 +2,12 @@
 % Please edit documentation in R/FindTreesCHM.R
 \name{FindTreesCHM}
 \alias{FindTreesCHM}
-\title{Individual tree detection (ITD) whitin the LiDAR-derived Canopy Height Model (CHM)}
+\title{Individual tree detection whitin the LiDAR-derived Canopy Height Model (CHM)}
 \usage{
-FindTreesCHM(chm,schm,fws,minht)
+FindTreesCHM(chm,fws,minht)
 }
 \arguments{
-\item{chm}{A LiDAR-derived Canopy Height Model (CHM) raster file.}
-
-\item{schm}{A LiDAR-derived Smoothed Canopy Height Model (CHM) raster file. If not null, the smoothed chm will be used for ITD, but tree top heights will be extracted from the unsmoothed chm.}
+\item{chm}{A LiDAR-derived Canopy Height Model (CHM) raster  file.}
 
 \item{fws}{A single dimension (in raster grid cell units) of fixed square window size, e.g. 3, 5, 7 and so on. Default is 5.}
 
@@ -36,7 +34,7 @@ fws<-5 # dimention 5x5
 minht<-8.0
 
 # Getting the individual tree detection list
-treeList<-FindTreesCHM(chm, schm, fws, minht)
+treeList<-FindTreesCHM(schm, fws, minht)
 summary(treeList)
 
 # Plotting the individual tree location on the CHM

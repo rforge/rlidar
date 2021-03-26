@@ -1,11 +1,10 @@
-#'Individual tree detection (ITD) whitin the LiDAR-derived Canopy Height Model (CHM) 
+#'Individual tree detection whitin the LiDAR-derived Canopy Height Model (CHM) 
 #'
 #'@description Detects and computes the location and height of individual trees within the LiDAR-derived Canopy Height Model (CHM). The algorithm implemented in this function is local maximum with a fixed window size. 
 #'
-#'@usage FindTreesCHM(chm,schm,fws,minht)
+#'@usage FindTreesCHM(chm,fws,minht)
 #'
-#'@param chm A LiDAR-derived Canopy Height Model (CHM) raster file.
-#'@param schm A LiDAR-derived Smoothed Canopy Height Model (CHM) raster file. If not null, the smoothed chm will be used for ITD, but tree top heights will be extracted from the unsmoothed chm.
+#'@param chm A LiDAR-derived Canopy Height Model (CHM) raster  file.
 #'@param fws A single dimension (in raster grid cell units) of fixed square window size, e.g. 3, 5, 7 and so on. Default is 5. 
 #'@param minht Height threshold. Detect individual trees above specified height threshold, e.g. 1.37, 2.0, 3.5 m and so on. Default is 1.37 m.
 #'@return Returns A matrix with four columns (tree id, xy coordinates, and height).
@@ -25,7 +24,7 @@
 #'minht<-8.0
 #'
 #'# Getting the individual tree detection list
-#'treeList<-FindTreesCHM(chm, schm, fws, minht)
+#'treeList<-FindTreesCHM(schm, fws, minht)
 #'summary(treeList)
 #'
 #'# Plotting the individual tree location on the CHM
@@ -38,24 +37,21 @@
 #'@importFrom raster raster focal xyFromCell Which crs
 #'@importFrom sp SpatialPoints over SpatialGridDataFrame
 #'@export
-FindTreesCHM<-function(chm, schm=NULL,fws=5,minht=1.37) {
+FindTreesCHM<-function(chm, fws=5,minht=1.37) {
   
-  if (!is.null(schm)) {chm_input=schm} else {chm_input=chm}
-  
-  
-  if (class(chm_input)[1]!='RasterLayer') {chm_input<-raster(chm_input)}
+  if (class(chm)[1]!='RasterLayer') {chm<-raster(chm)}
   if (class(fws)!="numeric") {stop("The fws parameter is invalid. It is not a numeric input")}
   if (class(minht)!="numeric") {stop("The minht parameter is invalid. It is not a numeric input")}
   
   w<-matrix(c(rep(1,fws*fws)),nrow=fws,ncol=fws)
     
-  chm_input[chm_input < minht]<-NA
+  chm[chm < minht]<-NA
   
-  f <- function(chm_input) max(chm_input)
+  f <- function(chm) max(chm)
   
-  rlocalmax <- raster::focal(chm_input, fun=f, w=w, pad=TRUE, padValue=NA)
+  rlocalmax <- raster::focal(chm, fun=f, w=w, pad=TRUE, padValue=NA)
   
-  setNull<- chm_input==rlocalmax
+  setNull<- chm==rlocalmax
   XYmax <- sp::SpatialPoints(raster::xyFromCell(setNull, raster::Which(setNull ==1, cells = TRUE)), proj4string = raster::crs(chm))
   htExtract<-sp::over(XYmax,methods::as(chm, "SpatialGridDataFrame"))
   treeList<-cbind(coordinates(XYmax),htExtract)
@@ -65,4 +61,3 @@ FindTreesCHM<-function(chm, schm=NULL,fws=5,minht=1.37) {
   return(treeList)
  
 }
-
