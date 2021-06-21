@@ -1,7 +1,7 @@
 Package: rLiDAR
 Type: Package
 Title: LiDAR Data Processing and Visualization
-Version: 0.1.2
+Version: 0.1.3
 Author: 
     Carlos A. Silva, 
     Nicholas L. Crookston,
@@ -24,6 +24,7 @@ Imports:
     spatstat.geom
 Description: Set of tools for reading, processing and visualizing small set of
     LiDAR (Light Detection and Ranging) data for forest inventory applications.
+    References: Silva et al. (2016) <doi:10.1080/07038992.2016.1196582>
 License: GPL (>= 2)
 RoxygenNote: 7.1.1
 Repository: CRAN
